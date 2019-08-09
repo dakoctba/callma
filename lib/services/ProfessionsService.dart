@@ -1,17 +1,18 @@
+import 'package:callma/model/Profession.dart';
+
 class ProfessionsService {
 
-  static List<String> getProfessions() {
-    List<String> professions = new List<String>();
+  static List<Profession> getProfessions() {
+    List<Profession> items = new List<Profession>();
 
-    professions.add("Educação Fìsica");
-    professions.add("Enfermagem");
-    professions.add("Fisioterapia");
-    professions.add("Fisioterapia");
-    professions.add("Fonoaudiologia");
-    professions.add("Nutrição");
-    professions.add("Psicologia");
-    professions.add("Terapia Ocupacional");
+    items.add(Profession("0", "Educação Física (Personal Trainer)"));
+    items.add(Profession("1", "Enfermagem"));
+    items.add(Profession("2", "Fisioterapia"));
+    items.add(Profession("3", "Fonoaudiologia"));
+    items.add(Profession("4", "Nutrição"));
+    items.add(Profession("5", "Psicologia"));
+    items.add(Profession("6", "Terapia Ocupacional"));
 
-    return professions;
+    return items;
   }
 }

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../CallmaColors.dart';
+
 class CallmaAppBar extends StatelessWidget implements PreferredSizeWidget {
-  
-  Color backgroundColor = Color.fromARGB(255, 47, 224, 195);
+  final String title;
+
+  CallmaAppBar(this.title);
   
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title: Text("Callma"),
-        backgroundColor: backgroundColor
+        title: Text(title, style: TextStyle(fontSize: 14)),
+        backgroundColor: CallmaColors.BACKGROUND_COLOR
     );
   }
 
