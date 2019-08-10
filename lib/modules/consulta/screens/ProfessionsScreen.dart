@@ -1,4 +1,6 @@
 import 'package:callma/components/CallmaColors.dart';
+import 'package:callma/components/bars/CallmaAppBar.dart';
+import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/model/Profession.dart';
 import 'package:callma/services/ProfessionsService.dart';
 import 'package:flutter/material.dart';
@@ -41,14 +43,21 @@ class ProfessionsScreen extends StatelessWidget {
       items.insert(0, favoriteTile);
     }
 
-    //
-    // Retorna uma lista de profissões
-    //
-    return ListView(
-        children: ListTile.divideTiles(
-            color: CallmaColors.CINZA_BEM_CLARO,
-            tiles: items
-        ).toList()
+    return Scaffold(
+        appBar: CallmaAppBar("Profissional"),
+        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
+        body: Column(
+            children: <Widget>[
+              Expanded(
+                child: ListView(
+                    children: ListTile.divideTiles(
+                        color: CallmaColors.CINZA_BEM_CLARO,
+                        tiles: items
+                    ).toList()
+                ),
+              )
+            ]
+        )
     );
   }
 }

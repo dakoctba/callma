@@ -1,3 +1,5 @@
+import 'package:callma/modules/consulta/screens/ProfessionsScreen.dart';
+import 'package:callma/modules/help/screens/HelpScreen.dart';
 import 'package:flutter/material.dart';
 import '../CallmaColors.dart';
 
@@ -24,7 +26,26 @@ class CallmaBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(icon: Icon(Icons.help), title: Text('Ajuda')),
       ],
       currentIndex: _selectedIndex,
-      //onTap: _onItemTapped,
+      onTap: (option) {
+        switch(option) {
+          case LIST_OPTION:
+            break;
+          case NOTIFICATIONS_OPTION:
+            break;
+          case CONFIGURATIONS_OPTION:
+            break;
+          case HELP_OPTION:
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => HelpScreen())
+            );
+            break;
+          case HOME_OPTION:
+          default:
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => ProfessionsScreen())
+            );
+        }
+      },
       type: BottomNavigationBarType.fixed,
       backgroundColor: CallmaColors.BACKGROUND_COLOR,
       selectedItemColor: Colors.white,
