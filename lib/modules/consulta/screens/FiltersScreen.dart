@@ -10,7 +10,9 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  int _value = 6;
+
+  double horarioInicio = 8;
+  double horarioFim = 17;
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +27,23 @@ class _FiltersScreenState extends State<FiltersScreen> {
               CallmaSwitchListTile("Qualquer valor"),
               Text("Data da consulta", style: TextStyle(fontWeight: FontWeight.bold)),
               CallmaSwitchListTile("Qualquer data"),
-              Text("Horário da consulta", style: TextStyle(fontWeight: FontWeight.bold)),
-              Slider(
-                  value: _value.toDouble(),
-                  min: 0.0,
+              Text("Horário da consulta (${horarioInicio.toInt()}:00 - ${horarioFim.toInt()}:00)", style: TextStyle(fontWeight: FontWeight.bold)),
+              RangeSlider(
+                  values: RangeValues(horarioInicio, horarioFim),
+                  min: 1.0,
                   max: 24.0,
-                  divisions: 24,
+                  labels: RangeLabels("${horarioInicio.toInt()}:00", "${horarioFim.toInt()}:00"),
                   activeColor: CallmaColors.VERDE_ESCURO,
                   inactiveColor: CallmaColors.BACKGROUND_COLOR,
-                  label: '$_value',
-                  onChanged: (double newValue) {
+                  onChanged: (RangeValues values) {
                     setState(() {
-                      _value = newValue.round();
+                      horarioInicio = values.start;
+                      horarioFim = values.end;
                     });
                   },
-                  semanticFormatterCallback: (double newValue) {
-                    return '${newValue.round()} dollars';
+                  divisions: 24,
+                  semanticFormatterCallback: (RangeValues values) {
+                    return '${horarioInicio.toInt()}:00 - ${horarioFim.toInt()}:00';
                   }
               )
             ],
