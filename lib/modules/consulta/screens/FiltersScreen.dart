@@ -1,6 +1,7 @@
 import 'package:callma/components/CallmaColors.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
+import 'package:callma/components/buttons/CallmaButton.dart';
 import 'package:callma/components/switchs/CallmaSwitchListTile.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class FiltersScreen extends StatefulWidget {
 
 class _FiltersScreenState extends State<FiltersScreen> {
 
+  double distancia = 10;
   double horarioInicio = 8;
   double horarioFim = 17;
 
@@ -45,6 +47,25 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   semanticFormatterCallback: (RangeValues values) {
                     return '${horarioInicio.toInt()}:00 - ${horarioFim.toInt()}:00';
                   }
+              ),
+              Text("Distância (${distancia.toInt()} km)", style: TextStyle(fontWeight: FontWeight.bold)),
+              Slider(
+                  value: distancia,
+                  min: 1.0,
+                  max: 100.0,
+                  label: "${distancia.toInt()} km",
+                  activeColor: CallmaColors.VERDE_ESCURO,
+                  inactiveColor: CallmaColors.BACKGROUND_COLOR,
+                  onChanged: (double value) {
+                    setState(() {
+                      distancia = value;
+                    });
+                  },
+                  divisions: 100,
+              ),
+              Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: CallmaButton("Buscar profissionais")
               )
             ],
           ),
