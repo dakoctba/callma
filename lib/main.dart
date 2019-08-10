@@ -22,7 +22,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar("Agendamento de consulta - Profissional"),
+        appBar: CallmaAppBar("Profissional"),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Container(
             color: Colors.white,

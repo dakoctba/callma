@@ -10,7 +10,8 @@ class CallmaAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title: Text(title, style: TextStyle(fontSize: 14)),
+        title: Text(title),
+        centerTitle: true,
         backgroundColor: CallmaColors.BACKGROUND_COLOR
     );
   }

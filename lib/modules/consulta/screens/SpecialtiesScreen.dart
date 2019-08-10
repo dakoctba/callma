@@ -5,6 +5,8 @@ import 'package:callma/model/Specialty.dart';
 import 'package:callma/services/SpecialtiesService.dart';
 import 'package:flutter/material.dart';
 
+import 'PlaceScreen.dart';
+
 class SpecialtiesScreen extends StatelessWidget {
 
   final String professionId;
@@ -25,6 +27,9 @@ class SpecialtiesScreen extends StatelessWidget {
         title: Text(specialty.description),
         trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
         onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => PlaceScreen(specialty.id))
+          );
         },
       );
     }).toList();
@@ -33,7 +38,7 @@ class SpecialtiesScreen extends StatelessWidget {
     // Monta a tela
     //
     return Scaffold(
-        appBar: CallmaAppBar("Agendamento de consulta - Especialidade"),
+        appBar: CallmaAppBar("Especialidade"),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Container(
             color: Colors.white,
