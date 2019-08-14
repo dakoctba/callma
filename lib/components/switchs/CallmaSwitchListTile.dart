@@ -10,7 +10,7 @@ class CallmaSwitchListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SwitchListTile(
-      value: false,
+      value: true,
       title: new Text(label),
       onChanged: (value){},
       activeTrackColor: CallmaColors.BACKGROUND_COLOR,
