@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "137057294849",
+    "firebase_url": "https://callma.firebaseio.com",
+    "project_id": "callma",
+    "storage_bucket": "callma.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137057294849:android:905b6e921d2bac4f",
+        "android_client_info": {
+          "package_name": "br.com.setbox.callma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137057294849-2fct7nb5kh1js768jlek38c85f3p88b3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.setbox.callma",
+            "certificate_hash": "45fac9f5949d499652f11f9ad923b71f2e4c867b"
+          }
+        },
+        {
+          "client_id": "137057294849-o7t0uhpejls5a76tplo8ivujkvud1i15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4xUTDPyiVSlRsanyaW6FiLR_6vJ-I_sg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137057294849-o7t0uhpejls5a76tplo8ivujkvud1i15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
