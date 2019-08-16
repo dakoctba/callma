@@ -1,17 +1,17 @@
 import 'package:callma/model/Profession.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfessionsService {
 
-  static List<Profession> getProfessions() {
+  static Future<List<Profession>> getProfessions() async {
     List<Profession> items = new List<Profession>();
 
-    items.add(Profession("0", "Educação Física (Personal Trainer)"));
-    items.add(Profession("1", "Enfermagem"));
-    items.add(Profession("2", "Fisioterapia"));
-    items.add(Profession("3", "Fonoaudiologia"));
-    items.add(Profession("4", "Nutrição"));
-    items.add(Profession("5", "Psicologia"));
-    items.add(Profession("6", "Terapia Ocupacional"));
+    QuerySnapshot snapshot = await Firestore.instance.collection('professions').getDocuments();
+
+    for(DocumentSnapshot document in snapshot.documents) {
+      print("${document.documentID} :: ${document.data["name"]}");
+      items.add(Profession.fromDocument(document));
+    }
 
     return items;
   }
