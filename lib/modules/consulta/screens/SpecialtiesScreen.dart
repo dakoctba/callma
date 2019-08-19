@@ -6,8 +6,6 @@ import 'package:callma/modules/consulta/components/SpecialtyTile.dart';
 import 'package:callma/services/SpecialtiesService.dart';
 import 'package:flutter/material.dart';
 
-import 'PlaceScreen.dart';
-
 class SpecialtiesScreen extends StatefulWidget {
   final String professionId;
 

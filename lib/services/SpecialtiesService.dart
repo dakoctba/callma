@@ -6,7 +6,7 @@ class SpecialtiesService {
   static Future<List<Specialty>> getSpecialties(String professionId) async {
     List<Specialty> items = new List<Specialty>();
 
-    QuerySnapshot snapshot = await Firestore.instance.collection('professions').getDocuments();
+    QuerySnapshot snapshot = await Firestore.instance.collection('professions').document(professionId).collection("specialties").getDocuments();
 
     for(DocumentSnapshot document in snapshot.documents) {
       items.add(Specialty.fromDocument(document));
