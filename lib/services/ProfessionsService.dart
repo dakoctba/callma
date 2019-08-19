@@ -9,7 +9,6 @@ class ProfessionsService {
     QuerySnapshot snapshot = await Firestore.instance.collection('professions').getDocuments();
 
     for(DocumentSnapshot document in snapshot.documents) {
-      print("${document.documentID} :: ${document.data["name"]}");
       items.add(Profession.fromDocument(document));
     }
 
