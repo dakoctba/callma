@@ -7,8 +7,25 @@ import 'package:flutter/material.dart';
 
 import 'SpecialtiesScreen.dart';
 
-class ProfessionsScreen extends StatelessWidget {
-  final List<Profession> professions = ProfessionsService.getProfessions();
+class ProfessionsScreen extends StatefulWidget {
+  @override
+  _ProfessionsScreenState createState() => _ProfessionsScreenState();
+}
+
+class _ProfessionsScreenState extends State<ProfessionsScreen> {
+
+  List<Profession> professions;
+
+  @override
+  void initState() {
+    super.initState();
+
+    ProfessionsService.getProfessions().then((data) {
+      setState(() {
+        professions = data;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +34,15 @@ class ProfessionsScreen extends StatelessWidget {
     //
     List<ListTile> items = professions.map((profession) {
       return ListTile(
-        leading: Icon(Icons.fiber_manual_record, color: CallmaColors.VERDE_ESCURO),
+        leading: Icon(
+            Icons.fiber_manual_record, color: CallmaColors.VERDE_ESCURO),
         title: Text(profession.description),
-        trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
+        trailing: Icon(
+            Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
         onTap: () {
           Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => SpecialtiesScreen(profession.id))
+              MaterialPageRoute(
+                  builder: (context) => SpecialtiesScreen(profession.id))
           );
         },
       );
@@ -37,7 +57,8 @@ class ProfessionsScreen extends StatelessWidget {
       ListTile favoriteTile = ListTile(
         leading: Icon(Icons.star, color: CallmaColors.VERDE_ESCURO),
         title: Text("Favoritos", style: TextStyle(fontWeight: FontWeight.bold)),
-        trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
+        trailing: Icon(
+            Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
       );
 
       items.insert(0, favoriteTile);
@@ -45,7 +66,8 @@ class ProfessionsScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: CallmaAppBar("Profissional"),
-        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CallmaBottomNavigationBar(
+            CallmaBottomNavigationBar.HOME_OPTION),
         body: Column(
             children: <Widget>[
               Expanded(
@@ -61,4 +83,3 @@ class ProfessionsScreen extends StatelessWidget {
     );
   }
 }
-
