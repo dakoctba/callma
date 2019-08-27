@@ -1,17 +1,18 @@
 import 'package:callma/model/Specialty.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SpecialtiesService {
 
-  static List<Specialty> getSpecialties() {
+  static Future<List<Specialty>> getSpecialties(String professionId) async {
     List<Specialty> items = new List<Specialty>();
 
-    items.add(Specialty("2", "0", "Crioterapia"));
-    items.add(Specialty("2", "1", "Eletroterapia"));
-    items.add(Specialty("2", "2", "Fototerapia"));
-    items.add(Specialty("2", "3", "Hidroterapia"));
-    items.add(Specialty("2", "4", "Respiratória"));
-    items.add(Specialty("2", "5", "Cinesioterapia"));
+    QuerySnapshot snapshot = await Firestore.instance.collection('professions').document(professionId).collection("specialties").getDocuments();
+
+    for(DocumentSnapshot document in snapshot.documents) {
+      items.add(Specialty.fromDocument(document));
+    }
 
     return items;
+
   }
 }

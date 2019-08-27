@@ -15,17 +15,3 @@ class CallmaApp extends StatelessWidget {
     );
   }
 }
-
-//class App extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//        appBar: CallmaAppBar("Profissional"),
-//        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
-//        body: Container(
-//            color: Colors.white,
-//            child: ProfessionsScreen()
-//        )
-//    );
-//  }
-//}

@@ -6,11 +6,11 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HelpScreen extends StatelessWidget {
 
-  static const String URL_FAQ = "https://www.callma.com.br/faq";
-  static const String URL_FALE_COM_A_GENTE = "https://www.callma.com.br/contato";
-  static const String URL_COMO_FUNCIONA = "https://www.callma.com.br/comofunciona";
-  static const String URL_TERMOS_DE_USO = "https://www.callma.com.br/termosdeuso";
-  static const String URL_POLITICA_DE_PRIVACIDADE = "https://www.callma.com.br/politicadeprivacidade";
+  static const String URL_FAQ = "https://callma.com.br/faq";
+  static const String URL_FALE_COM_A_GENTE = "https://callma.com.br/contato";
+  static const String URL_COMO_FUNCIONA = "https://callma.com.br/como-funciona";
+  static const String URL_TERMOS_DE_USO = "https://callma.com.br/termos-de-uso";
+  static const String URL_POLITICA_DE_PRIVACIDADE = "https://callma.com.br/politica-de-privacidade";
   static const String URL_CERTA_MEI = "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
 
   @override
