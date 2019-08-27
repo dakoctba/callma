@@ -42,10 +42,7 @@ class _ProfessionsScreenState extends State<ProfessionsScreen> {
 
     items.addAll(professions.map((profession) => ProfessionTile(profession)));
 
-    return ListTile.divideTiles(
-        tiles: items,
-        color: CallmaColors.CINZA
-    ).toList();
+    return ListTile.divideTiles(tiles: items, color: CallmaColors.CINZA).toList();
   }
 
   @override
@@ -55,8 +52,7 @@ class _ProfessionsScreenState extends State<ProfessionsScreen> {
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(
-            child: ListView(
-                children: _buildListTiles()),
+            child: ListView(children: _buildListTiles()),
           )
         ]));
   }
