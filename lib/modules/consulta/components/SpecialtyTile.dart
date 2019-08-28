@@ -1,6 +1,7 @@
 import 'package:callma/components/CallmaColors.dart';
 import 'package:callma/model/Specialty.dart';
 import 'package:callma/modules/consulta/screens/PlaceScreen.dart';
+import 'package:callma/modules/consulta/screens/ProfessionalsScreen.dart';
 import 'package:flutter/material.dart';
 
 class SpecialtyTile extends ListTile {

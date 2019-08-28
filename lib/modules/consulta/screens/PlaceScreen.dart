@@ -4,7 +4,7 @@ import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/components/buttons/CallmaButton.dart';
 import 'package:flutter/material.dart';
 
-import 'FiltersScreen.dart';
+import 'ProfessionalsScreen.dart';
 
 class PlaceScreen extends StatelessWidget {
   final String specialtyId;
@@ -23,7 +23,7 @@ class PlaceScreen extends StatelessWidget {
       trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
       onTap: () {
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => FiltersScreen())
+          MaterialPageRoute(builder: (context) => ProfessionalsScreen('0'))
         );
       },
     );
@@ -37,7 +37,7 @@ class PlaceScreen extends StatelessWidget {
       trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
       onTap: () {
         Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => FiltersScreen())
+            MaterialPageRoute(builder: (context) => ProfessionalsScreen('0'))
         );
       },
     );
