@@ -5,6 +5,7 @@ class Professional {
   String name;
   int stars;
   String address;
+  String photo;
   int price;
 
   Professional.fromDocument(DocumentSnapshot snapshot) {
@@ -13,5 +14,6 @@ class Professional {
     this.stars = snapshot.data["stars"];
     this.address = snapshot.data["address"];
     this.price = snapshot.data["price"];
+    this.photo = snapshot.data["photo"];
   }
 }

@@ -6,12 +6,17 @@ import 'package:flutter/material.dart';
 class ProfessionalTile extends ListTile {
   final Professional professional;
 
+  static const String DEFAULT_PHOTO = 'https://callma.com.br/assets/logo.png';
+
   ProfessionalTile(this.professional);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(Icons.fiber_manual_record, color: CallmaColors.CINZA_BEM_CLARO),
+      leading: CircleAvatar(
+        backgroundImage: professional.photo != null ? NetworkImage(professional.photo) : NetworkImage(DEFAULT_PHOTO),
+        backgroundColor: Colors.transparent,
+      ),
       title: Text(professional.name),
       trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
       onTap: () {

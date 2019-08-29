@@ -11,12 +11,13 @@ class ProfessionTile extends ListTile {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(Icons.fiber_manual_record, color: CallmaColors.VERDE_ESCURO),
-      title: Text(profession.description),
-      trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => SpecialtiesScreen(profession.id)));
-      }
+        leading: const Icon(Icons.fiber_manual_record, color: CallmaColors.VERDE_ESCURO),
+        title: Text(profession.title),
+        subtitle: profession.subtitle != null ? Text(profession.subtitle) : null,
+        trailing: const Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SpecialtiesScreen(profession.id)));
+        }
     );
   }
 }
