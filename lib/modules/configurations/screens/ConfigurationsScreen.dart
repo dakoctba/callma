@@ -2,11 +2,10 @@ import 'package:callma/components/CallmaColors.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import "package:flutter/material.dart";
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart';
 import 'package:share/share.dart';
 
 class ConfigurationsScreen extends StatelessWidget {
-
   static const String URL_FAQ = "https://callma.com.br/faq";
   static const String URL_FALE_COM_A_GENTE = "https://callma.com.br/contato";
   static const String URL_COMO_FUNCIONA = "https://callma.com.br/como-funciona";
@@ -14,80 +13,65 @@ class ConfigurationsScreen extends StatelessWidget {
   static const String URL_POLITICA_DE_PRIVACIDADE = "https://callma.com.br/politica-de-privacidade";
   static const String URL_CERTA_MEI = "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
 
+  Iterable<ListTile> _getItems() {
+    List<ConfigurationOption> items = new List<ConfigurationOption>();
+
+    items.add(new ConfigurationOption("Meus dados", Icons.person, () {
+      debugPrint("Clicou em Meus dados");
+    }));
+    items.add(new ConfigurationOption("Endereços", Icons.place, () {
+      debugPrint("Clicou em Endereços");
+    }));
+    items.add(new ConfigurationOption("Dependentes", Icons.people, () {
+      debugPrint("Clicou em Dependentes");
+    }));
+    items.add(new ConfigurationOption("Métodos de pagamento", Icons.credit_card, () {
+      debugPrint("Clicou em Métodos de pagamento");
+    }));
+    items.add(new ConfigurationOption("Programa de pontos", Icons.all_inclusive, () {
+      debugPrint("Clicou em Programa de pontos");
+    }));
+    items.add(new ConfigurationOption("Favoritos", Icons.star, () {
+      debugPrint("Clicou em Favoritos");
+    }));
+    items.add(new ConfigurationOption("Preferências", Icons.settings, () {
+      debugPrint("Clicou em Preferências");
+    }));
+    items.add(new ConfigurationOption("Indicar o aplicativo", Icons.share, () {
+      Share.share('Encontre um profissional da saúde na sua região. Atendimento domiciliar ou em consultório. Consulte opiniões de pacientes e agende uma consulta online agora. https://callma.com.br');
+    }));
+    items.add(new ConfigurationOption("Sair", Icons.exit_to_app, () {
+      SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+    }));
+
+    return items.map((item) {
+      return ListTile(
+        leading: Icon(item.icon),
+        title: Text(item.text),
+        trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
+        onTap: item.onTap,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    List<ListTile> items = new List<ListTile>();
-    items.add(_mountOption(0, "Compartilhar aplicativo"));
-    items.add(_mountOption(1, "???"));
-    items.add(_mountOption(2, "???"));
-    items.add(_mountOption(3, "???"));
-    items.add(_mountOption(4, "???"));
-    items.add(_mountOption(5, "???"));
-    items.add(_mountOption(6, "???"));
-
     return Scaffold(
-        appBar: CallmaAppBar("Configurações"),
+        appBar: CallmaAppBar("Minha conta"),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.CONFIGURATIONS_OPTION),
-        body: Column(
-            children: <Widget>[
-              Expanded(
-                child: ListView(
-                    children: ListTile.divideTiles(
-                        color: CallmaColors.CINZA_BEM_CLARO,
-                        tiles: items
-                    ).toList()
-                ),
-              )
-            ]
-        )
-    );
+        body: Column(children: <Widget>[
+          Expanded(
+            child: ListView(
+                children: ListTile.divideTiles(color: CallmaColors.CINZA_BEM_CLARO, tiles: _getItems()).toList()),
+          )
+        ]));
   }
+}
 
-  ListTile _mountOption(int position, String text) {
-    return  ListTile(
-      leading: Icon(Icons.share, color: CallmaColors.VERDE_ESCURO),
-      title: Text(text),
-      trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
-      onTap: () {
-        switch(position) {
-          case 0:
-            Share.share('Encontre um profissional da saúde na sua região. Atendimento domiciliar ou em consultório. Consulte opiniões de pacientes e agende uma consulta online agora. https://callma.com.br');
-            break;
-          case 1:
-            _launchExternalUrl(URL_FALE_COM_A_GENTE);
-            break;
-          case 2:
-            _launchExternalUrl(URL_COMO_FUNCIONA);
-            break;
-          case 3:
-            _launchExternalUrl(URL_TERMOS_DE_USO);
-            break;
-          case 4:
-            _launchExternalUrl(URL_POLITICA_DE_PRIVACIDADE);
-            break;
-          case 5:
-            _launchExternalUrl(URL_CERTA_MEI);
-            break;
-          case 6:
-          default:
-            _launchAbout();
-            break;
-        }
-      },
-    );
-  }
+class ConfigurationOption {
+  String text;
+  IconData icon;
+  Function onTap;
 
-  _launchExternalUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw "Ops! Erro ao abrir a url";
-    }
-  }
-
-  _launchAbout() {
-    // do nothing yet
-  }
-
+  ConfigurationOption(this.text, this.icon, this.onTap);
 }
