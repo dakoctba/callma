@@ -1,3 +1,4 @@
+import 'package:callma/modules/configurations/screens/ConfigurationsScreen.dart';
 import 'package:callma/modules/consulta/screens/ProfessionsScreen.dart';
 import 'package:callma/modules/help/screens/HelpScreen.dart';
 import 'package:flutter/material.dart';
@@ -33,15 +34,18 @@ class CallmaBottomNavigationBar extends StatelessWidget {
           case NOTIFICATIONS_OPTION:
             break;
           case CONFIGURATIONS_OPTION:
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => ConfigurationsScreen())
+            );
             break;
           case HELP_OPTION:
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => HelpScreen())
             );
             break;
           case HOME_OPTION:
           default:
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => ProfessionsScreen())
             );
         }
@@ -50,8 +54,8 @@ class CallmaBottomNavigationBar extends StatelessWidget {
       backgroundColor: CallmaColors.BACKGROUND_COLOR,
       selectedItemColor: Colors.white,
       unselectedItemColor: CallmaColors.VERDE_ESCURO,
-      showSelectedLabels: false,   // <-- HERE
-      showUnselectedLabels: false, // <-- AND HERE
+      showSelectedLabels: false,   // Não mostrar as labels nos botões
+      showUnselectedLabels: false, // Não mostrar as labels nos botões
     );
   }
 }
