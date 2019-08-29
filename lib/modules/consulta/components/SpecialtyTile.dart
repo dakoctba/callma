@@ -11,9 +11,10 @@ class SpecialtyTile extends ListTile {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(Icons.fiber_manual_record, color: CallmaColors.VERDE_ESCURO),
-      title: Text(specialty.description),
-      trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
+      leading: const Icon(Icons.fiber_manual_record, color: CallmaColors.VERDE_ESCURO),
+      title: Text(specialty.title),
+      subtitle: specialty.subtitle != null ? Text(specialty.subtitle) : null,
+      trailing: const Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => PlaceScreen(specialty.id)));
       }
