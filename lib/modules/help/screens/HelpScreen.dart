@@ -13,67 +13,39 @@ class HelpScreen extends StatelessWidget {
   static const String URL_POLITICA_DE_PRIVACIDADE = "https://callma.com.br/politica-de-privacidade";
   static const String URL_CERTA_MEI = "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
 
-  @override
-  Widget build(BuildContext context) {
+  Iterable<ListTile> _getItems(BuildContext context) {
+    List<HelpOption> items = new List<HelpOption>();
 
-    List<ListTile> items = new List<ListTile>();
-    items.add(_mountOption(0, "Perguntas frequentes"));
-    items.add(_mountOption(1, "Fale com a gente"));
-    items.add(_mountOption(2, "Como funciona"));
-    items.add(_mountOption(3, "Termos de uso"));
-    items.add(_mountOption(4, "Política de privacidade"));
-    items.add(_mountOption(5, "Formalização MEI"));
-    items.add(_mountOption(6, "Sobre o aplicativo"));
+    items.add(new HelpOption("Perguntas frequentes", Icons.person, () {
+      _launchExternalUrl(URL_FAQ);
+    }));
+    items.add(new HelpOption("Fale com a gente", Icons.place, () {
+      _launchExternalUrl(URL_FALE_COM_A_GENTE);
+    }));
+    items.add(new HelpOption("Como funciona", Icons.people, () {
+      _launchExternalUrl(URL_COMO_FUNCIONA);
+    }));
+    items.add(new HelpOption("Termos de uso", Icons.credit_card, () {
+      _launchExternalUrl(URL_TERMOS_DE_USO);
+    }));
+    items.add(new HelpOption("Política de privacidade", Icons.all_inclusive, () {
+      _launchExternalUrl(URL_POLITICA_DE_PRIVACIDADE);
+    }));
+    items.add(new HelpOption("Formalização MEI", Icons.star, () {
+      _launchExternalUrl(URL_CERTA_MEI);
+    }));
+    items.add(new HelpOption("Sobre o aplicativo", Icons.settings, () {
+      _launchAbout(context);
+    }));
 
-    return Scaffold(
-        appBar: CallmaAppBar("Ajuda"),
-        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HELP_OPTION),
-        body: Column(
-            children: <Widget>[
-              Expanded(
-                child: ListView(
-                    children: ListTile.divideTiles(
-                        color: CallmaColors.CINZA_BEM_CLARO,
-                        tiles: items
-                    ).toList()
-                ),
-              )
-            ]
-        )
-    );
-  }
-
-  ListTile _mountOption(int position, String text) {
-    return  ListTile(
-      title: Text(text),
-      trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
-      onTap: () {
-        switch(position) {
-          case 0:
-            _launchExternalUrl(URL_FAQ);
-            break;
-          case 1:
-            _launchExternalUrl(URL_FALE_COM_A_GENTE);
-            break;
-          case 2:
-            _launchExternalUrl(URL_COMO_FUNCIONA);
-            break;
-          case 3:
-            _launchExternalUrl(URL_TERMOS_DE_USO);
-            break;
-          case 4:
-            _launchExternalUrl(URL_POLITICA_DE_PRIVACIDADE);
-            break;
-          case 5:
-            _launchExternalUrl(URL_CERTA_MEI);
-            break;
-          case 6:
-          default:
-            _launchAbout();
-            break;
-        }
-      },
-    );
+    return items.map((item) {
+      return ListTile(
+        leading: Icon(item.icon, color: CallmaColors.VERDE_ESCURO),
+        title: Text(item.text),
+        trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
+        onTap: item.onTap,
+      );
+    });
   }
 
   _launchExternalUrl(String url) async {
@@ -84,8 +56,52 @@ class HelpScreen extends StatelessWidget {
     }
   }
 
-  _launchAbout() {
-    // do nothing yet
+  _launchAbout(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Sobre o aplicativo"),
+          content: Text("Versão 1.0.0"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      }
+    );
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: CallmaAppBar("Ajuda"),
+        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HELP_OPTION),
+        body: Column(
+            children: <Widget>[
+              Expanded(
+                child: ListView(
+                    children: ListTile.divideTiles(
+                        color: CallmaColors.CINZA_BEM_CLARO,
+                        tiles: _getItems(context)
+                    ).toList()
+                ),
+              )
+            ]
+        )
+    );
+  }
+
+}
+
+class HelpOption {
+  String text;
+  IconData icon;
+  Function onTap;
+
+  HelpOption(this.text, this.icon, this.onTap);
 }

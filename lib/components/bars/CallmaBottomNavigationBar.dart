@@ -1,10 +1,11 @@
+import 'package:callma/modules/configurations/screens/ConfigurationsScreen.dart';
 import 'package:callma/modules/consulta/screens/ProfessionsScreen.dart';
 import 'package:callma/modules/help/screens/HelpScreen.dart';
 import 'package:flutter/material.dart';
 import '../CallmaColors.dart';
+import '../StatusScreen.dart';
 
 class CallmaBottomNavigationBar extends StatelessWidget {
-
   int _selectedIndex = 0;
 
   static const int HOME_OPTION = 0;
@@ -27,31 +28,33 @@ class CallmaBottomNavigationBar extends StatelessWidget {
       ],
       currentIndex: _selectedIndex,
       onTap: (option) {
-        switch(option) {
+        switch (option) {
           case LIST_OPTION:
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => StatusScreen("Dependente alterado com sucesso", true, "Voltar para tela inicial", () {
+                Navigator.of(context).pop();
+              })));
             break;
           case NOTIFICATIONS_OPTION:
             break;
           case CONFIGURATIONS_OPTION:
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ConfigurationsScreen()));
             break;
           case HELP_OPTION:
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => HelpScreen())
-            );
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HelpScreen()));
             break;
           case HOME_OPTION:
           default:
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ProfessionsScreen())
-            );
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsScreen()));
         }
       },
       type: BottomNavigationBarType.fixed,
       backgroundColor: CallmaColors.BACKGROUND_COLOR,
       selectedItemColor: Colors.white,
       unselectedItemColor: CallmaColors.VERDE_ESCURO,
-      showSelectedLabels: false,   // <-- HERE
-      showUnselectedLabels: false, // <-- AND HERE
+      showSelectedLabels: false,
+      // Não mostrar as labels nos botões
+      showUnselectedLabels: false, // Não mostrar as labels nos botões
     );
   }
 }

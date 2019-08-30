@@ -62,10 +62,7 @@ class PlaceScreen extends StatelessWidget {
                   ).toList()
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(20.0),
-              child: CallmaButton("Adicionar endereço")
-            )
+            CallmaButton("Adicionar endereço", () {})
           ]
         )
     );

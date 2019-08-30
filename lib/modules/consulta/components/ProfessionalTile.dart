@@ -1,4 +1,5 @@
 import 'package:callma/components/CallmaColors.dart';
+import 'package:callma/config/CallmaConfig.dart';
 import 'package:callma/model/Professional.dart';
 import 'package:callma/modules/consulta/screens/FiltersScreen.dart';
 import 'package:flutter/material.dart';
@@ -6,15 +7,13 @@ import 'package:flutter/material.dart';
 class ProfessionalTile extends ListTile {
   final Professional professional;
 
-  static const String DEFAULT_PHOTO = 'https://callma.com.br/assets/logo.png';
-
   ProfessionalTile(this.professional);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundImage: professional.photo != null ? NetworkImage(professional.photo) : NetworkImage(DEFAULT_PHOTO),
+        backgroundImage: professional.photo != null ? NetworkImage(professional.photo) : AssetImage(CallmaConfig.DEFAULT_PHOTO),
         backgroundColor: Colors.transparent,
       ),
       title: Text(professional.name),
