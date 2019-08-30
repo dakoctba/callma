@@ -14,27 +14,27 @@ class HelpScreen extends StatelessWidget {
   static const String URL_CERTA_MEI = "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
 
   Iterable<ListTile> _getItems(BuildContext context) {
-    List<ConfigurationOption> items = new List<ConfigurationOption>();
+    List<HelpOption> items = new List<HelpOption>();
 
-    items.add(new ConfigurationOption("Perguntas frequentes", Icons.person, () {
+    items.add(new HelpOption("Perguntas frequentes", Icons.person, () {
       _launchExternalUrl(URL_FAQ);
     }));
-    items.add(new ConfigurationOption("Fale com a gente", Icons.place, () {
+    items.add(new HelpOption("Fale com a gente", Icons.place, () {
       _launchExternalUrl(URL_FALE_COM_A_GENTE);
     }));
-    items.add(new ConfigurationOption("Como funciona", Icons.people, () {
+    items.add(new HelpOption("Como funciona", Icons.people, () {
       _launchExternalUrl(URL_COMO_FUNCIONA);
     }));
-    items.add(new ConfigurationOption("Termos de uso", Icons.credit_card, () {
+    items.add(new HelpOption("Termos de uso", Icons.credit_card, () {
       _launchExternalUrl(URL_TERMOS_DE_USO);
     }));
-    items.add(new ConfigurationOption("Política de privacidade", Icons.all_inclusive, () {
+    items.add(new HelpOption("Política de privacidade", Icons.all_inclusive, () {
       _launchExternalUrl(URL_POLITICA_DE_PRIVACIDADE);
     }));
-    items.add(new ConfigurationOption("Formalização MEI", Icons.star, () {
+    items.add(new HelpOption("Formalização MEI", Icons.star, () {
       _launchExternalUrl(URL_CERTA_MEI);
     }));
-    items.add(new ConfigurationOption("Sobre o aplicativo", Icons.settings, () {
+    items.add(new HelpOption("Sobre o aplicativo", Icons.settings, () {
       _launchAbout(context);
     }));
 
@@ -46,28 +46,6 @@ class HelpScreen extends StatelessWidget {
         onTap: item.onTap,
       );
     });
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-        appBar: CallmaAppBar("Ajuda"),
-        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HELP_OPTION),
-        body: Column(
-            children: <Widget>[
-              Expanded(
-                child: ListView(
-                    children: ListTile.divideTiles(
-                        color: CallmaColors.CINZA_BEM_CLARO,
-                        tiles: _getItems(context)
-                    ).toList()
-                ),
-              )
-            ]
-        )
-    );
   }
 
   _launchExternalUrl(String url) async {
@@ -98,12 +76,32 @@ class HelpScreen extends StatelessWidget {
     );
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: CallmaAppBar("Ajuda"),
+        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HELP_OPTION),
+        body: Column(
+            children: <Widget>[
+              Expanded(
+                child: ListView(
+                    children: ListTile.divideTiles(
+                        color: CallmaColors.CINZA_BEM_CLARO,
+                        tiles: _getItems(context)
+                    ).toList()
+                ),
+              )
+            ]
+        )
+    );
+  }
+
 }
 
-class ConfigurationOption {
+class HelpOption {
   String text;
   IconData icon;
   Function onTap;
 
-  ConfigurationOption(this.text, this.icon, this.onTap);
+  HelpOption(this.text, this.icon, this.onTap);
 }

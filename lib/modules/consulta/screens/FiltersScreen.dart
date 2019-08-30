@@ -65,7 +65,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
               ),
               Padding(
                   padding: EdgeInsets.all(20.0),
-                  child: CallmaButton("Filtrar resultado")
+                  child: CallmaButton("Filtrar resultado", () {})
               )
             ],
           ),
