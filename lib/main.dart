@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'modules/consulta/screens/ProfessionsScreen.dart';
+import 'modules/login/screens/LoginScreen.dart';
 
 void main() => runApp(CallmaApp());
 
@@ -11,7 +11,7 @@ class CallmaApp extends StatelessWidget {
       title: 'Callma',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: ProfessionsScreen()
+      home: LoginScreen()
     );
   }
 }
