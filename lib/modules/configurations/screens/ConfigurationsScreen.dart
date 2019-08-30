@@ -1,6 +1,7 @@
 import 'package:callma/components/CallmaColors.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
+import 'package:callma/util/CallmaIcons.dart';
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:share/share.dart';
@@ -57,7 +58,15 @@ class ConfigurationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar("Minha conta"),
+        appBar: CallmaAppBar(
+          "Minha conta",
+          actions: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Icon(CallmaIcons.qrcode),
+            )
+          ]
+        ),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.CONFIGURATIONS_OPTION),
         body: Column(children: <Widget>[
           Expanded(

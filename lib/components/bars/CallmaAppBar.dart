@@ -4,15 +4,18 @@ import '../CallmaColors.dart';
 
 class CallmaAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final List<Widget> actions;
 
-  CallmaAppBar(this.title);
+  CallmaAppBar(this.title, {this.actions});
   
   @override
   Widget build(BuildContext context) {
     return AppBar(
         title: Text(title),
-        centerTitle: true,
-        backgroundColor: CallmaColors.BACKGROUND_COLOR
+        centerTitle: false,
+        backgroundColor: CallmaColors.BACKGROUND_COLOR,
+        actions: this.actions
+
     );
   }
 
