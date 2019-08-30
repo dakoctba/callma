@@ -31,9 +31,9 @@ class CallmaBottomNavigationBar extends StatelessWidget {
         switch (option) {
           case LIST_OPTION:
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => StatusScreen("Dependente alterado com sucesso", false, "Voltar para tela inicial", () {
-                      debugPrint("Show de buela");
-                    })));
+              builder: (context) => StatusScreen("Dependente alterado com sucesso", true, "Voltar para tela inicial", () {
+                Navigator.of(context).pop();
+              })));
             break;
           case NOTIFICATIONS_OPTION:
             break;
