@@ -57,6 +57,40 @@ class ConfigurationsScreen extends StatelessWidget {
     });
   }
 
+  _buildInfoCard() {
+    return Card(
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Row(
+          children: <Widget>[
+            Container(
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(image: AssetImage("assets/images/logos/logo.png"))
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text("John Doe", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Row(children: <Widget>[
+                    Text("Você tem "),
+                    Text("650 ", style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text("pontos"),
+                  ])
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    )
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +106,7 @@ class ConfigurationsScreen extends StatelessWidget {
         ]),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.CONFIGURATIONS_OPTION),
         body: Column(children: <Widget>[
+          _buildInfoCard(),
           Expanded(
             child: ListView(
                 children: ListTile.divideTiles(color: CallmaColors.CINZA_BEM_CLARO, tiles: _getItems()).toList()),
