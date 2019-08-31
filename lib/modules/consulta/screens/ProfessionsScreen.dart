@@ -48,7 +48,7 @@ class _ProfessionsScreenState extends State<ProfessionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar("Profissional"),
+        appBar: CallmaAppBar(title: "Profissional"),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(

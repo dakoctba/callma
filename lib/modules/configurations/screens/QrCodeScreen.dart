@@ -7,7 +7,7 @@ class QrCodeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar("Meu QrCode"),
+        appBar: CallmaAppBar(title: "Meu QrCode"),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Center(
           child: QrImage(

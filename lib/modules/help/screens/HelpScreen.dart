@@ -79,7 +79,7 @@ class HelpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar("Ajuda"),
+        appBar: CallmaAppBar(title: "Ajuda"),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HELP_OPTION),
         body: Column(
             children: <Widget>[

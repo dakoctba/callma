@@ -41,7 +41,7 @@ class _SpecialtiesScreenState extends State<SpecialtiesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar("Especialidade"),
+        appBar: CallmaAppBar(title: "Especialidade"),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(

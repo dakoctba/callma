@@ -50,7 +50,7 @@ class PlaceScreen extends StatelessWidget {
     items.add(domicilio);
 
     return Scaffold(
-        appBar: CallmaAppBar("Local"),
+        appBar: CallmaAppBar(title: "Local"),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Column(
           children: <Widget>[
