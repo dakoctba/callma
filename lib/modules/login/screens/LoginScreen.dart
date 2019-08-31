@@ -5,6 +5,8 @@ import 'package:callma/modules/login/screens/OnboardingScreen.dart';
 import 'package:callma/util/validations/FormValidators.dart';
 import 'package:flutter/material.dart';
 
+import '../../consulta/screens/ProfessionsScreen.dart';
+
 class LoginScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
@@ -27,7 +29,7 @@ class LoginScreen extends StatelessWidget {
                           if (!FormValidators.isEmailValid(email)) {
                             return "E-mail inválido";
                           }
-                          return "OK";
+                          return null;
                         },
                       ),
                       TextFormField(
@@ -48,7 +50,9 @@ class LoginScreen extends StatelessWidget {
                   children: <Widget>[
                     CallmaButton("Entrar", () {
                       if (_formKey.currentState.validate()) {
-                        debugPrint("Entrando...");
+                        Navigator.pushReplacement(
+                            context, MaterialPageRoute(builder: (context) => ProfessionsScreen())
+                        );
                       }
                     }),
                     GestureDetector(
