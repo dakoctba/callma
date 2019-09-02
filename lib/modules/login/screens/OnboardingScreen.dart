@@ -1,10 +1,16 @@
-import 'package:callma/components/CallmaColors.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
-import 'package:callma/components/buttons/CallmaButton.dart';
-import 'package:callma/util/validations/FormValidators.dart';
 import 'package:flutter/material.dart';
 
-class OnboardingScreen extends StatelessWidget {
+import '../../../components/buttons/CallmaButton.dart';
+import '../../../util/validations/FormValidators.dart';
+import '../../consulta/screens/ProfessionsScreen.dart';
+
+class OnboardingScreen extends StatefulWidget {
+  @override
+  _OnboardingScreenState createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
   final _formKey = GlobalKey<FormState>();
 
 //  FirebaseAuth auth = FirebaseAuth.instance;
@@ -16,44 +22,49 @@ class OnboardingScreen extends StatelessWidget {
         appBar: CallmaAppBar(title: "Cadastre-se"),
         body: Form(
             key: _formKey,
-            child: Column(
+            child: ListView(
+              padding: EdgeInsets.all(13),
               children: <Widget>[
-                Expanded(
-                  child: ListView(
-                    padding: EdgeInsets.all(13),
-                    children: <Widget>[
-                      TextFormField(
-                        decoration: InputDecoration(hintText: "Nome"),
-                        validator: (email) {
-                          if (!FormValidators.isEmailValid(email)) {
-                            return "E-mail inválido";
-                          }
-                          return "OK";
-                        },
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(hintText: "CPF")
-                      ),
-                      SizedBox(height: 10),
-                      GestureDetector(
-                        child: Text("Esqueceu sua senha?", style: TextStyle(color: CallmaColors.VERDE_ESCURO)),
-                        onTap: () {
-                          debugPrint("Esqueci minha senha...");
-                        },
-                      ),
-                    ],
-                  ),
+                Padding(
+                    padding: EdgeInsets.symmetric(vertical: 40),
+                    child: Text(
+                      "Cadastre-se",
+                      style: TextStyle(fontSize: 24),
+                      textAlign: TextAlign.center,
+                    )
                 ),
-                Column(
-                  children: <Widget>[
-                    CallmaButton("Cadastrar", () {
-                      if (_formKey.currentState.validate()) {
-                        debugPrint("Entrando...");
-                      }
-                    }),
-                  ],
-                )
+                TextFormField(
+                  decoration: InputDecoration(hintText: "Nome completo", border: OutlineInputBorder()),
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  decoration: InputDecoration(hintText: "Telefone", border: OutlineInputBorder()),
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  decoration: InputDecoration(hintText: "E-mail", border: OutlineInputBorder()),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (email) {
+                    if (!FormValidators.isEmailValid(email)) {
+                      return "E-mail inválido";
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  decoration: InputDecoration(hintText: "Senha", border: OutlineInputBorder()),
+                  obscureText: true,
+                ),
+                SizedBox(height: 10),
+                CallmaButton("Criar conta", () {
+                  if (_formKey.currentState.validate()) {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsScreen()));
+                  }
+                })
               ],
-            )));
+            )
+        )
+    );
   }
 }

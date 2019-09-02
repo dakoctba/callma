@@ -22,8 +22,15 @@ class LoginScreen extends StatelessWidget {
                   child: ListView(
                     padding: EdgeInsets.all(13),
                     children: <Widget>[
+                      Padding(
+                          padding: EdgeInsets.symmetric(vertical: 40),
+                          child: Text("Login", style: TextStyle(fontSize: 24), textAlign: TextAlign.center,)
+                      ),
                       TextFormField(
-                        decoration: InputDecoration(hintText: "E-mail"),
+                        decoration: InputDecoration(
+                          hintText: "E-mail",
+                          border: OutlineInputBorder()
+                        ),
                         keyboardType: TextInputType.emailAddress,
                         validator: (email) {
                           if (!FormValidators.isEmailValid(email)) {
@@ -32,8 +39,10 @@ class LoginScreen extends StatelessWidget {
                           return null;
                         },
                       ),
+                      SizedBox(height: 10),
                       TextFormField(
-                        decoration: InputDecoration(hintText: "Senha"),
+                        decoration: InputDecoration(hintText: "Senha",
+                            border: OutlineInputBorder()),
                         obscureText: true,
                       ),
                       SizedBox(height: 10),
