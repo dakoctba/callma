@@ -19,30 +19,38 @@ class StatusScreen extends StatelessWidget {
 
   _getText() {
     return this.success == true
-        ? Text(this.message, style: TextStyle(fontSize: 24, color: CallmaColors.VERDE_ESCURO), textAlign: TextAlign.center)
+        ? Text(this.message,
+            style: TextStyle(fontSize: 24, color: CallmaColors.VERDE_ESCURO), textAlign: TextAlign.center)
         : Text(this.message, style: TextStyle(fontSize: 24, color: CallmaColors.VERMELHO), textAlign: TextAlign.center);
+  }
+
+  _body() {
+    return Center(
+      child: Padding(
+      padding: EdgeInsets.all(20),
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                _getIcon(),
+                _getText(),
+              ],
+            ),
+          ),
+          CallmaButton(this.buttonMessage, this.onPressed)
+        ],
+      ))
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  _getIcon(),
-                  _getText(),
-                ],
-              ),
-            ),
-            CallmaButton(this.buttonMessage, this.onPressed)
-          ],
-        ),
-      ),
+      body: _body()
     );
   }
 }
+

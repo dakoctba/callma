@@ -37,7 +37,6 @@ class CallmaBottomNavigationBar extends StatelessWidget {
               })));
             break;
           case NOTIFICATIONS_OPTION:
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginScreen()));
             break;
           case CONFIGURATIONS_OPTION:
             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ConfigurationsScreen()));
