@@ -2,7 +2,7 @@ import 'package:callma/modules/configurations/components/ConfigurationBody.dart'
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/modules/configurations/screens/QrCodeScreen.dart';
-import 'package:callma/util/CallmaIcons.dart';
+import 'package:callma/theme/CallmaIcons.dart';
 import "package:flutter/material.dart";
 
 class ConfigurationsScreen extends StatelessWidget {
