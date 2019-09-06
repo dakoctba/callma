@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class CallmaColors {
+class ApplicationStyle {
   static const Color PRIMARY_GREEN = Color(0xff2fe0c3);
   static const Color SECONDARY_GREEN = Color(0xff1dbfa5);
   static const Color TERTIARY_GREEN = Color(0xff09d6b4);

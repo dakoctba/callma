@@ -1,4 +1,4 @@
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 import 'package:callma/components/StatusScreen.dart';
 import 'package:callma/modules/configurations/screens/ConfigurationsScreen.dart';
 import 'package:callma/modules/consulta/screens/ProfessionsScreen.dart';
@@ -58,9 +58,9 @@ class CallmaBottomNavigationBar extends StatelessWidget {
         }
       },
       type: BottomNavigationBarType.fixed,
-      backgroundColor: CallmaColors.PRIMARY_GREEN,
+      backgroundColor: ApplicationStyle.PRIMARY_GREEN,
       selectedItemColor: Colors.white,
-      unselectedItemColor: CallmaColors.SECONDARY_GREEN,
+      unselectedItemColor: ApplicationStyle.SECONDARY_GREEN,
       showSelectedLabels: false,
       // Não mostrar as labels nos botões
       showUnselectedLabels: false, // Não mostrar as labels nos botões

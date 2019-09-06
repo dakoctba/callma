@@ -1,4 +1,4 @@
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import "package:flutter/material.dart";
@@ -42,10 +42,10 @@ class HelpScreen extends StatelessWidget {
 
     return items.map((item) {
       return ListTile(
-        leading: Icon(item.icon, color: CallmaColors.SECONDARY_GREEN),
+        leading: Icon(item.icon, color: ApplicationStyle.SECONDARY_GREEN),
         title: Text(item.text),
         trailing: Icon(Icons.keyboard_arrow_right,
-            color: CallmaColors.SECONDARY_GREEN),
+            color: ApplicationStyle.SECONDARY_GREEN),
         onTap: item.onTap,
       );
     });
@@ -88,7 +88,7 @@ class HelpScreen extends StatelessWidget {
           Expanded(
             child: ListView(
                 children: ListTile.divideTiles(
-                        color: CallmaColors.TERTIARY_GREY,
+                        color: ApplicationStyle.TERTIARY_GREY,
                         tiles: _getItems(context))
                     .toList()),
           )

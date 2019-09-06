@@ -1,4 +1,4 @@
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 import 'package:callma/config/CallmaConfig.dart';
 import 'package:callma/model/Professional.dart';
 import 'package:callma/modules/consulta/screens/FiltersScreen.dart';
@@ -20,7 +20,7 @@ class ProfessionalTile extends ListTile {
         ),
         title: Text(professional.name),
         trailing: Icon(Icons.keyboard_arrow_right,
-            color: CallmaColors.SECONDARY_GREEN),
+            color: ApplicationStyle.SECONDARY_GREEN),
         onTap: () {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => FiltersScreen()));

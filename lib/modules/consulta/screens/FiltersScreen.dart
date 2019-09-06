@@ -1,4 +1,4 @@
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/components/buttons/CallmaButton.dart';
@@ -40,8 +40,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   max: 24.0,
                   labels: RangeLabels("${horarioInicio.toInt()}:00",
                       "${horarioFim.toInt()}:00"),
-                  activeColor: CallmaColors.SECONDARY_GREEN,
-                  inactiveColor: CallmaColors.PRIMARY_GREEN,
+                  activeColor: ApplicationStyle.SECONDARY_GREEN,
+                  inactiveColor: ApplicationStyle.PRIMARY_GREEN,
                   onChanged: (RangeValues values) {
                     setState(() {
                       horarioInicio = values.start;
@@ -59,8 +59,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 min: 1.0,
                 max: 100.0,
                 label: "${distancia.toInt()} km",
-                activeColor: CallmaColors.SECONDARY_GREEN,
-                inactiveColor: CallmaColors.PRIMARY_GREEN,
+                activeColor: ApplicationStyle.SECONDARY_GREEN,
+                inactiveColor: ApplicationStyle.PRIMARY_GREEN,
                 onChanged: (double value) {
                   setState(() {
                     distancia = value;

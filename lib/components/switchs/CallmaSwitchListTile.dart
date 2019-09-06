@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 
 class CallmaSwitchListTile extends StatelessWidget {
   final String label;
@@ -13,7 +13,7 @@ class CallmaSwitchListTile extends StatelessWidget {
         value: true,
         title: new Text(label),
         onChanged: (value) {},
-        activeTrackColor: CallmaColors.PRIMARY_GREEN,
-        activeColor: CallmaColors.SECONDARY_GREEN);
+        activeTrackColor: ApplicationStyle.PRIMARY_GREEN,
+        activeColor: ApplicationStyle.SECONDARY_GREEN);
   }
 }

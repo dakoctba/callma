@@ -1,4 +1,4 @@
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/model/Profession.dart';
@@ -27,10 +27,10 @@ class _ProfessionsScreenState extends State<ProfessionsScreen> {
 
   _buidFavoriteTile() {
     return ListTile(
-      leading: Icon(Icons.star, color: CallmaColors.SECONDARY_GREEN),
+      leading: Icon(Icons.star, color: ApplicationStyle.SECONDARY_GREEN),
       title: Text("Favoritos", style: TextStyle(fontWeight: FontWeight.bold)),
-      trailing:
-          Icon(Icons.keyboard_arrow_right, color: CallmaColors.SECONDARY_GREEN),
+      trailing: Icon(Icons.keyboard_arrow_right,
+          color: ApplicationStyle.SECONDARY_GREEN),
     );
   }
 
@@ -43,7 +43,8 @@ class _ProfessionsScreenState extends State<ProfessionsScreen> {
 
     items.addAll(professions.map((profession) => ProfessionTile(profession)));
 
-    return ListTile.divideTiles(tiles: items, color: CallmaColors.PRIMARY_GREY)
+    return ListTile.divideTiles(
+            tiles: items, color: ApplicationStyle.PRIMARY_GREY)
         .toList();
   }
 

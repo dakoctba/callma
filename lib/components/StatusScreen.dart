@@ -1,7 +1,7 @@
 import 'package:callma/components/buttons/CallmaButton.dart';
 import 'package:flutter/material.dart';
 
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 
 class StatusScreen extends StatelessWidget {
   final String message;
@@ -13,17 +13,18 @@ class StatusScreen extends StatelessWidget {
 
   _getIcon() {
     return this.success == true
-        ? Icon(Icons.check, color: CallmaColors.SECONDARY_GREEN, size: 150)
-        : Icon(Icons.clear, color: CallmaColors.PRIMARY_RED, size: 150);
+        ? Icon(Icons.check, color: ApplicationStyle.SECONDARY_GREEN, size: 150)
+        : Icon(Icons.clear, color: ApplicationStyle.PRIMARY_RED, size: 150);
   }
 
   _getText() {
     return this.success == true
         ? Text(this.message,
-            style: TextStyle(fontSize: 24, color: CallmaColors.SECONDARY_GREEN),
+            style: TextStyle(
+                fontSize: 24, color: ApplicationStyle.SECONDARY_GREEN),
             textAlign: TextAlign.center)
         : Text(this.message,
-            style: TextStyle(fontSize: 24, color: CallmaColors.PRIMARY_RED),
+            style: TextStyle(fontSize: 24, color: ApplicationStyle.PRIMARY_RED),
             textAlign: TextAlign.center);
   }
 

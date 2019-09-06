@@ -1,4 +1,4 @@
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/model/Specialty.dart';
@@ -37,7 +37,8 @@ class _SpecialtiesScreenState extends State<SpecialtiesScreen> {
     List<ListTile> items =
         specialties.map((specialty) => SpecialtyTile(specialty)).toList();
 
-    return ListTile.divideTiles(color: CallmaColors.PRIMARY_GREY, tiles: items)
+    return ListTile.divideTiles(
+            color: ApplicationStyle.PRIMARY_GREY, tiles: items)
         .toList();
   }
 

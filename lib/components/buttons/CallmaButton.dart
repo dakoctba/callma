@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 
 class CallmaButton extends StatelessWidget {
   final String label;
@@ -16,7 +16,7 @@ class CallmaButton extends StatelessWidget {
         height: 44.0,
         width: 240.0,
         child: RaisedButton(
-            color: CallmaColors.SECONDARY_GREEN,
+            color: ApplicationStyle.SECONDARY_GREEN,
             textColor: Colors.white,
             onPressed: this.onPressed,
             child: Text(this.label)),

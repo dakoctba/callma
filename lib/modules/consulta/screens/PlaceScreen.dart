@@ -1,4 +1,4 @@
-import 'package:callma/theme/CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/components/buttons/CallmaButton.dart';
@@ -17,10 +17,10 @@ class PlaceScreen extends StatelessWidget {
     // Consultório
     //
     ListTile consultorio = ListTile(
-      leading: Icon(Icons.public, color: CallmaColors.SECONDARY_GREEN),
+      leading: Icon(Icons.public, color: ApplicationStyle.SECONDARY_GREEN),
       title: Text("Consultório"),
-      trailing:
-          Icon(Icons.keyboard_arrow_right, color: CallmaColors.SECONDARY_GREEN),
+      trailing: Icon(Icons.keyboard_arrow_right,
+          color: ApplicationStyle.SECONDARY_GREEN),
       onTap: () {
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => ProfessionalsScreen('0')));
@@ -31,10 +31,10 @@ class PlaceScreen extends StatelessWidget {
     // Consultório
     //
     ListTile domicilio = ListTile(
-      leading: Icon(Icons.location_on, color: CallmaColors.SECONDARY_GREEN),
+      leading: Icon(Icons.location_on, color: ApplicationStyle.SECONDARY_GREEN),
       title: Text("Domicílio"),
-      trailing:
-          Icon(Icons.keyboard_arrow_right, color: CallmaColors.SECONDARY_GREEN),
+      trailing: Icon(Icons.keyboard_arrow_right,
+          color: ApplicationStyle.SECONDARY_GREEN),
       onTap: () {
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => ProfessionalsScreen('0')));
@@ -56,7 +56,7 @@ class PlaceScreen extends StatelessWidget {
           Expanded(
             child: ListView(
                 children: ListTile.divideTiles(
-                        color: CallmaColors.TERTIARY_GREY, tiles: items)
+                        color: ApplicationStyle.TERTIARY_GREY, tiles: items)
                     .toList()),
           ),
           CallmaButton("Adicionar endereço", () {})
