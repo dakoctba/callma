@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../CallmaColors.dart';
+import 'package:callma/theme/ApplicationStyle.dart';
 
 class CallmaAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -11,9 +11,11 @@ class CallmaAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title: this.title == null ? Image.asset("assets/images/logos/logo.png") : Text(title),
+        title: this.title == null
+            ? Image.asset("assets/images/logos/logo.png")
+            : Text(title),
         centerTitle: this.title == null ? true : false,
-        backgroundColor: CallmaColors.BACKGROUND_COLOR,
+        backgroundColor: ApplicationStyle.PRIMARY_GREEN,
         actions: this.actions);
   }
 

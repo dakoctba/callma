@@ -20,9 +20,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    debugPrint("##############################################");
-
     return Scaffold(
         appBar: CallmaAppBar(title: "Cadastre-se"),
         body: Form(
@@ -36,18 +33,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       "Cadastre-se",
                       style: TextStyle(fontSize: 24),
                       textAlign: TextAlign.center,
-                    )
-                ),
+                    )),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Nome completo", border: OutlineInputBorder()),
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  decoration: InputDecoration(hintText: "Telefone", border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                      hintText: "Nome completo", border: OutlineInputBorder()),
                 ),
                 SizedBox(height: 10),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "E-mail", border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                      hintText: "Telefone", border: OutlineInputBorder()),
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  decoration: InputDecoration(
+                      hintText: "E-mail", border: OutlineInputBorder()),
                   keyboardType: TextInputType.emailAddress,
                   validator: (email) {
                     if (!FormValidators.isEmailValid(email)) {
@@ -58,34 +57,36 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 SizedBox(height: 10),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Senha", border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                      hintText: "Senha", border: OutlineInputBorder()),
                   obscureText: true,
                 ),
                 SizedBox(height: 10),
                 new CheckboxListTile(
-                  value: isChecked,
-                  onChanged: (bool value) {
-                    setState(() {
-                      isChecked = value;
-                    });
-                  },
-                  title: new Text('Aceito os Termo de Uso')
-                ),
+                    value: isChecked,
+                    onChanged: (bool value) {
+                      setState(() {
+                        isChecked = value;
+                      });
+                    },
+                    title: new Text('Aceito os Termo de Uso')),
                 CallmaButton("Criar conta", () {
                   if (_formKey.currentState.validate()) {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => StatusScreen(
-                        "Cadastro efetuado com sucesso",
-                        true,
-                        "Continuar",
-                        () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsScreen()));
-                        }
-                    )));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => StatusScreen(
+                                    "Cadastro efetuado com sucesso",
+                                    true,
+                                    "Continuar", () {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ProfessionsScreen()));
+                                })));
                   }
                 })
               ],
-            )
-        )
-    );
+            )));
   }
 }
