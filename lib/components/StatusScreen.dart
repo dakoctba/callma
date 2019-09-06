@@ -1,7 +1,7 @@
 import 'package:callma/components/buttons/CallmaButton.dart';
 import 'package:flutter/material.dart';
 
-import 'CallmaColors.dart';
+import 'package:callma/theme/CallmaColors.dart';
 
 class StatusScreen extends StatelessWidget {
   final String message;
@@ -13,44 +13,43 @@ class StatusScreen extends StatelessWidget {
 
   _getIcon() {
     return this.success == true
-        ? Icon(Icons.check, color: CallmaColors.VERDE_ESCURO, size: 150)
-        : Icon(Icons.clear, color: CallmaColors.VERMELHO, size: 150);
+        ? Icon(Icons.check, color: CallmaColors.SECONDARY_GREEN, size: 150)
+        : Icon(Icons.clear, color: CallmaColors.PRIMARY_RED, size: 150);
   }
 
   _getText() {
     return this.success == true
         ? Text(this.message,
-            style: TextStyle(fontSize: 24, color: CallmaColors.VERDE_ESCURO), textAlign: TextAlign.center)
-        : Text(this.message, style: TextStyle(fontSize: 24, color: CallmaColors.VERMELHO), textAlign: TextAlign.center);
+            style: TextStyle(fontSize: 24, color: CallmaColors.SECONDARY_GREEN),
+            textAlign: TextAlign.center)
+        : Text(this.message,
+            style: TextStyle(fontSize: 24, color: CallmaColors.PRIMARY_RED),
+            textAlign: TextAlign.center);
   }
 
   _body() {
     return Center(
-      child: Padding(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        children: <Widget>[
-          Expanded(
+        child: Padding(
+            padding: EdgeInsets.all(20),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                _getIcon(),
-                _getText(),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      _getIcon(),
+                      _getText(),
+                    ],
+                  ),
+                ),
+                CallmaButton(this.buttonMessage, this.onPressed)
               ],
-            ),
-          ),
-          CallmaButton(this.buttonMessage, this.onPressed)
-        ],
-      ))
-    );
+            )));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _body()
-    );
+    return Scaffold(body: _body());
   }
 }
-

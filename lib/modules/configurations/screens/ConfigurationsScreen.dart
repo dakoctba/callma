@@ -1,4 +1,4 @@
-import 'package:callma/components/CallmaColors.dart';
+import 'package:callma/theme/CallmaColors.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/modules/configurations/components/InfoCard.dart';
@@ -13,8 +13,10 @@ class ConfigurationsScreen extends StatelessWidget {
   static const String URL_FALE_COM_A_GENTE = "https://callma.com.br/contato";
   static const String URL_COMO_FUNCIONA = "https://callma.com.br/como-funciona";
   static const String URL_TERMOS_DE_USO = "https://callma.com.br/termos-de-uso";
-  static const String URL_POLITICA_DE_PRIVACIDADE = "https://callma.com.br/politica-de-privacidade";
-  static const String URL_CERTA_MEI = "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
+  static const String URL_POLITICA_DE_PRIVACIDADE =
+      "https://callma.com.br/politica-de-privacidade";
+  static const String URL_CERTA_MEI =
+      "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
 
   Iterable<ListTile> _getItems() {
     List<ConfigurationOption> items = new List<ConfigurationOption>();
@@ -28,10 +30,12 @@ class ConfigurationsScreen extends StatelessWidget {
     items.add(new ConfigurationOption("Dependentes", Icons.people, () {
       debugPrint("Clicou em Dependentes");
     }));
-    items.add(new ConfigurationOption("Métodos de pagamento", Icons.credit_card, () {
+    items.add(
+        new ConfigurationOption("Métodos de pagamento", Icons.credit_card, () {
       debugPrint("Clicou em Métodos de pagamento");
     }));
-    items.add(new ConfigurationOption("Programa de pontos", Icons.all_inclusive, () {
+    items.add(
+        new ConfigurationOption("Programa de pontos", Icons.all_inclusive, () {
       debugPrint("Clicou em Programa de pontos");
     }));
     items.add(new ConfigurationOption("Favoritos", Icons.star, () {
@@ -50,9 +54,10 @@ class ConfigurationsScreen extends StatelessWidget {
 
     return items.map((item) {
       return ListTile(
-        leading: Icon(item.icon, color: CallmaColors.VERDE_ESCURO),
+        leading: Icon(item.icon, color: CallmaColors.SECONDARY_GREEN),
         title: Text(item.text),
-        trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
+        trailing: Icon(Icons.keyboard_arrow_right,
+            color: CallmaColors.SECONDARY_GREEN),
         onTap: item.onTap,
       );
     });
@@ -68,15 +73,19 @@ class ConfigurationsScreen extends StatelessWidget {
                 child: Icon(CallmaIcons.qrcode),
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => QrCodeScreen()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => QrCodeScreen()));
               })
         ]),
-        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.CONFIGURATIONS_OPTION),
+        bottomNavigationBar: CallmaBottomNavigationBar(
+            CallmaBottomNavigationBar.CONFIGURATIONS_OPTION),
         body: Column(children: <Widget>[
           InfoCard(),
           Expanded(
             child: ListView(
-                children: ListTile.divideTiles(color: CallmaColors.CINZA_BEM_CLARO, tiles: _getItems()).toList()),
+                children: ListTile.divideTiles(
+                        color: CallmaColors.TERTIARY_GREY, tiles: _getItems())
+                    .toList()),
           )
         ]));
   }

@@ -1,17 +1,18 @@
-import 'package:callma/components/CallmaColors.dart';
+import 'package:callma/theme/CallmaColors.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import "package:flutter/material.dart";
 import 'package:url_launcher/url_launcher.dart';
 
 class HelpScreen extends StatelessWidget {
-
   static const String URL_FAQ = "https://callma.com.br/faq";
   static const String URL_FALE_COM_A_GENTE = "https://callma.com.br/contato";
   static const String URL_COMO_FUNCIONA = "https://callma.com.br/como-funciona";
   static const String URL_TERMOS_DE_USO = "https://callma.com.br/termos-de-uso";
-  static const String URL_POLITICA_DE_PRIVACIDADE = "https://callma.com.br/politica-de-privacidade";
-  static const String URL_CERTA_MEI = "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
+  static const String URL_POLITICA_DE_PRIVACIDADE =
+      "https://callma.com.br/politica-de-privacidade";
+  static const String URL_CERTA_MEI =
+      "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
 
   Iterable<ListTile> _getItems(BuildContext context) {
     List<HelpOption> items = new List<HelpOption>();
@@ -28,7 +29,8 @@ class HelpScreen extends StatelessWidget {
     items.add(new HelpOption("Termos de uso", Icons.credit_card, () {
       _launchExternalUrl(URL_TERMOS_DE_USO);
     }));
-    items.add(new HelpOption("Política de privacidade", Icons.all_inclusive, () {
+    items
+        .add(new HelpOption("Política de privacidade", Icons.all_inclusive, () {
       _launchExternalUrl(URL_POLITICA_DE_PRIVACIDADE);
     }));
     items.add(new HelpOption("Formalização MEI", Icons.star, () {
@@ -40,9 +42,10 @@ class HelpScreen extends StatelessWidget {
 
     return items.map((item) {
       return ListTile(
-        leading: Icon(item.icon, color: CallmaColors.VERDE_ESCURO),
+        leading: Icon(item.icon, color: CallmaColors.SECONDARY_GREEN),
         title: Text(item.text),
-        trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
+        trailing: Icon(Icons.keyboard_arrow_right,
+            color: CallmaColors.SECONDARY_GREEN),
         onTap: item.onTap,
       );
     });
@@ -58,44 +61,39 @@ class HelpScreen extends StatelessWidget {
 
   _launchAbout(BuildContext context) {
     showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text("Sobre o aplicativo"),
-          content: Text("Versão 1.0.0"),
-          actions: <Widget>[
-            FlatButton(
-              child: Text("OK"),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )
-          ],
-        );
-      }
-    );
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Sobre o aplicativo"),
+            content: Text("Versão 1.0.0"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CallmaAppBar(title: "Ajuda"),
-        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HELP_OPTION),
-        body: Column(
-            children: <Widget>[
-              Expanded(
-                child: ListView(
-                    children: ListTile.divideTiles(
-                        color: CallmaColors.CINZA_BEM_CLARO,
-                        tiles: _getItems(context)
-                    ).toList()
-                ),
-              )
-            ]
-        )
-    );
+        bottomNavigationBar:
+            CallmaBottomNavigationBar(CallmaBottomNavigationBar.HELP_OPTION),
+        body: Column(children: <Widget>[
+          Expanded(
+            child: ListView(
+                children: ListTile.divideTiles(
+                        color: CallmaColors.TERTIARY_GREY,
+                        tiles: _getItems(context))
+                    .toList()),
+          )
+        ]));
   }
-
 }
 
 class HelpOption {

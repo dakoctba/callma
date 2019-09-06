@@ -1,4 +1,4 @@
-import 'package:callma/components/CallmaColors.dart';
+import 'package:callma/theme/CallmaColors.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/buttons/CallmaButton.dart';
 import 'package:callma/modules/login/screens/OnboardingScreen.dart';
@@ -24,13 +24,14 @@ class LoginScreen extends StatelessWidget {
                     children: <Widget>[
                       Padding(
                           padding: EdgeInsets.symmetric(vertical: 40),
-                          child: Text("Login", style: TextStyle(fontSize: 24), textAlign: TextAlign.center,)
-                      ),
+                          child: Text(
+                            "Login",
+                            style: TextStyle(fontSize: 24),
+                            textAlign: TextAlign.center,
+                          )),
                       TextFormField(
                         decoration: InputDecoration(
-                          hintText: "E-mail",
-                          border: OutlineInputBorder()
-                        ),
+                            hintText: "E-mail", border: OutlineInputBorder()),
                         keyboardType: TextInputType.emailAddress,
                         validator: (email) {
                           if (!FormValidators.isEmailValid(email)) {
@@ -41,13 +42,15 @@ class LoginScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       TextFormField(
-                        decoration: InputDecoration(hintText: "Senha",
-                            border: OutlineInputBorder()),
+                        decoration: InputDecoration(
+                            hintText: "Senha", border: OutlineInputBorder()),
                         obscureText: true,
                       ),
                       SizedBox(height: 10),
                       GestureDetector(
-                        child: Text("Esqueceu sua senha?", style: TextStyle(color: CallmaColors.VERDE_ESCURO)),
+                        child: Text("Esqueceu sua senha?",
+                            style:
+                                TextStyle(color: CallmaColors.SECONDARY_GREEN)),
                         onTap: () {
                           debugPrint("Esqueci minha senha...");
                         },
@@ -60,24 +63,29 @@ class LoginScreen extends StatelessWidget {
                     CallmaButton("Entrar", () {
                       if (_formKey.currentState.validate()) {
                         Navigator.pushReplacement(
-                            context, MaterialPageRoute(builder: (context) => ProfessionsScreen())
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProfessionsScreen()));
                       }
                     }),
                     GestureDetector(
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Text("Não possui uma conta? ", style: TextStyle(fontSize: 12, color: CallmaColors.VERDE_ESCURO)),
-                              Text("Cadastre-se", style: TextStyle(fontSize: 12, color: CallmaColors.VERDE_ESCURO, fontWeight: FontWeight.bold))
-                            ]
-                        ),
+                              Text("Não possui uma conta? ",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: CallmaColors.SECONDARY_GREEN)),
+                              Text("Cadastre-se",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: CallmaColors.SECONDARY_GREEN,
+                                      fontWeight: FontWeight.bold))
+                            ]),
                         onTap: () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => OnboardingScreen())
-                          );
-                        }
-                    ),
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => OnboardingScreen()));
+                        }),
                     SizedBox(height: 20)
                   ],
                 )

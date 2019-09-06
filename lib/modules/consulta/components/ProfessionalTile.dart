@@ -1,4 +1,4 @@
-import 'package:callma/components/CallmaColors.dart';
+import 'package:callma/theme/CallmaColors.dart';
 import 'package:callma/config/CallmaConfig.dart';
 import 'package:callma/model/Professional.dart';
 import 'package:callma/modules/consulta/screens/FiltersScreen.dart';
@@ -12,15 +12,18 @@ class ProfessionalTile extends ListTile {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
-        backgroundImage: professional.photo != null ? NetworkImage(professional.photo) : AssetImage(CallmaConfig.DEFAULT_PHOTO),
-        backgroundColor: Colors.transparent,
-      ),
-      title: Text(professional.name),
-      trailing: Icon(Icons.keyboard_arrow_right, color: CallmaColors.VERDE_ESCURO),
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => FiltersScreen()));
-      }
-    );
+        leading: CircleAvatar(
+          backgroundImage: professional.photo != null
+              ? NetworkImage(professional.photo)
+              : AssetImage(CallmaConfig.DEFAULT_PHOTO),
+          backgroundColor: Colors.transparent,
+        ),
+        title: Text(professional.name),
+        trailing: Icon(Icons.keyboard_arrow_right,
+            color: CallmaColors.SECONDARY_GREEN),
+        onTap: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => FiltersScreen()));
+        });
   }
 }

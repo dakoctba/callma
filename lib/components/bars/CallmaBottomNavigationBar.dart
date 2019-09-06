@@ -1,9 +1,8 @@
-import 'package:callma/components/CallmaColors.dart';
+import 'package:callma/theme/CallmaColors.dart';
 import 'package:callma/components/StatusScreen.dart';
 import 'package:callma/modules/configurations/screens/ConfigurationsScreen.dart';
 import 'package:callma/modules/consulta/screens/ProfessionsScreen.dart';
 import 'package:callma/modules/help/screens/HelpScreen.dart';
-import 'package:callma/modules/login/screens/LoginScreen.dart';
 import 'package:flutter/material.dart';
 
 class CallmaBottomNavigationBar extends StatelessWidget {
@@ -22,9 +21,12 @@ class CallmaBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-        BottomNavigationBarItem(icon: Icon(Icons.list), title: Text('Consultas')),
-        BottomNavigationBarItem(icon: Icon(Icons.notifications), title: Text('Notificações')),
-        BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('Configurações')),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.list), title: Text('Consultas')),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.notifications), title: Text('Notificações')),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.person), title: Text('Configurações')),
         BottomNavigationBarItem(icon: Icon(Icons.help), title: Text('Ajuda')),
       ],
       currentIndex: _selectedIndex,
@@ -32,27 +34,33 @@ class CallmaBottomNavigationBar extends StatelessWidget {
         switch (option) {
           case LIST_OPTION:
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => StatusScreen("Dependente alterado com sucesso", true, "Voltar para tela inicial", () {
-                Navigator.of(context).pop();
-              })));
+                builder: (context) => StatusScreen(
+                        "Dependente alterado com sucesso",
+                        true,
+                        "Voltar para tela inicial", () {
+                      Navigator.of(context).pop();
+                    })));
             break;
           case NOTIFICATIONS_OPTION:
             break;
           case CONFIGURATIONS_OPTION:
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ConfigurationsScreen()));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => ConfigurationsScreen()));
             break;
           case HELP_OPTION:
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HelpScreen()));
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => HelpScreen()));
             break;
           case HOME_OPTION:
           default:
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsScreen()));
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => ProfessionsScreen()));
         }
       },
       type: BottomNavigationBarType.fixed,
-      backgroundColor: CallmaColors.BACKGROUND_COLOR,
+      backgroundColor: CallmaColors.PRIMARY_GREEN,
       selectedItemColor: Colors.white,
-      unselectedItemColor: CallmaColors.VERDE_ESCURO,
+      unselectedItemColor: CallmaColors.SECONDARY_GREEN,
       showSelectedLabels: false,
       // Não mostrar as labels nos botões
       showUnselectedLabels: false, // Não mostrar as labels nos botões
