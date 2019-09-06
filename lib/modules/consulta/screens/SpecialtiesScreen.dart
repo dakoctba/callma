@@ -3,7 +3,7 @@ import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/models/Specialty.dart';
 import 'package:callma/modules/consulta/components/SpecialtyTile.dart';
-import 'package:callma/services/SpecialtiesService.dart';
+import 'package:callma/repositories/SpecialtiesRepository.dart';
 import 'package:flutter/material.dart';
 
 class SpecialtiesScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _SpecialtiesScreenState extends State<SpecialtiesScreen> {
   void initState() {
     super.initState();
 
-    SpecialtiesService.getSpecialties(professionId).then((data) {
+    SpecialtiesRepository.getSpecialties(professionId).then((data) {
       setState(() {
         specialties = data;
       });

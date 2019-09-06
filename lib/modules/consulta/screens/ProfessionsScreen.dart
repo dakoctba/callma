@@ -3,7 +3,7 @@ import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
 import 'package:callma/models/Profession.dart';
 import 'package:callma/modules/consulta/components/ProfessionTile.dart';
-import 'package:callma/services/ProfessionsService.dart';
+import 'package:callma/repositories/ProfessionsRepository.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionsScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _ProfessionsScreenState extends State<ProfessionsScreen> {
   void initState() {
     super.initState();
 
-    ProfessionsService.getProfessions().then((data) {
+    ProfessionsRepository.getProfessions().then((data) {
       setState(() {
         professions = data;
       });

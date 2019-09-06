@@ -1,7 +1,7 @@
 import 'package:callma/models/Professional.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ProfessionalsService {
+class ProfessionalsRepository {
   static Future<List<Professional>> getProfessionals(String professionId) async {
     List<Professional> items = new List<Professional>();
 
