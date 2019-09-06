@@ -1,4 +1,4 @@
-import 'package:callma/components/buttons/callma_button.dart';
+import 'package:callma/library/custom_button.dart';
 import 'package:flutter/material.dart';
 
 import 'package:callma/theme/application_style.dart';
@@ -41,7 +41,7 @@ class StatusView extends StatelessWidget {
                     ],
                   ),
                 ),
-                CallmaButton(this.buttonMessage, this.onPressed)
+                CustomButton(this.buttonMessage, this.onPressed)
               ],
             )));
   }

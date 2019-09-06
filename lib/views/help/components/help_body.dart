@@ -1,4 +1,4 @@
-import 'package:callma/components/tile_data.dart';
+import 'package:callma/library/tile_data.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

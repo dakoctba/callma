@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:callma/theme/application_style.dart';
 
-class CallmaButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final String label;
   final Function onPressed;
 
-  CallmaButton(this.label, this.onPressed);
+  CustomButton(this.label, this.onPressed);
 
   @override
   Widget build(BuildContext context) {

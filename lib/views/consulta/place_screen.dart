@@ -1,7 +1,7 @@
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/components/bars/callma_app_bar.dart';
-import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
-import 'package:callma/components/buttons/callma_button.dart';
+import 'package:callma/library/custom_app_bar.dart';
+import 'package:callma/library/custom_bottom_navigation_bar.dart';
+import 'package:callma/library/custom_button.dart';
 import 'package:flutter/material.dart';
 
 import 'professionals_view.dart';
@@ -45,14 +45,14 @@ class PlaceView extends StatelessWidget {
     items.add(domicilio);
 
     return Scaffold(
-        appBar: CallmaAppBar(title: "Local"),
-        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
+        appBar: CustomAppBar(title: "Local"),
+        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(
             child:
                 ListView(children: ListTile.divideTiles(color: ApplicationStyle.TERTIARY_GREY, tiles: items).toList()),
           ),
-          CallmaButton("Adicionar endereço", () {})
+          CustomButton("Adicionar endereço", () {})
         ]));
   }
 }
