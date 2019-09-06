@@ -5,12 +5,12 @@ import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/views/consulta/professions_view.dart';
 import 'package:flutter/material.dart';
 
-class OnboardingScreen extends StatefulWidget with ApplicationHelper {
+class OnboardingView extends StatefulWidget with ApplicationHelper {
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingScreenState extends State<OnboardingView> {
   final _formKey = GlobalKey<FormState>();
   bool isChecked = false;
 

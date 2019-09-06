@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'package:callma/theme/application_style.dart';
 
-class StatusScreen extends StatelessWidget {
+class StatusView extends StatelessWidget {
   final String message;
   final bool success;
   final String buttonMessage;
   final Function onPressed;
 
-  StatusScreen(this.message, this.success, this.buttonMessage, this.onPressed);
+  StatusView(this.message, this.success, this.buttonMessage, this.onPressed);
 
   _getIcon() {
     return this.success == true

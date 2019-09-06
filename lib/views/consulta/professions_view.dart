@@ -6,12 +6,12 @@ import 'package:callma/views/consulta/components/profession_tile.dart';
 import 'package:callma/repositories/professions_repository.dart';
 import 'package:flutter/material.dart';
 
-class ProfessionsScreen extends StatefulWidget {
+class ProfessionsView extends StatefulWidget {
   @override
   _ProfessionsScreenState createState() => _ProfessionsScreenState();
 }
 
-class _ProfessionsScreenState extends State<ProfessionsScreen> {
+class _ProfessionsScreenState extends State<ProfessionsView> {
   List<Profession> professions = new List<Profession>();
 
   @override

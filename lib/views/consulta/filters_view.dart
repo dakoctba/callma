@@ -5,12 +5,12 @@ import 'package:callma/components/buttons/callma_button.dart';
 import 'package:callma/components/switchs/callma_switch_list_tile.dart';
 import 'package:flutter/material.dart';
 
-class FiltersScreen extends StatefulWidget {
+class FiltersView extends StatefulWidget {
   @override
   _FiltersScreenState createState() => _FiltersScreenState();
 }
 
-class _FiltersScreenState extends State<FiltersScreen> {
+class _FiltersScreenState extends State<FiltersView> {
   double distancia = 10;
   double horarioInicio = 8;
   double horarioFim = 17;

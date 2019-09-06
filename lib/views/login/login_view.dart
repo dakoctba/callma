@@ -6,7 +6,7 @@ import 'package:callma/views/consulta/professions_view.dart';
 import 'package:callma/views/login/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget with ApplicationHelper {
+class LoginView extends StatelessWidget with ApplicationHelper {
   final _formKey = GlobalKey<FormState>();
 
   @override

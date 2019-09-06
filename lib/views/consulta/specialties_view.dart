@@ -6,20 +6,20 @@ import 'package:callma/views/consulta/components/specialty_tile.dart';
 import 'package:callma/repositories/specialties_repository.dart';
 import 'package:flutter/material.dart';
 
-class SpecialtiesScreen extends StatefulWidget {
+class SpecialtiesView extends StatefulWidget {
   final String professionId;
 
-  SpecialtiesScreen(this.professionId);
+  SpecialtiesView(this.professionId);
 
   @override
-  _SpecialtiesScreenState createState() => _SpecialtiesScreenState(professionId);
+  _SpecialtiesViewState createState() => _SpecialtiesViewState(professionId);
 }
 
-class _SpecialtiesScreenState extends State<SpecialtiesScreen> {
+class _SpecialtiesViewState extends State<SpecialtiesView> {
   String professionId;
   List<Specialty> specialties = new List<Specialty>();
 
-  _SpecialtiesScreenState(this.professionId);
+  _SpecialtiesViewState(this.professionId);
 
   @override
   void initState() {

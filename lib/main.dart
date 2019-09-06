@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:callma/theme/application_style.dart';
-import 'views/login/login_screen.dart';
+import 'views/login/login_view.dart';
 
 void main() => runApp(CallmaApp());
 
@@ -14,6 +14,6 @@ class CallmaApp extends StatelessWidget {
         theme: ThemeData(
             inputDecorationTheme: InputDecorationTheme(
                 enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: ApplicationStyle.SECONDARY_GREEN)))),
-        home: LoginScreen());
+        home: LoginView());
   }
 }
