@@ -1,12 +1,12 @@
-import 'package:callma/components/bars/CallmaAppBar.dart';
+import 'package:callma/components/bars/callma_app_bar.dart';
+import 'package:callma/helpers/application_helper.dart';
 import 'package:flutter/material.dart';
 
-import '../../../components/StatusScreen.dart';
-import '../../../components/buttons/CallmaButton.dart';
-import '../../../util/validations/FormValidators.dart';
-import '../../consulta/screens/ProfessionsScreen.dart';
+import '../../../components/status_screen.dart';
+import '../../../components/buttons/callma_button.dart';
+import '../../consulta/screens/professions_screen.dart';
 
-class OnboardingScreen extends StatefulWidget {
+class OnboardingScreen extends StatefulWidget with ApplicationHelper {
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }
@@ -35,21 +35,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       textAlign: TextAlign.center,
                     )),
                 TextFormField(
-                  decoration: InputDecoration(
-                      hintText: "Nome completo", border: OutlineInputBorder()),
+                  decoration: InputDecoration(hintText: "Nome completo", border: OutlineInputBorder()),
                 ),
                 SizedBox(height: 10),
                 TextFormField(
-                  decoration: InputDecoration(
-                      hintText: "Telefone", border: OutlineInputBorder()),
+                  decoration: InputDecoration(hintText: "Telefone", border: OutlineInputBorder()),
                 ),
                 SizedBox(height: 10),
                 TextFormField(
-                  decoration: InputDecoration(
-                      hintText: "E-mail", border: OutlineInputBorder()),
+                  decoration: InputDecoration(hintText: "E-mail", border: OutlineInputBorder()),
                   keyboardType: TextInputType.emailAddress,
                   validator: (email) {
-                    if (!FormValidators.isEmailValid(email)) {
+                    if (!ApplicationHelper.isEmailValid(email)) {
                       return "E-mail inválido";
                     }
                     return null;
@@ -57,8 +54,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 SizedBox(height: 10),
                 TextFormField(
-                  decoration: InputDecoration(
-                      hintText: "Senha", border: OutlineInputBorder()),
+                  decoration: InputDecoration(hintText: "Senha", border: OutlineInputBorder()),
                   obscureText: true,
                 ),
                 SizedBox(height: 10),
@@ -75,14 +71,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => StatusScreen(
-                                    "Cadastro efetuado com sucesso",
-                                    true,
-                                    "Continuar", () {
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ProfessionsScreen()));
+                            builder: (context) => StatusScreen("Cadastro efetuado com sucesso", true, "Continuar", () {
+                                  Navigator.of(context)
+                                      .pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsScreen()));
                                 })));
                   }
                 })

@@ -1,8 +1,8 @@
-import 'package:callma/theme/ApplicationStyle.dart';
-import 'package:callma/components/bars/CallmaAppBar.dart';
-import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
-import 'package:callma/components/buttons/CallmaButton.dart';
-import 'package:callma/components/switchs/CallmaSwitchListTile.dart';
+import 'package:callma/theme/application_style.dart';
+import 'package:callma/components/bars/callma_app_bar.dart';
+import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
+import 'package:callma/components/buttons/callma_button.dart';
+import 'package:callma/components/switchs/callma_switch_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class FiltersScreen extends StatefulWidget {
@@ -19,27 +19,22 @@ class _FiltersScreenState extends State<FiltersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CallmaAppBar(title: "Filtros"),
-        bottomNavigationBar:
-            CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Padding(
           padding: EdgeInsets.all(16.0),
           child: ListView(
             children: <Widget>[
-              Text("Valor máximo",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Text("Valor máximo", style: TextStyle(fontWeight: FontWeight.bold)),
               CallmaSwitchListTile("Qualquer valor"),
-              Text("Data da consulta",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Text("Data da consulta", style: TextStyle(fontWeight: FontWeight.bold)),
               CallmaSwitchListTile("Qualquer data"),
-              Text(
-                  "Horário da consulta (${horarioInicio.toInt()}:00 - ${horarioFim.toInt()}:00)",
+              Text("Horário da consulta (${horarioInicio.toInt()}:00 - ${horarioFim.toInt()}:00)",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               RangeSlider(
                   values: RangeValues(horarioInicio, horarioFim),
                   min: 1.0,
                   max: 24.0,
-                  labels: RangeLabels("${horarioInicio.toInt()}:00",
-                      "${horarioFim.toInt()}:00"),
+                  labels: RangeLabels("${horarioInicio.toInt()}:00", "${horarioFim.toInt()}:00"),
                   activeColor: ApplicationStyle.SECONDARY_GREEN,
                   inactiveColor: ApplicationStyle.PRIMARY_GREEN,
                   onChanged: (RangeValues values) {
@@ -52,8 +47,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   semanticFormatterCallback: (RangeValues values) {
                     return '${horarioInicio.toInt()}:00 - ${horarioFim.toInt()}:00';
                   }),
-              Text("Distância (${distancia.toInt()} km)",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Text("Distância (${distancia.toInt()} km)", style: TextStyle(fontWeight: FontWeight.bold)),
               Slider(
                 value: distancia,
                 min: 1.0,
@@ -68,9 +62,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 },
                 divisions: 100,
               ),
-              Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: CallmaButton("Filtrar resultado", () {}))
+              Padding(padding: EdgeInsets.all(20.0), child: CallmaButton("Filtrar resultado", () {}))
             ],
           ),
         ));

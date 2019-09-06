@@ -1,7 +1,7 @@
-import 'package:callma/modules/configurations/components/InfoCard.dart';
-import 'package:callma/theme/ApplicationStyle.dart';
+import 'package:callma/modules/configurations/components/info_card.dart';
+import 'package:callma/theme/application_style.dart';
 import 'package:flutter/material.dart';
-import 'package:callma/components/TileData.dart';
+import 'package:callma/components/tile_data.dart';
 import 'package:flutter/services.dart';
 import 'package:share/share.dart';
 
