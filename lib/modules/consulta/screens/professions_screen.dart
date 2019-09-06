@@ -1,9 +1,9 @@
-import 'package:callma/theme/ApplicationStyle.dart';
-import 'package:callma/components/bars/CallmaAppBar.dart';
-import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
-import 'package:callma/models/Profession.dart';
-import 'package:callma/modules/consulta/components/ProfessionTile.dart';
-import 'package:callma/repositories/ProfessionsRepository.dart';
+import 'package:callma/theme/application_style.dart';
+import 'package:callma/components/bars/callma_app_bar.dart';
+import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
+import 'package:callma/models/profession.dart';
+import 'package:callma/modules/consulta/components/profession_tile.dart';
+import 'package:callma/repositories/professions_repository.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionsScreen extends StatefulWidget {

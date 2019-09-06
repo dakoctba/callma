@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:callma/theme/ApplicationStyle.dart';
+import 'package:callma/theme/application_style.dart';
 
 class CallmaButton extends StatelessWidget {
   final String label;

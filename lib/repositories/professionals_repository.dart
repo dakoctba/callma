@@ -1,4 +1,4 @@
-import 'package:callma/models/Professional.dart';
+import 'package:callma/models/professional.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfessionalsRepository {

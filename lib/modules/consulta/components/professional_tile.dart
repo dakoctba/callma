@@ -1,7 +1,7 @@
-import 'package:callma/theme/ApplicationStyle.dart';
-import 'package:callma/config/CallmaConfig.dart';
-import 'package:callma/models/Professional.dart';
-import 'package:callma/modules/consulta/screens/FiltersScreen.dart';
+import 'package:callma/theme/application_style.dart';
+import 'package:callma/config/callma_config.dart';
+import 'package:callma/models/professional.dart';
+import 'package:callma/modules/consulta/screens/filters_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionalTile extends ListTile {

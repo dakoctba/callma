@@ -1,10 +1,10 @@
-import 'package:callma/components/bars/CallmaAppBar.dart';
+import 'package:callma/components/bars/callma_app_bar.dart';
 import 'package:callma/helpers/application_helper.dart';
 import 'package:flutter/material.dart';
 
-import '../../../components/StatusScreen.dart';
-import '../../../components/buttons/CallmaButton.dart';
-import '../../consulta/screens/ProfessionsScreen.dart';
+import '../../../components/status_screen.dart';
+import '../../../components/buttons/callma_button.dart';
+import '../../consulta/screens/professions_screen.dart';
 
 class OnboardingScreen extends StatefulWidget with ApplicationHelper {
   @override

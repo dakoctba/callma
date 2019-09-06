@@ -1,9 +1,9 @@
-import 'package:callma/theme/ApplicationStyle.dart';
-import 'package:callma/components/bars/CallmaAppBar.dart';
-import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
-import 'package:callma/models/Specialty.dart';
-import 'package:callma/modules/consulta/components/SpecialtyTile.dart';
-import 'package:callma/repositories/SpecialtiesRepository.dart';
+import 'package:callma/theme/application_style.dart';
+import 'package:callma/components/bars/callma_app_bar.dart';
+import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
+import 'package:callma/models/specialty.dart';
+import 'package:callma/modules/consulta/components/specialty_tile.dart';
+import 'package:callma/repositories/specialties_repository.dart';
 import 'package:flutter/material.dart';
 
 class SpecialtiesScreen extends StatefulWidget {

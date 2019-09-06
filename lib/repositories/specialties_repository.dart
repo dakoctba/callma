@@ -1,4 +1,4 @@
-import 'package:callma/models/Specialty.dart';
+import 'package:callma/models/specialty.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SpecialtiesRepository {

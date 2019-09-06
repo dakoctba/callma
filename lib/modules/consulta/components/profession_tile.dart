@@ -1,6 +1,6 @@
-import 'package:callma/theme/ApplicationStyle.dart';
-import 'package:callma/models/Profession.dart';
-import 'package:callma/modules/consulta/screens/SpecialtiesScreen.dart';
+import 'package:callma/theme/application_style.dart';
+import 'package:callma/models/profession.dart';
+import 'package:callma/modules/consulta/screens/specialties_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionTile extends ListTile {
