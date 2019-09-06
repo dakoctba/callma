@@ -2,7 +2,7 @@ import 'package:callma/theme/application_style.dart';
 import 'package:callma/components/bars/callma_app_bar.dart';
 import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
 import 'package:callma/models/professional.dart';
-import 'package:callma/modules/consulta/components/professional_tile.dart';
+import 'package:callma/views/consulta/components/professional_tile.dart';
 import 'package:callma/repositories/professionals_repository.dart';
 import 'package:flutter/material.dart';
 

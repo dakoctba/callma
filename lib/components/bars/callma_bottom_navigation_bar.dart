@@ -1,8 +1,8 @@
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/components/status_screen.dart';
-import 'package:callma/modules/configurations/screens/configurations_screen.dart';
-import 'package:callma/modules/consulta/screens/professions_screen.dart';
-import 'package:callma/modules/help/screens/help_screen.dart';
+import 'package:callma/views/configurations/configurations_screen.dart';
+import 'package:callma/views/consulta/professions_screen.dart';
+import 'package:callma/views/help/help_screen.dart';
 import 'package:flutter/material.dart';
 
 class CallmaBottomNavigationBar extends StatelessWidget {

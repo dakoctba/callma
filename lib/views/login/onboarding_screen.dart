@@ -1,10 +1,9 @@
 import 'package:callma/components/bars/callma_app_bar.dart';
+import 'package:callma/components/buttons/callma_button.dart';
+import 'package:callma/components/status_screen.dart';
 import 'package:callma/helpers/application_helper.dart';
+import 'package:callma/views/consulta/professions_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../../../components/status_screen.dart';
-import '../../../components/buttons/callma_button.dart';
-import '../../consulta/screens/professions_screen.dart';
 
 class OnboardingScreen extends StatefulWidget with ApplicationHelper {
   @override
@@ -21,7 +20,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar(title: "Cadastre-se"),
+        appBar: CallmaAppBar(),
         body: Form(
             key: _formKey,
             child: ListView(

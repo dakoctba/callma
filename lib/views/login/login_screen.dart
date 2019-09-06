@@ -2,10 +2,9 @@ import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/components/bars/callma_app_bar.dart';
 import 'package:callma/components/buttons/callma_button.dart';
-import 'package:callma/modules/login/screens/onboarding_screen.dart';
+import 'package:callma/views/consulta/professions_screen.dart';
+import 'package:callma/views/login/onboarding_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../../consulta/screens/professions_screen.dart';
 
 class LoginScreen extends StatelessWidget with ApplicationHelper {
   final _formKey = GlobalKey<FormState>();

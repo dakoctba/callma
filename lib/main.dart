@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:callma/theme/application_style.dart';
-import 'modules/login/screens/login_screen.dart';
+import 'views/login/login_screen.dart';
 
 void main() => runApp(CallmaApp());
 

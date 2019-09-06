@@ -1,7 +1,7 @@
-import 'package:callma/modules/configurations/components/configuration_body.dart';
+import 'package:callma/views/configurations/components/configuration_body.dart';
 import 'package:callma/components/bars/callma_app_bar.dart';
 import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
-import 'package:callma/modules/configurations/screens/qrcode_screen.dart';
+import 'package:callma/views/configurations/qrcode_screen.dart';
 import 'package:callma/theme/callma_icons.dart';
 import "package:flutter/material.dart";
 
