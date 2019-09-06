@@ -1,6 +1,6 @@
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/models/specialty.dart';
-import 'package:callma/modules/consulta/screens/place_screen.dart';
+import 'package:callma/views/consulta/place_view.dart';
 import 'package:flutter/material.dart';
 
 class SpecialtyTile extends ListTile {
@@ -16,7 +16,7 @@ class SpecialtyTile extends ListTile {
         subtitle: specialty.subtitle != null ? Text(specialty.subtitle) : null,
         trailing: const Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => PlaceScreen(specialty.id)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => PlaceView(specialty.id)));
         });
   }
 }

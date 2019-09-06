@@ -1,6 +1,6 @@
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/models/profession.dart';
-import 'package:callma/modules/consulta/screens/specialties_screen.dart';
+import 'package:callma/views/consulta/specialties_view.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionTile extends ListTile {
@@ -16,7 +16,7 @@ class ProfessionTile extends ListTile {
         subtitle: profession.subtitle != null ? Text(profession.subtitle) : null,
         trailing: const Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SpecialtiesScreen(profession.id)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SpecialtiesView(profession.id)));
         });
   }
 }

@@ -2,10 +2,9 @@ import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/components/bars/callma_app_bar.dart';
 import 'package:callma/components/buttons/callma_button.dart';
-import 'package:callma/modules/login/screens/onboarding_screen.dart';
+import 'package:callma/views/consulta/professions_view.dart';
+import 'package:callma/views/login/onboarding_view.dart';
 import 'package:flutter/material.dart';
-
-import '../../consulta/screens/professions_screen.dart';
 
 class LoginScreen extends StatelessWidget with ApplicationHelper {
   final _formKey = GlobalKey<FormState>();
@@ -50,7 +49,7 @@ class LoginScreen extends StatelessWidget with ApplicationHelper {
             ),
             CallmaButton("Entrar", () {
               if (_formKey.currentState.validate()) {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsScreen()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
               }
             }),
             GestureDetector(
@@ -62,7 +61,7 @@ class LoginScreen extends StatelessWidget with ApplicationHelper {
                           TextStyle(fontSize: 12, color: ApplicationStyle.SECONDARY_GREEN, fontWeight: FontWeight.bold))
                 ]),
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => OnboardingScreen()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => OnboardingView()));
                 }),
             SizedBox(height: 20)
           ],

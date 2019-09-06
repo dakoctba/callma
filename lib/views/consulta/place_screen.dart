@@ -4,12 +4,12 @@ import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
 import 'package:callma/components/buttons/callma_button.dart';
 import 'package:flutter/material.dart';
 
-import 'professionals_screen.dart';
+import 'professionals_view.dart';
 
-class PlaceScreen extends StatelessWidget {
+class PlaceView extends StatelessWidget {
   final String specialtyId;
 
-  PlaceScreen(this.specialtyId);
+  PlaceView(this.specialtyId);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class PlaceScreen extends StatelessWidget {
       title: Text("Consultório"),
       trailing: Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsScreen('0')));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsView('0')));
       },
     );
 
@@ -33,7 +33,7 @@ class PlaceScreen extends StatelessWidget {
       title: Text("Domicílio"),
       trailing: Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsScreen('0')));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsView('0')));
       },
     );
 
