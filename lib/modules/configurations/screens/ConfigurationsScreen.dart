@@ -61,7 +61,7 @@ class ConfigurationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar("Minha conta", actions: <Widget>[
+        appBar: CallmaAppBar(title: "Minha conta", actions: <Widget>[
           GestureDetector(
               child: Padding(
                 padding: EdgeInsets.all(10),

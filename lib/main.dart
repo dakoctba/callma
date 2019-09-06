@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'modules/consulta/screens/ProfessionsScreen.dart';
+import 'components/CallmaColors.dart';
+import 'modules/login/screens/LoginScreen.dart';
 
 void main() => runApp(CallmaApp());
 
@@ -10,8 +11,12 @@ class CallmaApp extends StatelessWidget {
     return MaterialApp(
       title: 'Callma',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
-      home: ProfessionsScreen()
+      theme: ThemeData(
+          inputDecorationTheme: InputDecorationTheme(
+              enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: CallmaColors.VERDE_ESCURO))
+          )
+      ),
+      home: LoginScreen()
     );
   }
 }

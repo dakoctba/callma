@@ -1,9 +1,10 @@
+import 'package:callma/components/CallmaColors.dart';
+import 'package:callma/components/StatusScreen.dart';
 import 'package:callma/modules/configurations/screens/ConfigurationsScreen.dart';
 import 'package:callma/modules/consulta/screens/ProfessionsScreen.dart';
 import 'package:callma/modules/help/screens/HelpScreen.dart';
+import 'package:callma/modules/login/screens/LoginScreen.dart';
 import 'package:flutter/material.dart';
-import '../CallmaColors.dart';
-import '../StatusScreen.dart';
 
 class CallmaBottomNavigationBar extends StatelessWidget {
   int _selectedIndex = 0;

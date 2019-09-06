@@ -19,7 +19,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar("Filtros"),
+        appBar: CallmaAppBar(title: "Filtros"),
         bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Padding(
           padding: EdgeInsets.all(16.0),
