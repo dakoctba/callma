@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:callma/theme/application_style.dart';
 
-class CallmaAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<Widget> actions;
 
-  CallmaAppBar({this.title, this.actions});
+  CustomAppBar({this.title, this.actions});
 
   @override
   Widget build(BuildContext context) {

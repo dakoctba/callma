@@ -1,6 +1,6 @@
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/components/bars/callma_app_bar.dart';
-import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
+import 'package:callma/library/custom_app_bar.dart';
+import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/profession.dart';
 import 'package:callma/views/consulta/components/profession_tile.dart';
 import 'package:callma/repositories/professions_repository.dart';
@@ -48,8 +48,8 @@ class _ProfessionsScreenState extends State<ProfessionsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar(title: "Profissional"),
-        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
+        appBar: CustomAppBar(title: "Profissional"),
+        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(
             child: ListView(children: _buildListTiles()),

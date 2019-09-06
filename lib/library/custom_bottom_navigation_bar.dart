@@ -1,11 +1,11 @@
+import 'package:callma/library/status_view.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/components/status_view.dart';
 import 'package:callma/views/configurations/configurations_view.dart';
 import 'package:callma/views/consulta/professions_view.dart';
 import 'package:callma/views/help/help_view.dart';
 import 'package:flutter/material.dart';
 
-class CallmaBottomNavigationBar extends StatelessWidget {
+class CustomBottomNavigationBar extends StatelessWidget {
   int _selectedIndex = 0;
 
   static const int HOME_OPTION = 0;
@@ -14,7 +14,7 @@ class CallmaBottomNavigationBar extends StatelessWidget {
   static const int CONFIGURATIONS_OPTION = 3;
   static const int HELP_OPTION = 4;
 
-  CallmaBottomNavigationBar(this._selectedIndex);
+  CustomBottomNavigationBar(this._selectedIndex);
 
   @override
   Widget build(BuildContext context) {

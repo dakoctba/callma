@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:callma/theme/application_style.dart';
 
-class CallmaSwitchListTile extends StatelessWidget {
+class CustomSwitchListTile extends StatelessWidget {
   final String label;
 
-  CallmaSwitchListTile(this.label);
+  CustomSwitchListTile(this.label);
 
   @override
   Widget build(BuildContext context) {

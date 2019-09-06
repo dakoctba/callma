@@ -1,8 +1,8 @@
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/components/bars/callma_app_bar.dart';
-import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
-import 'package:callma/components/buttons/callma_button.dart';
-import 'package:callma/components/switchs/callma_switch_list_tile.dart';
+import 'package:callma/library/custom_app_bar.dart';
+import 'package:callma/library/custom_bottom_navigation_bar.dart';
+import 'package:callma/library/custom_button.dart';
+import 'package:callma/library/custom_switch_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class FiltersView extends StatefulWidget {
@@ -18,16 +18,16 @@ class _FiltersScreenState extends State<FiltersView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar(title: "Filtros"),
-        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
+        appBar: CustomAppBar(title: "Filtros"),
+        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
         body: Padding(
           padding: EdgeInsets.all(16.0),
           child: ListView(
             children: <Widget>[
               Text("Valor máximo", style: TextStyle(fontWeight: FontWeight.bold)),
-              CallmaSwitchListTile("Qualquer valor"),
+              CustomSwitchListTile("Qualquer valor"),
               Text("Data da consulta", style: TextStyle(fontWeight: FontWeight.bold)),
-              CallmaSwitchListTile("Qualquer data"),
+              CustomSwitchListTile("Qualquer data"),
               Text("Horário da consulta (${horarioInicio.toInt()}:00 - ${horarioFim.toInt()}:00)",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               RangeSlider(
@@ -62,7 +62,7 @@ class _FiltersScreenState extends State<FiltersView> {
                 },
                 divisions: 100,
               ),
-              Padding(padding: EdgeInsets.all(20.0), child: CallmaButton("Filtrar resultado", () {}))
+              Padding(padding: EdgeInsets.all(20.0), child: CustomButton("Filtrar resultado", () {}))
             ],
           ),
         ));

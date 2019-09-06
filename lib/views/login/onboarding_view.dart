@@ -1,6 +1,6 @@
-import 'package:callma/components/bars/callma_app_bar.dart';
-import 'package:callma/components/buttons/callma_button.dart';
-import 'package:callma/components/status_view.dart';
+import 'package:callma/library/custom_app_bar.dart';
+import 'package:callma/library/custom_button.dart';
+import 'package:callma/library/status_view.dart';
 import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/views/consulta/professions_view.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class _OnboardingScreenState extends State<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar(),
+        appBar: CustomAppBar(),
         body: Form(
             key: _formKey,
             child: ListView(
@@ -65,7 +65,7 @@ class _OnboardingScreenState extends State<OnboardingView> {
                       });
                     },
                     title: new Text('Aceito os Termo de Uso')),
-                CallmaButton("Criar conta", () {
+                CustomButton("Criar conta", () {
                   if (_formKey.currentState.validate()) {
                     Navigator.pushReplacement(
                         context,

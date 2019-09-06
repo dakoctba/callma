@@ -1,6 +1,6 @@
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/components/bars/callma_app_bar.dart';
-import 'package:callma/components/bars/callma_bottom_navigation_bar.dart';
+import 'package:callma/library/custom_app_bar.dart';
+import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/specialty.dart';
 import 'package:callma/views/consulta/components/specialty_tile.dart';
 import 'package:callma/repositories/specialties_repository.dart';
@@ -41,8 +41,8 @@ class _SpecialtiesViewState extends State<SpecialtiesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CallmaAppBar(title: "Especialidade"),
-        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
+        appBar: CustomAppBar(title: "Especialidade"),
+        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(
             child: ListView(children: _buildListTiles()),

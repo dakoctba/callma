@@ -6,16 +6,16 @@ import 'package:callma/views/consulta/components/professional_tile.dart';
 import 'package:callma/repositories/professionals_repository.dart';
 import 'package:flutter/material.dart';
 
-class ProfessionalsView extends StatefulWidget {
+class ProfessionalsScreen extends StatefulWidget {
   final String specialtyId;
 
-  ProfessionalsView(this.specialtyId);
+  ProfessionalsScreen(this.specialtyId);
 
   @override
   _ProfessionalsScreenState createState() => _ProfessionalsScreenState(this.specialtyId);
 }
 
-class _ProfessionalsScreenState extends State<ProfessionalsView> {
+class _ProfessionalsScreenState extends State<ProfessionalsScreen> {
   String specialtyId;
   List<Professional> professionals = new List<Professional>();
 
