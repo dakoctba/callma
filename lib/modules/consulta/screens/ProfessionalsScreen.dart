@@ -1,7 +1,7 @@
 import 'package:callma/theme/ApplicationStyle.dart';
 import 'package:callma/components/bars/CallmaAppBar.dart';
 import 'package:callma/components/bars/CallmaBottomNavigationBar.dart';
-import 'package:callma/model/Professional.dart';
+import 'package:callma/models/Professional.dart';
 import 'package:callma/modules/consulta/components/ProfessionalTile.dart';
 import 'package:callma/services/ProfessionalsService.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +12,7 @@ class ProfessionalsScreen extends StatefulWidget {
   ProfessionalsScreen(this.specialtyId);
 
   @override
-  _ProfessionalsScreenState createState() =>
-      _ProfessionalsScreenState(this.specialtyId);
+  _ProfessionalsScreenState createState() => _ProfessionalsScreenState(this.specialtyId);
 }
 
 class _ProfessionalsScreenState extends State<ProfessionalsScreen> {
@@ -34,20 +33,16 @@ class _ProfessionalsScreenState extends State<ProfessionalsScreen> {
   }
 
   _buildListTiles() {
-    List<ListTile> items =
-        professionals.map((specialty) => ProfessionalTile(specialty)).toList();
+    List<ListTile> items = professionals.map((specialty) => ProfessionalTile(specialty)).toList();
 
-    return ListTile.divideTiles(
-            color: ApplicationStyle.PRIMARY_GREY, tiles: items)
-        .toList();
+    return ListTile.divideTiles(color: ApplicationStyle.PRIMARY_GREY, tiles: items).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CallmaAppBar(title: "Profissionais"),
-        bottomNavigationBar:
-            CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CallmaBottomNavigationBar(CallmaBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(
             child: ListView(children: _buildListTiles()),
