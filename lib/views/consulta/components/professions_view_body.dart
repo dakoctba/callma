@@ -8,7 +8,7 @@ class ProfessionsViewBody extends StatelessWidget {
 
   ProfessionsViewBody(this.professions);
 
-  _buildFavoriteTile() {
+  ListTile _buildFavoriteTile() {
     return ListTile(
       leading: Icon(Icons.star, color: ApplicationStyle.SECONDARY_GREEN),
       title: Text("Favoritos", style: TextStyle(fontWeight: FontWeight.bold)),
@@ -16,7 +16,7 @@ class ProfessionsViewBody extends StatelessWidget {
     );
   }
 
-  _buildListTiles() {
+  Iterable<Widget> _buildListTiles() {
     List<ListTile> items = new List<ListTile>();
 
     if (true) {
