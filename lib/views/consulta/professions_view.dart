@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/profession.dart';
 import 'package:callma/repositories/professions_repository.dart';
 import 'package:callma/views/consulta/components/professions_view_body.dart';
-import 'package:flutter/material.dart';
 
 class ProfessionsView extends StatefulWidget {
   @override
