@@ -32,6 +32,9 @@ dependencies:
   image_picker: ^0.6.1+2
   share: ^0.6.2+1
   qr_flutter: ^3.0.1
+  font_awesome_flutter: ^8.5.0
+  shimmer: ^1.0.0
+  flutter_launcher_icons: ^0.7.3
 
 # classpath 'com.android.tools.build:gradle:3.3.0'
 # classpath 'com.google.gms:google-services:4.3.0'
@@ -84,3 +87,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logos/logo.png"

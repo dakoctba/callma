@@ -4,6 +4,7 @@ import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/views/consulta/components/professional_tile.dart';
 import 'package:callma/repositories/professionals_repository.dart';
+import 'package:callma/views/consulta/filters_view.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionalsView extends StatefulWidget {
@@ -43,6 +44,13 @@ class _ProfessionalsScreenState extends State<ProfessionalsView> {
     return Scaffold(
         appBar: CustomAppBar(title: "Profissionais"),
         bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.filter_list),
+          backgroundColor: ApplicationStyle.PRIMARY_GREEN,
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => FiltersView()));
+          },
+        ),
         body: Column(children: <Widget>[
           Expanded(
             child: ListView(children: _buildListTiles()),

@@ -1,10 +1,10 @@
-import 'package:callma/theme/application_style.dart';
+import 'package:flutter/material.dart';
+
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/profession.dart';
-import 'package:callma/views/consulta/components/profession_tile.dart';
 import 'package:callma/repositories/professions_repository.dart';
-import 'package:flutter/material.dart';
+import 'package:callma/views/consulta/components/professions_view_body.dart';
 
 class ProfessionsView extends StatefulWidget {
   @override
@@ -25,35 +25,11 @@ class _ProfessionsScreenState extends State<ProfessionsView> {
     });
   }
 
-  _buidFavoriteTile() {
-    return ListTile(
-      leading: Icon(Icons.star, color: ApplicationStyle.SECONDARY_GREEN),
-      title: Text("Favoritos", style: TextStyle(fontWeight: FontWeight.bold)),
-      trailing: Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
-    );
-  }
-
-  _buildListTiles() {
-    List<ListTile> items = new List<ListTile>();
-
-    if (true) {
-      items.add(_buidFavoriteTile());
-    }
-
-    items.addAll(professions.map((profession) => ProfessionTile(profession)));
-
-    return ListTile.divideTiles(tiles: items, color: ApplicationStyle.PRIMARY_GREY).toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: "Profissional"),
         bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
-        body: Column(children: <Widget>[
-          Expanded(
-            child: ListView(children: _buildListTiles()),
-          )
-        ]));
+        body: ProfessionsViewBody(this.professions));
   }
 }
