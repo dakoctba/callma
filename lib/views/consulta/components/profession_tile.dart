@@ -13,7 +13,7 @@ class ProfessionTile extends ListTile {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading: const Icon(FontAwesomeIcons.gamepad, color: ApplicationStyle.SECONDARY_GREEN),
+        leading: const Icon(FontAwesomeIcons.diagnoses, color: ApplicationStyle.SECONDARY_GREEN),
         title: Text(profession.title),
         subtitle: profession.subtitle != null ? Text(profession.subtitle) : null,
         trailing: const Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
