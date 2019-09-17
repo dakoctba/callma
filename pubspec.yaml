@@ -35,6 +35,8 @@ dependencies:
   font_awesome_flutter: ^8.5.0
   shimmer: ^1.0.0
   flutter_launcher_icons: ^0.7.3
+  smooth_star_rating: ^1.0.3
+  dio: ^2.1.16
 
 # classpath 'com.android.tools.build:gradle:3.3.0'
 # classpath 'com.google.gms:google-services:4.3.0'
