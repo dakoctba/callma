@@ -39,6 +39,14 @@ class _ProfessionalsScreenState extends State<ProfessionalsView> {
     return ListTile.divideTiles(color: ApplicationStyle.PRIMARY_GREY, tiles: items).toList();
   }
 
+  _body() {
+    return Column(children: <Widget>[
+      Expanded(
+        child: ListView(children: _buildListTiles()),
+      )
+    ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,10 +59,6 @@ class _ProfessionalsScreenState extends State<ProfessionalsView> {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => FiltersView()));
           },
         ),
-        body: Column(children: <Widget>[
-          Expanded(
-            child: ListView(children: _buildListTiles()),
-          )
-        ]));
+        body: _body());
   }
 }

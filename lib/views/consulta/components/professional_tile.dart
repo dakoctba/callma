@@ -1,7 +1,12 @@
-import 'package:callma/theme/application_style.dart';
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
+
 import 'package:callma/config/callma_config.dart';
 import 'package:callma/models/professional.dart';
-import 'package:flutter/material.dart';
+import 'package:callma/theme/application_style.dart';
+import 'package:callma/views/consulta/professional_view.dart';
 
 class ProfessionalTile extends ListTile {
   final Professional professional;
@@ -16,8 +21,34 @@ class ProfessionalTile extends ListTile {
               professional.photo != null ? NetworkImage(professional.photo) : AssetImage(CallmaConfig.DEFAULT_PHOTO),
           backgroundColor: Colors.transparent,
         ),
-        title: Text(professional.name),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(professional.name),
+            SizedBox(height: 10),
+            Row(
+              children: <Widget>[
+                SmoothStarRating(
+                    allowHalfRating: false,
+                    starCount: 5,
+                    rating: 5,
+                    size: 16,
+                    color: ApplicationStyle.PRIMARY_GREEN,
+                    borderColor: ApplicationStyle.PRIMARY_GREY,
+                    spacing: 1.0),
+                Text('R\$ 150,00', style: TextStyle(fontSize: 10)),
+                Text(
+                  '8km',
+                  style: TextStyle(fontSize: 10),
+                  textAlign: TextAlign.right,
+                ),
+              ],
+            )
+          ],
+        ),
         trailing: Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
-        onTap: () {});
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalView()));
+        });
   }
 }
