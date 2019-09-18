@@ -1,14 +1,27 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Specialty {
-  String professionId;
-  String id;
+  int id;
   String title;
   String subtitle;
+  String description;
+  String icon;
 
-  Specialty.fromDocument(DocumentSnapshot snapshot) {
-    this.id = snapshot.documentID;
-    this.title = snapshot.data["name"];
-    this.subtitle = snapshot.data["subtitle"];
+  Specialty({this.id, this.title, this.subtitle, this.description, this.icon});
+
+  Specialty.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    subtitle = json['subtitle'];
+    description = json['description'];
+    icon = json['icon'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['subtitle'] = this.subtitle;
+    data['description'] = this.description;
+    data['icon'] = this.icon;
+    return data;
   }
 }

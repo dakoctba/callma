@@ -13,7 +13,7 @@ class _ProfessionalViewState extends State<ProfessionalView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: "Detalhes do profissional"),
-        bottomNavigationBar: CuesstomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
         body: Container());
   }
 }

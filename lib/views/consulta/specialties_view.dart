@@ -7,7 +7,7 @@ import 'package:callma/repositories/specialties_repository.dart';
 import 'package:flutter/material.dart';
 
 class SpecialtiesView extends StatefulWidget {
-  final String professionId;
+  final int professionId;
 
   SpecialtiesView(this.professionId);
 
@@ -16,7 +16,7 @@ class SpecialtiesView extends StatefulWidget {
 }
 
 class _SpecialtiesViewState extends State<SpecialtiesView> {
-  String professionId;
+  int professionId;
   List<Specialty> specialties = new List<Specialty>();
 
   _SpecialtiesViewState(this.professionId);

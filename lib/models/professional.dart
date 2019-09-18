@@ -1,19 +1,30 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Professional {
-  String id;
+  int id;
   String name;
-  int stars;
-  String address;
   String photo;
-  int price;
+  String address;
+  int stars;
+  String price;
 
-  Professional.fromDocument(DocumentSnapshot snapshot) {
-    this.id = snapshot.documentID;
-    this.name = snapshot.data["name"];
-    this.stars = snapshot.data["stars"];
-    this.address = snapshot.data["address"];
-    this.price = snapshot.data["price"];
-    this.photo = snapshot.data["photo"];
+  Professional({this.id, this.name, this.photo, this.address, this.stars, this.price});
+
+  Professional.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    photo = json['photo'];
+    address = json['address'];
+    stars = json['stars'];
+    price = json['price'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['photo'] = this.photo;
+    data['address'] = this.address;
+    data['stars'] = this.stars;
+    data['price'] = this.price;
+    return data;
   }
 }
