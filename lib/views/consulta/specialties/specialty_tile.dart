@@ -1,6 +1,6 @@
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/models/specialty.dart';
-import 'package:callma/views/consulta/place_view.dart';
+import 'package:callma/views/consulta/places/place_view.dart';
 import 'package:flutter/material.dart';
 
 class SpecialtyTile extends ListTile {

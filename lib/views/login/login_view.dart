@@ -2,7 +2,7 @@ import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
-import 'package:callma/views/consulta/professions_view.dart';
+import 'package:callma/views/consulta/professions/professions_view.dart';
 import 'package:callma/views/login/onboarding_view.dart';
 import 'package:flutter/material.dart';
 

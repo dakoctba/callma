@@ -36,9 +36,7 @@ dependencies:
   flutter_launcher_icons: ^0.7.3
   smooth_star_rating: ^1.0.3
   dio: ^2.1.16
-
-# classpath 'com.android.tools.build:gradle:3.3.0'
-# classpath 'com.google.gms:google-services:4.3.0'
+  # material_design_icons_flutter: ^3.2.4096
 
 dev_dependencies:
   flutter_test:

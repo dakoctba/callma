@@ -1,6 +1,6 @@
 import 'package:callma/models/profession.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/consulta/components/profession_tile.dart';
+import 'package:callma/views/consulta/professions/profession_tile.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionsViewBody extends StatelessWidget {

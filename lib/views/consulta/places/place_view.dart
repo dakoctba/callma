@@ -1,10 +1,10 @@
-import 'package:callma/theme/application_style.dart';
+import 'package:flutter/material.dart';
+
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/library/custom_button.dart';
-import 'package:flutter/material.dart';
-
-import 'professionals_view.dart';
+import 'package:callma/theme/application_style.dart';
+import 'package:callma/views/consulta/professionals/professionals_view.dart';
 
 class PlaceView extends StatelessWidget {
   final int specialtyId;
