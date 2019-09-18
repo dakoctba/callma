@@ -1,8 +1,8 @@
 class Profession {
   int id;
   String title;
-  Null subtitle;
-  Null description;
+  String subtitle;
+  String description;
 
   Profession({this.id, this.title, this.subtitle, this.description});
 

@@ -1,14 +1,18 @@
 import 'package:callma/models/professional.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 
 class ProfessionalsRepository {
-  static Future<List<Professional>> getProfessionals(String professionId) async {
+  static Future<List<Professional>> getProfessionals(int professionId) async {
     List<Professional> items = new List<Professional>();
 
-    QuerySnapshot snapshot = await Firestore.instance.collection('professionals').getDocuments();
+    try {
+      Response response = await Dio().get("https://callma-api.herokuapp.com/api/professionals");
 
-    for (DocumentSnapshot document in snapshot.documents) {
-      items.add(Professional.fromDocument(document));
+      for (Map<String, dynamic> item in response.data) {
+        items.add(Professional.fromJson(item));
+      }
+    } catch (e) {
+      print(e);
     }
 
     return items;

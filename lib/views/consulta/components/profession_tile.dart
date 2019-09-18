@@ -18,8 +18,7 @@ class ProfessionTile extends ListTile {
         subtitle: profession.subtitle != null ? Text(profession.subtitle) : null,
         trailing: const Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
         onTap: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => SpecialtiesView(profession.id.toString())));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SpecialtiesView(profession.id)));
         });
   }
 }

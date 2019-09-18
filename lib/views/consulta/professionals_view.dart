@@ -8,7 +8,7 @@ import 'package:callma/views/consulta/filters_view.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionalsView extends StatefulWidget {
-  final String specialtyId;
+  final int specialtyId;
 
   ProfessionalsView(this.specialtyId);
 
@@ -17,7 +17,7 @@ class ProfessionalsView extends StatefulWidget {
 }
 
 class _ProfessionalsScreenState extends State<ProfessionalsView> {
-  String specialtyId;
+  int specialtyId;
   List<Professional> professionals = new List<Professional>();
 
   _ProfessionalsScreenState(this.specialtyId);

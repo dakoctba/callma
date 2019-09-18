@@ -14,9 +14,6 @@ class _OnboardingScreenState extends State<OnboardingView> {
   final _formKey = GlobalKey<FormState>();
   bool isChecked = false;
 
-//  FirebaseAuth auth = FirebaseAuth.instance;
-//  FirebaseUser user;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
