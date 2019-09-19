@@ -28,6 +28,7 @@ class LoginView extends StatelessWidget with ApplicationHelper {
             TextFormField(
               decoration: InputDecoration(hintText: "E-mail", border: OutlineInputBorder()),
               keyboardType: TextInputType.emailAddress,
+              initialValue: "jackson@setbox.com.br",
               validator: (email) {
                 if (!ApplicationHelper.isEmailValid(email)) {
                   return "E-mail inválido";

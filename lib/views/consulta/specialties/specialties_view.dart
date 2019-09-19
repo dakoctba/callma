@@ -35,7 +35,7 @@ class _SpecialtiesViewState extends State<SpecialtiesView> {
   _buildListTiles() {
     List<ListTile> items = specialties.map((specialty) => SpecialtyTile(specialty)).toList();
 
-    return ListTile.divideTiles(color: ApplicationStyle.PRIMARY_GREY, tiles: items).toList();
+    return ListTile.divideTiles(color: ApplicationStyle.SECONDARY_GREY, tiles: items).toList();
   }
 
   @override

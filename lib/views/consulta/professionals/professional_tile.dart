@@ -31,10 +31,10 @@ class ProfessionalTile extends ListTile {
                 SmoothStarRating(
                     allowHalfRating: false,
                     starCount: 5,
-                    rating: 5,
+                    rating: professional.stars.toDouble(),
                     size: 16,
                     color: ApplicationStyle.PRIMARY_GREEN,
-                    borderColor: ApplicationStyle.PRIMARY_GREY,
+                    borderColor: ApplicationStyle.SECONDARY_GREY,
                     spacing: 1.0),
                 Text('R\$ 150,00', style: TextStyle(fontSize: 12)),
                 Text(
@@ -48,7 +48,7 @@ class ProfessionalTile extends ListTile {
         ),
         trailing: Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalDetailsView()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalDetailsView(professional)));
         });
   }
 }

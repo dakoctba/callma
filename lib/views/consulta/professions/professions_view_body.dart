@@ -25,7 +25,7 @@ class ProfessionsViewBody extends StatelessWidget {
 
     items.addAll(professions.map((profession) => ProfessionTile(profession)));
 
-    return ListTile.divideTiles(tiles: items, color: ApplicationStyle.PRIMARY_GREY).toList();
+    return ListTile.divideTiles(tiles: items, color: ApplicationStyle.SECONDARY_GREY).toList();
   }
 
   @override
