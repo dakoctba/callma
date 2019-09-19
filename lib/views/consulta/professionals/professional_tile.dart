@@ -36,7 +36,7 @@ class ProfessionalTile extends ListTile {
                     color: ApplicationStyle.PRIMARY_GREEN,
                     borderColor: ApplicationStyle.SECONDARY_GREY,
                     spacing: 1.0),
-                Text('R\$ 150,00', style: TextStyle(fontSize: 12)),
+                Text('R\$ ${professional.price.toStringAsFixed(2)}', style: TextStyle(fontSize: 12)),
                 Text(
                   '8km',
                   style: TextStyle(fontSize: 12),

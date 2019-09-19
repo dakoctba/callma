@@ -3,6 +3,7 @@ import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/library/custom_button.dart';
 import 'package:callma/library/custom_switch_list_tile.dart';
+import 'package:callma/views/consulta/professionals/professionals_view.dart';
 import 'package:flutter/material.dart';
 
 class FiltersView extends StatefulWidget {
@@ -62,7 +63,11 @@ class _FiltersScreenState extends State<FiltersView> {
                 },
                 divisions: 100,
               ),
-              Padding(padding: EdgeInsets.all(20.0), child: CustomButton("Filtrar resultado", () {}))
+              Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: CustomButton("Filtrar resultado", () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsView(0)));
+                  }))
             ],
           ),
         ));

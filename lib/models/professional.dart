@@ -8,6 +8,8 @@ class Professional {
   int stars;
   String professionalClassBoardId;
   double price;
+  int atendimentos;
+  int dias;
   Profession profession;
 
   Professional(
@@ -18,6 +20,8 @@ class Professional {
       this.stars,
       this.professionalClassBoardId,
       this.price,
+      this.atendimentos,
+      this.dias,
       this.profession});
 
   Professional.fromJson(Map<String, dynamic> json) {
@@ -28,6 +32,8 @@ class Professional {
     stars = json['stars'];
     professionalClassBoardId = json['professional_class_board_id'];
     price = json['price'];
+    atendimentos = json['atendimentos'];
+    dias = json['dias'];
     profession = json['profession'] != null ? new Profession.fromJson(json['profession']) : null;
   }
 
@@ -40,6 +46,8 @@ class Professional {
     data['stars'] = this.stars;
     data['professional_class_board_id'] = this.professionalClassBoardId;
     data['price'] = this.price;
+    data['atendimentos'] = this.atendimentos;
+    data['dias'] = this.dias;
     if (this.profession != null) {
       data['profession'] = this.profession.toJson();
     }
