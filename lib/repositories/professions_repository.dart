@@ -9,26 +9,28 @@ class ProfessionsRepository {
     List<Profession> items = new List<Profession>();
 
     try {
+      //
+      // Token
+      //
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String token = await prefs.get("token");
 
-      print("Vai usar o token $token");
-
-      //----------------------------
+      //
+      // Request
+      //
       Dio dio = new Dio();
       dio.options.headers = {'Authorization': 'Bearer ' + token};
       dio.options.contentType = ContentType.parse("application/json");
 
-      print(dio.options.headers);
-      //----------------------------
-
+      //
+      // Response
+      //
       Response response = await dio.get("https://callma-api.herokuapp.com/api/professions");
 
       for (Map<String, dynamic> item in response.data) {
         items.add(Profession.fromJson(item));
+        print(item);
       }
-
-      print(items);
     } catch (e) {
       print(e);
     }

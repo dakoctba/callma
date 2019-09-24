@@ -21,8 +21,6 @@ class LoginRepository {
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString("token", token);
-
-      print("Vai persistir o token $token");
     } on DioError catch (e) {
       //
       // The request was made and the server responded with a status code
