@@ -23,7 +23,9 @@ class ProfessionsViewBody extends StatelessWidget {
       items.add(_buildFavoriteTile());
     }
 
-    items.addAll(professions.map((profession) => ProfessionTile(profession)));
+    if (professions.length > 0) {
+      items.addAll(professions.map((profession) => ProfessionTile(profession)));
+    }
 
     return ListTile.divideTiles(tiles: items, color: ApplicationStyle.SECONDARY_GREY).toList();
   }

@@ -37,6 +37,8 @@ dependencies:
   smooth_star_rating: ^1.0.3
   dio: ^2.1.16
   # material_design_icons_flutter: ^3.2.4096
+  shared_preferences: ^0.5.3+4
+  dotenv: ^1.0.0
 
 dev_dependencies:
   flutter_test:
