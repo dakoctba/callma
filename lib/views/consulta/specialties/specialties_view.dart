@@ -1,52 +1,59 @@
+import 'package:callma/blocs/specialties_bloc.dart';
+
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/specialty.dart';
 import 'package:callma/views/consulta/specialties/specialty_tile.dart';
-import 'package:callma/repositories/specialties_repository.dart';
 import 'package:flutter/material.dart';
 
-class SpecialtiesView extends StatefulWidget {
-  final int professionId;
+// class SpecialtiesView extends StatefulWidget {
+//   final int professionId;
 
-  SpecialtiesView(this.professionId);
+//   SpecialtiesView(this.professionId);
 
-  @override
-  _SpecialtiesViewState createState() => _SpecialtiesViewState(professionId);
-}
+//   @override
+//   _SpecialtiesViewState createState() => _SpecialtiesViewState(professionId);
+// }
 
-class _SpecialtiesViewState extends State<SpecialtiesView> {
+class SpecialtiesView extends StatelessWidget {
   int professionId;
   List<Specialty> specialties = new List<Specialty>();
 
-  _SpecialtiesViewState(this.professionId);
+  SpecialtiesView(this.professionId);
 
-  @override
-  void initState() {
-    super.initState();
-
-    SpecialtiesRepository.getSpecialties(professionId).then((data) {
-      setState(() {
-        specialties = data;
-      });
-    });
-  }
-
-  _buildListTiles(BuildContext context) {
-    List<ListTile> items = specialties.map((specialty) => SpecialtyTile(specialty)).toList();
-
-    return ListTile.divideTiles(context: context, color: ApplicationStyle.SECONDARY_GREY, tiles: items).toList();
+  Widget _buildLoadingWidget() {
+    return Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [Text("Carregando especialidades..."), CircularProgressIndicator()],
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
+    bloc.getSpecialties(professionId);
+
     return Scaffold(
         appBar: CustomAppBar(title: "Especialidade"),
         bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(
-            child: ListView(children: _buildListTiles(context)),
-          )
+              child: StreamBuilder<List<Specialty>>(
+                  stream: bloc.subject.stream,
+                  builder: (context, AsyncSnapshot<List<Specialty>> snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.separated(
+                          separatorBuilder: (context, index) =>
+                              Divider(color: ApplicationStyle.SECONDARY_GREY, height: 0),
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (context, index) {
+                            return SpecialtyTile(snapshot.data[index]);
+                          });
+                    } else {
+                      return _buildLoadingWidget();
+                    }
+                  }))
         ]));
   }
 }
