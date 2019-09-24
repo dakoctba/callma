@@ -36,7 +36,7 @@ class _ProfessionalsScreenState extends State<ProfessionalsView> {
   _buildListTiles() {
     List<ListTile> items = professionals.map((specialty) => ProfessionalTile(specialty)).toList();
 
-    return ListTile.divideTiles(color: ApplicationStyle.SECONDARY_GREY, tiles: items).toList();
+    return ListTile.divideTiles(context: context, color: ApplicationStyle.SECONDARY_GREY, tiles: items).toList();
   }
 
   _body() {

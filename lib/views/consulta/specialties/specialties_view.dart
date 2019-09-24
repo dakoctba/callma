@@ -32,10 +32,10 @@ class _SpecialtiesViewState extends State<SpecialtiesView> {
     });
   }
 
-  _buildListTiles() {
+  _buildListTiles(BuildContext context) {
     List<ListTile> items = specialties.map((specialty) => SpecialtyTile(specialty)).toList();
 
-    return ListTile.divideTiles(color: ApplicationStyle.SECONDARY_GREY, tiles: items).toList();
+    return ListTile.divideTiles(context: context, color: ApplicationStyle.SECONDARY_GREY, tiles: items).toList();
   }
 
   @override
@@ -45,7 +45,7 @@ class _SpecialtiesViewState extends State<SpecialtiesView> {
         bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(
-            child: ListView(children: _buildListTiles()),
+            child: ListView(children: _buildListTiles(context)),
           )
         ]));
   }

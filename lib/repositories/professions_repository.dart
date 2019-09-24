@@ -29,7 +29,6 @@ class ProfessionsRepository {
 
       for (Map<String, dynamic> item in response.data) {
         items.add(Profession.fromJson(item));
-        print(item);
       }
     } catch (e) {
       print(e);
