@@ -88,7 +88,8 @@ class ConfigurationBody extends StatelessWidget {
       InfoCard(),
       Expanded(
         child: ListView(
-            children: ListTile.divideTiles(color: ApplicationStyle.TERTIARY_GREY, tiles: _getItems()).toList()),
+            children: ListTile.divideTiles(context: context, color: ApplicationStyle.TERTIARY_GREY, tiles: _getItems())
+                .toList()),
       )
     ]);
   }

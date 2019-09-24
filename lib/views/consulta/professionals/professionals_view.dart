@@ -3,52 +3,26 @@ import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/views/consulta/professionals/professional_tile.dart';
-import 'package:callma/repositories/professionals_repository.dart';
+import 'package:callma/blocs/professionals_bloc.dart';
 import 'package:callma/views/consulta/filters/filters_view.dart';
 import 'package:flutter/material.dart';
 
-class ProfessionalsView extends StatefulWidget {
+class ProfessionalsView extends StatelessWidget {
   final int specialtyId;
-
   ProfessionalsView(this.specialtyId);
 
-  @override
-  _ProfessionalsScreenState createState() => _ProfessionalsScreenState(this.specialtyId);
-}
-
-class _ProfessionalsScreenState extends State<ProfessionalsView> {
-  int specialtyId;
-  List<Professional> professionals = new List<Professional>();
-
-  _ProfessionalsScreenState(this.specialtyId);
-
-  @override
-  void initState() {
-    super.initState();
-
-    ProfessionalsRepository.getProfessionals(this.specialtyId).then((data) {
-      setState(() {
-        professionals = data;
-      });
-    });
-  }
-
-  _buildListTiles() {
-    List<ListTile> items = professionals.map((specialty) => ProfessionalTile(specialty)).toList();
-
-    return ListTile.divideTiles(color: ApplicationStyle.SECONDARY_GREY, tiles: items).toList();
-  }
-
-  _body() {
-    return Column(children: <Widget>[
-      Expanded(
-        child: ListView(children: _buildListTiles()),
-      )
-    ]);
+  Widget _buildLoadingWidget() {
+    return Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [Text("Carregando profissionais..."), CircularProgressIndicator()],
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
+    bloc.getProfessionals(specialtyId);
+
     return Scaffold(
         appBar: CustomAppBar(title: "Profissionais"),
         bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
@@ -59,6 +33,23 @@ class _ProfessionalsScreenState extends State<ProfessionalsView> {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => FiltersView()));
           },
         ),
-        body: _body());
+        body: Column(children: <Widget>[
+          Expanded(
+              child: StreamBuilder<List<Professional>>(
+                  stream: bloc.subject.stream,
+                  builder: (context, AsyncSnapshot<List<Professional>> snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.separated(
+                          separatorBuilder: (context, index) =>
+                              Divider(color: ApplicationStyle.SECONDARY_GREY, height: 0),
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (context, index) {
+                            return ProfessionalTile(snapshot.data[index]);
+                          });
+                    } else {
+                      return _buildLoadingWidget();
+                    }
+                  }))
+        ]));
   }
 }
