@@ -7,19 +7,8 @@ import 'package:callma/models/specialty.dart';
 import 'package:callma/views/consulta/specialties/specialty_tile.dart';
 import 'package:flutter/material.dart';
 
-// class SpecialtiesView extends StatefulWidget {
-//   final int professionId;
-
-//   SpecialtiesView(this.professionId);
-
-//   @override
-//   _SpecialtiesViewState createState() => _SpecialtiesViewState(professionId);
-// }
-
 class SpecialtiesView extends StatelessWidget {
-  int professionId;
-  List<Specialty> specialties = new List<Specialty>();
-
+  final int professionId;
   SpecialtiesView(this.professionId);
 
   Widget _buildLoadingWidget() {
