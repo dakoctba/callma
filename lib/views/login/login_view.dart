@@ -1,4 +1,5 @@
 import 'package:callma/helpers/application_helper.dart';
+import 'package:callma/repositories/login_repository.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
@@ -6,8 +7,29 @@ import 'package:callma/views/consulta/professions/professions_view.dart';
 import 'package:callma/views/login/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
+import 'package:callma/exceptions/callma_exception.dart';
+
 class LoginView extends StatelessWidget with ApplicationHelper {
   final _formKey = GlobalKey<FormState>();
+
+  static _launchDialogError(BuildContext context, String message) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Callma"),
+            content: Text(message),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +70,14 @@ class LoginView extends StatelessWidget with ApplicationHelper {
                 debugPrint("Esqueci minha senha...");
               },
             ),
-            CustomButton("Entrar", () {
+            CustomButton("Entrar", () async {
               if (_formKey.currentState.validate()) {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
+                try {
+                  await LoginRepository.login();
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
+                } on CallmaException catch (e) {
+                  _launchDialogError(context, e.cause);
+                }
               }
             }),
             GestureDetector(

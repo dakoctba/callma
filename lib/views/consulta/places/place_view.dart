@@ -49,8 +49,9 @@ class PlaceView extends StatelessWidget {
         bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
         body: Column(children: <Widget>[
           Expanded(
-            child:
-                ListView(children: ListTile.divideTiles(color: ApplicationStyle.TERTIARY_GREY, tiles: items).toList()),
+            child: ListView(
+                children: ListTile.divideTiles(context: context, color: ApplicationStyle.TERTIARY_GREY, tiles: items)
+                    .toList()),
           ),
           CustomButton("Adicionar endereço", () {})
         ]));

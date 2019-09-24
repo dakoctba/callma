@@ -91,7 +91,9 @@ class HelpBody extends StatelessWidget {
     return Column(children: <Widget>[
       Expanded(
         child: ListView(
-            children: ListTile.divideTiles(color: ApplicationStyle.TERTIARY_GREY, tiles: _getItems(context)).toList()),
+            children:
+                ListTile.divideTiles(context: context, color: ApplicationStyle.TERTIARY_GREY, tiles: _getItems(context))
+                    .toList()),
       )
     ]);
   }
