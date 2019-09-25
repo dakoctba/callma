@@ -36,4 +36,33 @@ class ProfessionalsRepository {
 
     return items;
   }
+
+  static Future<Professional> getProfessional(int id) async {
+    try {
+      //
+      // Token
+      //
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String token = await prefs.get("token");
+
+      //
+      // Request
+      //
+      Dio dio = new Dio();
+      dio.options.headers = {'Authorization': 'Bearer ' + token};
+      dio.options.contentType = ContentType.parse("application/json");
+
+      //
+      // Response
+      //
+      Response response = await dio.get("https://callma-api.herokuapp.com/api/professionals/$id");
+
+      Professional result = Professional.fromJson(response.data);
+      return result;
+    } catch (e) {
+      print(e);
+    }
+
+    return null;
+  }
 }

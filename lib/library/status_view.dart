@@ -41,7 +41,7 @@ class StatusView extends StatelessWidget {
                     ],
                   ),
                 ),
-                CustomButton(this.buttonMessage, this.onPressed)
+                CustomButton(label: this.buttonMessage, onPressed: this.onPressed)
               ],
             )));
   }

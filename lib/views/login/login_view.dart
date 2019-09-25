@@ -70,16 +70,18 @@ class LoginView extends StatelessWidget with ApplicationHelper {
                 debugPrint("Esqueci minha senha...");
               },
             ),
-            CustomButton("Entrar", () async {
-              if (_formKey.currentState.validate()) {
-                try {
-                  await LoginRepository.login();
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
-                } on CallmaException catch (e) {
-                  _launchDialogError(context, e.cause);
-                }
-              }
-            }),
+            CustomButton(
+                label: "Entrar",
+                onPressed: () async {
+                  if (_formKey.currentState.validate()) {
+                    try {
+                      await LoginRepository.login();
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
+                    } on CallmaException catch (e) {
+                      _launchDialogError(context, e.cause);
+                    }
+                  }
+                }),
             GestureDetector(
                 child: Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
                   Text("Não possui uma conta? ",

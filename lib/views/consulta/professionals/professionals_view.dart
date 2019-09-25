@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
@@ -5,7 +7,6 @@ import 'package:callma/models/professional.dart';
 import 'package:callma/views/consulta/professionals/professional_tile.dart';
 import 'package:callma/blocs/professionals_bloc.dart';
 import 'package:callma/views/consulta/filters/filters_view.dart';
-import 'package:flutter/material.dart';
 
 class ProfessionalsView extends StatelessWidget {
   final int specialtyId;

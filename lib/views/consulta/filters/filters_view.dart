@@ -65,9 +65,11 @@ class _FiltersScreenState extends State<FiltersView> {
               ),
               Padding(
                   padding: EdgeInsets.all(20.0),
-                  child: CustomButton("Filtrar resultado", () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsView(0)));
-                  }))
+                  child: CustomButton(
+                      label: "Filtrar resultado",
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsView(0)));
+                      }))
             ],
           ),
         ));

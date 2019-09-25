@@ -1,6 +1,22 @@
+import 'package:intl/intl.dart';
+
 class ApplicationHelper {
   static bool isEmailValid(String email) {
     bool result = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
     return result;
+  }
+
+  static String formatDate(DateTime date) {
+    var formatter = new DateFormat('dd/MM/yyyy');
+    String formatted = formatter.format(date);
+
+    return formatted;
+  }
+
+  static String formatDateToWeekDay(DateTime date) {
+    var formatter = new DateFormat(DateFormat.WEEKDAY);
+    String formatted = formatter.format(date);
+
+    return formatted;
   }
 }

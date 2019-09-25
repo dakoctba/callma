@@ -62,17 +62,20 @@ class _OnboardingScreenState extends State<OnboardingView> {
                       });
                     },
                     title: new Text('Aceito os Termo de Uso')),
-                CustomButton("Criar conta", () {
-                  if (_formKey.currentState.validate()) {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => StatusView("Cadastro efetuado com sucesso", true, "Continuar", () {
-                                  Navigator.of(context)
-                                      .pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsView()));
-                                })));
-                  }
-                })
+                CustomButton(
+                    label: "Criar conta",
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    StatusView("Cadastro efetuado com sucesso", true, "Continuar", () {
+                                      Navigator.of(context)
+                                          .pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsView()));
+                                    })));
+                      }
+                    })
               ],
             )));
   }

@@ -53,7 +53,7 @@ class PlaceView extends StatelessWidget {
                 children: ListTile.divideTiles(context: context, color: ApplicationStyle.TERTIARY_GREY, tiles: items)
                     .toList()),
           ),
-          CustomButton("Adicionar endereço", () {})
+          CustomButton(label: "Adicionar endereço", onPressed: () {})
         ]));
   }
 }

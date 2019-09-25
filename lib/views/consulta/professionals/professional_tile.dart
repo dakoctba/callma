@@ -48,7 +48,7 @@ class ProfessionalTile extends ListTile {
         ),
         trailing: Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalDetailsView(professional)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalDetailsView(professional.id)));
         });
   }
 }
