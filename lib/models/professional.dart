@@ -1,4 +1,5 @@
 import 'package:callma/models/profession.dart';
+import 'package:callma/models/specialty.dart';
 
 class Professional {
   int id;
@@ -11,6 +12,7 @@ class Professional {
   int atendimentos;
   int dias;
   Profession profession;
+  List<Specialty> specialties;
 
   Professional(
       {this.id,
@@ -22,7 +24,8 @@ class Professional {
       this.price,
       this.atendimentos,
       this.dias,
-      this.profession});
+      this.profession,
+      List<Specialty> specialties});
 
   Professional.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -35,6 +38,12 @@ class Professional {
     atendimentos = json['atendimentos'];
     dias = json['dias'];
     profession = json['profession'] != null ? new Profession.fromJson(json['profession']) : null;
+    if (json['specialties'] != null) {
+      specialties = new List<Specialty>();
+      json['specialties'].forEach((v) {
+        specialties.add(new Specialty.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -50,6 +59,9 @@ class Professional {
     data['dias'] = this.dias;
     if (this.profession != null) {
       data['profession'] = this.profession.toJson();
+    }
+    if (this.specialties != null) {
+      data['specialties'] = this.specialties.map((v) => v.toJson()).toList();
     }
     return data;
   }

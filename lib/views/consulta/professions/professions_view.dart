@@ -28,6 +28,7 @@ class ProfessionsView extends StatelessWidget {
             Expanded(
               child: StreamBuilder<List<Profession>>(
                 stream: bloc.subject.stream,
+                initialData: [],
                 builder: (context, AsyncSnapshot<List<Profession>> snapshot) {
                   if (snapshot.hasData) {
                     return ListView.separated(

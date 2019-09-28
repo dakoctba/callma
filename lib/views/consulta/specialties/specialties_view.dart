@@ -30,6 +30,7 @@ class SpecialtiesView extends StatelessWidget {
           Expanded(
               child: StreamBuilder<List<Specialty>>(
                   stream: bloc.subject.stream,
+                  initialData: [],
                   builder: (context, AsyncSnapshot<List<Specialty>> snapshot) {
                     if (snapshot.hasData) {
                       return ListView.separated(

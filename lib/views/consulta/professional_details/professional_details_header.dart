@@ -25,12 +25,15 @@ class ProfessionalDetailsHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                CircleAvatar(
-                  backgroundImage: professional.photo != null
-                      ? NetworkImage(professional.photo)
-                      : AssetImage(CallmaConfig.DEFAULT_PHOTO),
-                  backgroundColor: Colors.transparent,
-                  radius: 35,
+                Hero(
+                  tag: professional.id,
+                  child: CircleAvatar(
+                    backgroundImage: professional.photo != null
+                        ? NetworkImage(professional.photo)
+                        : AssetImage(CallmaConfig.DEFAULT_PHOTO),
+                    backgroundColor: Colors.transparent,
+                    radius: 35,
+                  ),
                 ),
                 SizedBox(
                   width: 10,
