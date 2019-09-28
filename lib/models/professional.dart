@@ -1,3 +1,4 @@
+import 'package:callma/models/clinic.dart';
 import 'package:callma/models/profession.dart';
 import 'package:callma/models/specialty.dart';
 
@@ -5,7 +6,6 @@ class Professional {
   int id;
   String name;
   String photo;
-  String address;
   int stars;
   String professionalClassBoardId;
   double price;
@@ -13,25 +13,25 @@ class Professional {
   int dias;
   Profession profession;
   List<Specialty> specialties;
+  List<Clinic> clinics;
 
   Professional(
       {this.id,
       this.name,
       this.photo,
-      this.address,
       this.stars,
       this.professionalClassBoardId,
       this.price,
       this.atendimentos,
       this.dias,
       this.profession,
-      List<Specialty> specialties});
+      List<Specialty> specialties,
+      this.clinics});
 
   Professional.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     photo = json['photo'];
-    address = json['address'];
     stars = json['stars'];
     professionalClassBoardId = json['professional_class_board_id'];
     price = json['price'];
@@ -44,6 +44,12 @@ class Professional {
         specialties.add(new Specialty.fromJson(v));
       });
     }
+    if (json['clinics'] != null) {
+      clinics = new List<Clinic>();
+      json['clinics'].forEach((v) {
+        clinics.add(new Clinic.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -51,7 +57,6 @@ class Professional {
     data['id'] = this.id;
     data['name'] = this.name;
     data['photo'] = this.photo;
-    data['address'] = this.address;
     data['stars'] = this.stars;
     data['professional_class_board_id'] = this.professionalClassBoardId;
     data['price'] = this.price;
@@ -62,6 +67,9 @@ class Professional {
     }
     if (this.specialties != null) {
       data['specialties'] = this.specialties.map((v) => v.toJson()).toList();
+    }
+    if (this.clinics != null) {
+      data['clinics'] = this.clinics.map((v) => v.toJson()).toList();
     }
     return data;
   }

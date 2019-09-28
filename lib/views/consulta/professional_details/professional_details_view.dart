@@ -24,7 +24,7 @@ class ProfessionalDetailsView extends StatelessWidget {
             child: ListView(children: <Widget>[
               ProfessionalDetailsHeader(_professional),
               ProfessionalDetailsSpecialties(_professional.specialties),
-              ProfessionalDetailsAddress(),
+              ProfessionalDetailsAddress(_professional.clinics),
               ProfessionalDetailsCalendar()
             ])));
   }

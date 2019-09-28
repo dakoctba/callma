@@ -1,15 +1,13 @@
 import 'package:callma/config/callma_config.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/consulta/professional_details/professional_details_metrics.dart';
-import 'package:callma/views/consulta/reviews/professional_reviews.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProfessionalDetailsHeader extends StatelessWidget {
+class ProfessionalReviewssHeader extends StatelessWidget {
   final Professional professional;
 
-  ProfessionalDetailsHeader(this.professional);
+  ProfessionalReviewssHeader(this.professional);
 
   _buildUrl() {
     return "https://www.callma.com.br?${professional.profession.professionalClassBoardName}=${professional.professionalClassBoardId}";
@@ -66,40 +64,11 @@ class ProfessionalDetailsHeader extends StatelessWidget {
                     )
                   ],
                 )),
-                SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "R\$ ${professional.price.toStringAsFixed(2)}",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: ApplicationStyle.PRIMARY_GREEN),
-                    )
-                  ],
-                ),
               ],
             ),
             SizedBox(height: 20),
-            ProfessionalDetailsMetrics(professional),
-            SizedBox(height: 30),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 80, vertical: 0),
-              child: SizedBox(
-                height: 26.0,
-                child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(18.0),
-                        side: BorderSide(color: ApplicationStyle.SECONDARY_GREEN)),
-                    color: Colors.white,
-                    textColor: ApplicationStyle.SECONDARY_GREEN,
-                    onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) => ProfessionalReviews(professional)));
-                    },
-                    child: Text("Avaliações")),
-              ),
+            Row(
+              children: <Widget>[Text("Estrelas"), Text("Avaliações")],
             ),
           ],
         ),
