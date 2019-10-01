@@ -1,9 +1,9 @@
 import 'package:callma/config/callma_config.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/consulta/photo/photo_view.dart';
-import 'package:callma/views/consulta/details/professional_details_metrics.dart';
-import 'package:callma/views/consulta/reviews/professional_reviews.dart';
+import 'package:callma/views/scheduling/photo/photo_view.dart';
+import 'package:callma/views/scheduling/details/professional_details_metrics.dart';
+import 'package:callma/views/scheduling/reviews/professional_reviews.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 

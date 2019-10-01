@@ -1,7 +1,7 @@
-import 'package:callma/views/consulta/details/professional_details_address.dart';
-import 'package:callma/views/consulta/details/professional_details_calendar.dart';
-import 'package:callma/views/consulta/details/professional_details_header.dart';
-import 'package:callma/views/consulta/details/professional_details_specialties.dart';
+import 'package:callma/views/scheduling/details/professional_details_address.dart';
+import 'package:callma/views/scheduling/details/professional_details_calendar.dart';
+import 'package:callma/views/scheduling/details/professional_details_header.dart';
+import 'package:callma/views/scheduling/details/professional_details_specialties.dart';
 import 'package:flutter/material.dart';
 
 import 'package:callma/models/professional.dart';

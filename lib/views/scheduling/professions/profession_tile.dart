@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:callma/models/profession.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/consulta/specialties/specialties_view.dart';
+import 'package:callma/views/scheduling/specialties/specialties_view.dart';
 
 class ProfessionTile extends ListTile {
   final Profession profession;

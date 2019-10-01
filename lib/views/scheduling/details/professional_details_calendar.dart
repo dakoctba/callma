@@ -1,5 +1,5 @@
 import 'package:callma/models/professional.dart';
-import 'package:callma/views/consulta/confirmation/confirmation_view.dart';
+import 'package:callma/views/scheduling/confirmation/confirmation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 

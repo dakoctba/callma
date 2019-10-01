@@ -4,9 +4,9 @@ import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/professional.dart';
-import 'package:callma/views/consulta/professionals/professional_tile.dart';
+import 'package:callma/views/scheduling/professionals/professional_tile.dart';
 import 'package:callma/blocs/professionals_bloc.dart';
-import 'package:callma/views/consulta/filters/filters_view.dart';
+import 'package:callma/views/scheduling/filters/filters_view.dart';
 
 class ProfessionalsView extends StatelessWidget {
   final int specialtyId;
@@ -28,7 +28,7 @@ class ProfessionalsView extends StatelessWidget {
         appBar: CustomAppBar(title: "Profissionais"),
         bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.filter_list),
+          child: Icon(Icons.search),
           backgroundColor: ApplicationStyle.PRIMARY_GREEN,
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => FiltersView()));

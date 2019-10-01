@@ -4,7 +4,7 @@ import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/specialty.dart';
-import 'package:callma/views/consulta/specialties/specialty_tile.dart';
+import 'package:callma/views/scheduling/specialties/specialty_tile.dart';
 import 'package:flutter/material.dart';
 
 class SpecialtiesView extends StatelessWidget {

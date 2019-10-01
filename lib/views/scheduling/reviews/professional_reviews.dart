@@ -1,13 +1,13 @@
 import 'package:callma/models/review.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/consulta/reviews/review_card.dart';
+import 'package:callma/views/scheduling/reviews/review_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/library/custom_text.dart';
 import 'package:callma/models/professional.dart';
-import 'package:callma/views/consulta/reviews/professional_reviews_header.dart';
+import 'package:callma/views/scheduling/reviews/professional_reviews_header.dart';
 import 'package:callma/blocs/reviews_bloc.dart';
 
 class ProfessionalReviews extends StatelessWidget {

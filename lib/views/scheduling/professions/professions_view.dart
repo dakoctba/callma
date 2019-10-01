@@ -1,7 +1,7 @@
 import 'package:callma/blocs/professions_bloc.dart';
 import 'package:callma/models/profession.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/consulta/professions/profession_tile.dart';
+import 'package:callma/views/scheduling/professions/profession_tile.dart';
 import 'package:flutter/material.dart';
 
 import 'package:callma/library/custom_app_bar.dart';

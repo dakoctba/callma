@@ -2,7 +2,7 @@ import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
 import 'package:callma/library/status_view.dart';
 import 'package:callma/helpers/application_helper.dart';
-import 'package:callma/views/consulta/professions/professions_view.dart';
+import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingView extends StatefulWidget with ApplicationHelper {

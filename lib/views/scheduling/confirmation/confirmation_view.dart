@@ -6,9 +6,9 @@ import 'package:callma/library/custom_text.dart';
 import 'package:callma/library/status_view.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/consulta/details/professional_details_address.dart';
-import 'package:callma/views/consulta/details/professional_details_header.dart';
-import 'package:callma/views/consulta/professions/professions_view.dart';
+import 'package:callma/views/scheduling/details/professional_details_address.dart';
+import 'package:callma/views/scheduling/details/professional_details_header.dart';
+import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
