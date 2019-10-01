@@ -3,16 +3,11 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:callma/models/login.dart';
-import 'package:callma/models/user.dart';
 
 class LoginRepository {
   static login() async {
-    User user = new User();
-    user.email = "jackson@setbox.com.br";
-    user.password = "12345678";
-
-    Login login = Login();
-    login.user = user;
+    Login login = Login("jackson@autoprocess.com.br", "12345678");
+    print(login.toJson());
 
     try {
       Response response = await Dio().post("http://callma-api.herokuapp.com/login", data: login.toJson());

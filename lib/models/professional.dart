@@ -6,7 +6,7 @@ class Professional {
   int id;
   String name;
   String photo;
-  int stars;
+  double stars;
   String professionalClassBoardId;
   double price;
   int atendimentos;

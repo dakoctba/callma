@@ -34,23 +34,21 @@ class ProfessionalsView extends StatelessWidget {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => FiltersView()));
           },
         ),
-        body: Column(children: <Widget>[
-          Expanded(
-              child: StreamBuilder<List<Professional>>(
-                  stream: bloc.subject.stream,
-                  builder: (context, AsyncSnapshot<List<Professional>> snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView.separated(
-                          separatorBuilder: (context, index) =>
-                              Divider(color: ApplicationStyle.SECONDARY_GREY, height: 0),
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (context, index) {
-                            return ProfessionalTile(snapshot.data[index]);
-                          });
-                    } else {
-                      return _buildLoadingWidget();
-                    }
-                  }))
-        ]));
+        body: Container(
+          padding: EdgeInsets.all(10),
+          child: StreamBuilder<List<Professional>>(
+              stream: bloc.subject.stream,
+              builder: (context, AsyncSnapshot<List<Professional>> snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return ProfessionalTile(snapshot.data[index]);
+                      });
+                } else {
+                  return _buildLoadingWidget();
+                }
+              }),
+        ));
   }
 }

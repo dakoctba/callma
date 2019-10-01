@@ -48,7 +48,6 @@ class LoginView extends StatelessWidget with ApplicationHelper {
                   textAlign: TextAlign.center,
                 )),
             TextFormField(
-              autofocus: true,
               decoration: InputDecoration(hintText: "E-mail", border: OutlineInputBorder()),
               keyboardType: TextInputType.emailAddress,
               initialValue: "jackson@setbox.com.br",

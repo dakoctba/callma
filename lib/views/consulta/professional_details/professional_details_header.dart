@@ -1,6 +1,7 @@
 import 'package:callma/config/callma_config.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/theme/application_style.dart';
+import 'package:callma/views/consulta/photo/photo_view.dart';
 import 'package:callma/views/consulta/professional_details/professional_details_metrics.dart';
 import 'package:callma/views/consulta/reviews/professional_reviews.dart';
 import 'package:flutter/material.dart';
@@ -26,16 +27,19 @@ class ProfessionalDetailsHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Hero(
-                  tag: professional.id,
-                  child: CircleAvatar(
-                    backgroundImage: professional.photo != null
-                        ? NetworkImage(professional.photo)
-                        : AssetImage(CallmaConfig.DEFAULT_PHOTO),
-                    backgroundColor: Colors.transparent,
-                    radius: 35,
-                  ),
-                ),
+                InkWell(
+                    child: Hero(
+                        tag: professional.id,
+                        child: CircleAvatar(
+                          backgroundImage: professional.photo != null
+                              ? NetworkImage(professional.photo)
+                              : AssetImage(CallmaConfig.DEFAULT_PHOTO),
+                          backgroundColor: Colors.transparent,
+                          radius: 35,
+                        )),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => PhotoView(professional)));
+                    }),
                 SizedBox(
                   width: 10,
                 ),

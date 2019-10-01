@@ -1,12 +1,8 @@
-import 'package:callma/models/user.dart';
-
 class Login {
-  User user;
+  UserLogin user;
 
-  Login({this.user});
-
-  Login.fromJson(Map<String, dynamic> json) {
-    user = json['user'] != null ? new User.fromJson(json['user']) : null;
+  Login(String email, String password) {
+    user = new UserLogin(email, password);
   }
 
   Map<String, dynamic> toJson() {
@@ -14,6 +10,20 @@ class Login {
     if (this.user != null) {
       data['user'] = this.user.toJson();
     }
+    return data;
+  }
+}
+
+class UserLogin {
+  String email;
+  String password;
+
+  UserLogin(this.email, this.password);
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['email'] = this.email;
+    data['password'] = this.password;
     return data;
   }
 }
