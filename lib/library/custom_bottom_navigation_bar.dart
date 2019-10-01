@@ -29,11 +29,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
       onTap: (option) {
         switch (option) {
           case LIST_OPTION:
-            //   Navigator.of(context).push(MaterialPageRoute(
-            //       builder: (context) =>
-            //           StatusView("Dependente alterado com sucesso", true, "Voltar para tela inicial", () {
-            //             Navigator.of(context).pop();
-            //           })));
             break;
           case NOTIFICATIONS_OPTION:
             break;

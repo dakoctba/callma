@@ -4,7 +4,7 @@ import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:callma/config/callma_config.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/consulta/professional_details/professional_details_view.dart';
+import 'package:callma/views/consulta/details/professional_details_view.dart';
 
 class ProfessionalTile extends ListTile {
   final Professional professional;

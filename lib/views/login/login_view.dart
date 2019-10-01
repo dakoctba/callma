@@ -1,5 +1,5 @@
 import 'package:callma/helpers/application_helper.dart';
-import 'package:callma/repositories/login_repository.dart';
+import 'package:callma/services/login_service.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
@@ -75,7 +75,7 @@ class LoginView extends StatelessWidget with ApplicationHelper {
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     try {
-                      await LoginRepository.login();
+                      await LoginService.login();
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
                     } on CallmaException catch (e) {
                       _launchDialogError(context, e.cause);

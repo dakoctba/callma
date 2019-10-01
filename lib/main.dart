@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:callma/theme/application_style.dart';
 import 'views/login/login_view.dart';
 
-void main() => runApp(CallmaApp());
+void main() => runApp(Application());
 
-class CallmaApp extends StatelessWidget {
+class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

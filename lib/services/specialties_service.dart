@@ -4,7 +4,7 @@ import 'package:callma/models/specialty.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SpecialtiesRepository {
+class SpecialtiesService {
   static Future<List<Specialty>> getSpecialties(int professionId) async {
     List<Specialty> items = new List<Specialty>();
 

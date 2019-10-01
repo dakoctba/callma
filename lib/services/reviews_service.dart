@@ -1,11 +1,13 @@
 import 'dart:io';
 
-import 'package:callma/models/summary.dart';
+import 'package:callma/models/review.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SummariesRepository {
-  static Future<Summary> getSummaries(int professionalId) async {
+class ReviewsService {
+  static Future<List<Review>> getReviews(int professionalId) async {
+    List<Review> items = new List<Review>();
+
     try {
       //
       // Token
@@ -23,15 +25,15 @@ class SummariesRepository {
       //
       // Response
       //
-      Response response =
-          await dio.get("http://callma-api.herokuapp.com/api/professionals/$professionalId/reviews/summary");
+      Response response = await dio.get("http://callma-api.herokuapp.com/api/professionals/$professionalId/reviews");
 
-      Summary summary = Summary.fromJson(response.data);
-      return summary;
+      for (Map<String, dynamic> item in response.data) {
+        items.add(Review.fromJson(item));
+      }
     } catch (e) {
       print(e);
     }
 
-    return null;
+    return items;
   }
 }

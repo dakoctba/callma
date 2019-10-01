@@ -13,6 +13,13 @@ class ApplicationHelper {
     return formatted;
   }
 
+  static String formatDateWithHours(DateTime date) {
+    var formatter = new DateFormat('dd/MM/yyyy kk:mm');
+    String formatted = formatter.format(date);
+
+    return formatted;
+  }
+
   static String formatStringDateWithHours(String date) {
     var parsedDate = DateTime.parse(date);
     var formatter = new DateFormat('dd/MM/yyyy kk:mm');

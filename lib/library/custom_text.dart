@@ -9,7 +9,7 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       this.label,
-      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      style: TextStyle(fontWeight: FontWeight.bold),
     );
   }
 }

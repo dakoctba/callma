@@ -1,12 +1,13 @@
 import 'package:callma/library/custom_text.dart';
+import 'package:callma/models/professional.dart';
 import 'package:callma/models/specialty.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionalDetailsSpecialties extends StatelessWidget {
-  final List<Specialty> _specialties;
+  final Professional _professional;
 
-  ProfessionalDetailsSpecialties(this._specialties);
+  ProfessionalDetailsSpecialties(this._professional);
 
   Container _buildSpecialty(Specialty specialty) {
     return Container(
@@ -38,7 +39,7 @@ class ProfessionalDetailsSpecialties extends StatelessWidget {
               children: <Widget>[
                 CustomText(label: "Especialidades"),
                 SizedBox(height: 20),
-                Column(children: _specialties.map((specialty) => _buildSpecialty(specialty)).toList())
+                Column(children: _professional.specialties.map((specialty) => _buildSpecialty(specialty)).toList())
               ],
             )));
   }
