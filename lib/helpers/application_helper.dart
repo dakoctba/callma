@@ -34,4 +34,9 @@ class ApplicationHelper {
 
     return formatted;
   }
+
+  static DateTime buildDate(String date) {
+    var parsedDate = DateTime.parse(date);
+    return parsedDate;
+  }
 }

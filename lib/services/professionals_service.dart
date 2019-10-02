@@ -25,7 +25,7 @@ class ProfessionalsService {
       //
       // Response
       //
-      Response response = await dio.get("https://callma-api.herokuapp.com/api/professionals");
+      Response response = await dio.get("http://api.callma.com.br/api/professionals");
 
       for (Map<String, dynamic> item in response.data) {
         items.add(Professional.fromJson(item));
@@ -55,7 +55,7 @@ class ProfessionalsService {
   //     //
   //     // Response
   //     //
-  //     Response response = await dio.get("https://callma-api.herokuapp.com/api/professionals/$id");
+  //     Response response = await dio.get("http://api.callma.com.br/api/professionals/$id");
 
   //     Professional result = Professional.fromJson(response.data);
   //     return result;

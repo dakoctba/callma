@@ -10,7 +10,6 @@ class PhotoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: Center(
           child:
               professional.photo != null ? Image.network(professional.photo) : AssetImage(CallmaConfig.DEFAULT_PHOTO)),

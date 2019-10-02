@@ -23,8 +23,7 @@ class SummariesService {
       //
       // Response
       //
-      Response response =
-          await dio.get("http://callma-api.herokuapp.com/api/professionals/$professionalId/reviews/summary");
+      Response response = await dio.get("http://api.callma.com.br/api/professionals/$professionalId/reviews/summary");
 
       Summary summary = Summary.fromJson(response.data);
       return summary;

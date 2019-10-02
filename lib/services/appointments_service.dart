@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:callma/models/review.dart';
+import 'package:callma/models/appointment.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ReviewsService {
-  static Future<List<Review>> getReviews(int professionalId) async {
-    List<Review> items = new List<Review>();
+class AppointmentsService {
+  static Future<List<Appointment>> getAppointments() async {
+    List<Appointment> items = new List<Appointment>();
 
     try {
       //
@@ -25,10 +25,10 @@ class ReviewsService {
       //
       // Response
       //
-      Response response = await dio.get("http://api.callma.com.br/api/professionals/$professionalId/reviews");
+      Response response = await dio.get("http://api.callma.com.br/api/users/1/appointments");
 
       for (Map<String, dynamic> item in response.data) {
-        items.add(Review.fromJson(item));
+        items.add(Appointment.fromJson(item));
       }
     } catch (e) {
       print(e);

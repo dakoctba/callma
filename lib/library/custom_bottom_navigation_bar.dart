@@ -1,4 +1,5 @@
 import 'package:callma/theme/application_style.dart';
+import 'package:callma/views/appointments/appointments_view.dart';
 import 'package:callma/views/configurations/configurations_view.dart';
 import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:callma/views/help/help_view.dart';
@@ -29,18 +30,19 @@ class CustomBottomNavigationBar extends StatelessWidget {
       onTap: (option) {
         switch (option) {
           case LIST_OPTION:
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => AppointmentsView()));
             break;
           case NOTIFICATIONS_OPTION:
             break;
           case CONFIGURATIONS_OPTION:
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConfigurationsView()));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ConfigurationsView()));
             break;
           case HELP_OPTION:
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => HelpView()));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HelpView()));
             break;
           case HOME_OPTION:
           default:
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionsView()));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsView()));
         }
       },
       type: BottomNavigationBarType.fixed,

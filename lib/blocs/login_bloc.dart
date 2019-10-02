@@ -6,6 +6,7 @@ class LoginBloc {
   login() {}
 
   dispose() {
+    print("Chamou o dispose em ${this.runtimeType}");
     _subject.close();
   }
 }

@@ -6,10 +6,10 @@ import 'package:callma/models/login.dart';
 
 class LoginService {
   static login() async {
-    Login login = Login("jackson@autoprocess.com.br", "12345678");
+    Login login = Login("jackson@setbox.com.br", "12345678");
 
     try {
-      Response response = await Dio().post("http://callma-api.herokuapp.com/login", data: login.toJson());
+      Response response = await Dio().post("http://api.callma.com.br/login", data: login.toJson());
 
       String token = response.headers.value("authorization").replaceAll('Bearer ', '');
 

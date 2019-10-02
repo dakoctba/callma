@@ -25,7 +25,7 @@ class SpecialtiesService {
       //
       // Response
       //
-      Response response = await dio.get("https://callma-api.herokuapp.com/api/professions/$professionId/specialties");
+      Response response = await dio.get("http://api.callma.com.br/api/professions/$professionId/specialties");
 
       for (Map<String, dynamic> item in response.data) {
         items.add(Specialty.fromJson(item));
