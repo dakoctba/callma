@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:callma/theme/application_style.dart';
-import 'views/login/login_view.dart';
+import 'package:callma/views/login/login_view.dart';
 
-void main() => runApp(Application());
+Future main() async {
+  await DotEnv().load('.env');
+  runApp(Application());
+}
 
 class Application extends StatelessWidget {
   @override

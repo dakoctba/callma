@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:callma/models/summary.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SummariesService {
@@ -23,7 +24,7 @@ class SummariesService {
       //
       // Response
       //
-      Response response = await dio.get("http://api.callma.com.br/api/professionals/$professionalId/reviews/summary");
+      Response response = await dio.get("${DotEnv().env['API_URL']}/api/professionals/$professionalId/reviews/summary");
 
       Summary summary = Summary.fromJson(response.data);
       return summary;

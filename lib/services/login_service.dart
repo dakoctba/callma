@@ -1,5 +1,6 @@
 import 'package:callma/exceptions/callma_exception.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:callma/models/login.dart';
@@ -8,8 +9,10 @@ class LoginService {
   static login() async {
     Login login = Login("jackson@setbox.com.br", "12345678");
 
+    print("Vai usar a variável API_URL = ${DotEnv().env['API_URL']}");
+
     try {
-      Response response = await Dio().post("http://api.callma.com.br/login", data: login.toJson());
+      Response response = await Dio().post("${DotEnv().env['API_URL']}/login", data: login.toJson());
 
       String token = response.headers.value("authorization").replaceAll('Bearer ', '');
 

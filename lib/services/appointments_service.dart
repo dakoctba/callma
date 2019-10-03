@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:callma/models/appointment.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppointmentsService {
@@ -25,7 +26,7 @@ class AppointmentsService {
       //
       // Response
       //
-      Response response = await dio.get("http://api.callma.com.br/api/users/1/appointments");
+      Response response = await dio.get("${DotEnv().env['API_URL']}/api/users/1/appointments");
 
       for (Map<String, dynamic> item in response.data) {
         items.add(Appointment.fromJson(item));

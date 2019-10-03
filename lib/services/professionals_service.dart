@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:callma/models/professional.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfessionalsService {
@@ -25,7 +26,7 @@ class ProfessionalsService {
       //
       // Response
       //
-      Response response = await dio.get("http://api.callma.com.br/api/professionals");
+      Response response = await dio.get("${DotEnv().env['API_URL']}/api/professionals");
 
       for (Map<String, dynamic> item in response.data) {
         items.add(Professional.fromJson(item));
@@ -55,7 +56,7 @@ class ProfessionalsService {
   //     //
   //     // Response
   //     //
-  //     Response response = await dio.get("http://api.callma.com.br/api/professionals/$id");
+  //     Response response = await dio.get("${DotEnv().env['API_URL']}/api/professionals/$id");
 
   //     Professional result = Professional.fromJson(response.data);
   //     return result;

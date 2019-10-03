@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:callma/models/review.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ReviewsService {
@@ -25,7 +26,7 @@ class ReviewsService {
       //
       // Response
       //
-      Response response = await dio.get("http://api.callma.com.br/api/professionals/$professionalId/reviews");
+      Response response = await dio.get("${DotEnv().env['API_URL']}/api/professionals/$professionalId/reviews");
 
       for (Map<String, dynamic> item in response.data) {
         items.add(Review.fromJson(item));
