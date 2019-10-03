@@ -19,7 +19,7 @@ class ProfessionalReviews extends StatelessWidget {
     return Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Text("Carregando avaliações..."), CircularProgressIndicator()],
+      children: [Text("Carregando avaliações..."), SizedBox(height: 10), CircularProgressIndicator()],
     ));
   }
 

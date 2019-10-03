@@ -12,7 +12,7 @@ class ProfessionsView extends StatelessWidget {
     return Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Text("Carregando profissões..."), CircularProgressIndicator()],
+      children: [Text("Carregando profissões..."), SizedBox(height: 10), CircularProgressIndicator()],
     ));
   }
 

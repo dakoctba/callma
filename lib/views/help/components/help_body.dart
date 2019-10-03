@@ -1,7 +1,7 @@
 import 'package:callma/library/tile_data.dart';
 import 'package:callma/theme/application_style.dart';
+import 'package:callma/views/help/webview_view.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HelpBody extends StatelessWidget {
   static const String URL_FAQ = "https://callma.com.br/faq";
@@ -17,32 +17,38 @@ class HelpBody extends StatelessWidget {
     items.add(new TileData(
         label: "Perguntas frequentes",
         onTap: () {
-          _launchExternalUrl(URL_FAQ);
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => WebviewView("Perguntas frequentes", URL_FAQ)));
         }));
     items.add(new TileData(
         label: "Fale com a gente",
         onTap: () {
-          _launchExternalUrl(URL_FALE_COM_A_GENTE);
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => WebviewView("Fale com a gente", URL_FALE_COM_A_GENTE)));
         }));
     items.add(new TileData(
         label: "Como funciona",
         onTap: () {
-          _launchExternalUrl(URL_COMO_FUNCIONA);
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => WebviewView("Como funciona", URL_COMO_FUNCIONA)));
         }));
     items.add(new TileData(
         label: "Termos de uso",
         onTap: () {
-          _launchExternalUrl(URL_TERMOS_DE_USO);
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => WebviewView("Termos de uso", URL_TERMOS_DE_USO)));
         }));
     items.add(new TileData(
         label: "Política de privacidade",
         onTap: () {
-          _launchExternalUrl(URL_POLITICA_DE_PRIVACIDADE);
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => WebviewView("Política de privacidade", URL_POLITICA_DE_PRIVACIDADE)));
         }));
     items.add(new TileData(
         label: "Formalização MEI",
         onTap: () {
-          _launchExternalUrl(URL_CERTA_MEI);
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => WebviewView("Formalização MEI", URL_CERTA_MEI)));
         }));
     items.add(new TileData(
         label: "Sobre o aplicativo",
@@ -57,14 +63,6 @@ class HelpBody extends StatelessWidget {
         onTap: item.onTap,
       );
     });
-  }
-
-  static _launchExternalUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw "Ops! Erro ao abrir a url";
-    }
   }
 
   static _launchAbout(BuildContext context) {

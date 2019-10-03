@@ -15,7 +15,7 @@ class SpecialtiesView extends StatelessWidget {
     return Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Text("Carregando especialidades..."), CircularProgressIndicator()],
+      children: [Text("Carregando especialidades..."), SizedBox(height: 10), CircularProgressIndicator()],
     ));
   }
 

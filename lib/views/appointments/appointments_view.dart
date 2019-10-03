@@ -15,7 +15,7 @@ class AppointmentsView extends StatelessWidget {
     return Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Text("Carregando profissões..."), CircularProgressIndicator()],
+      children: [Text("Carregando consultas..."), SizedBox(height: 10), CircularProgressIndicator()],
     ));
   }
 
