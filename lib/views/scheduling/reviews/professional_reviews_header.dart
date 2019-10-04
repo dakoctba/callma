@@ -1,4 +1,4 @@
-import 'package:callma/config/callma_config.dart';
+import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/feeling.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/models/summary.dart';
@@ -117,9 +117,7 @@ class ProfessionalReviewssHeader extends StatelessWidget {
                 Hero(
                   tag: professional.id,
                   child: CircleAvatar(
-                    backgroundImage: professional.photo != null
-                        ? NetworkImage(professional.photo)
-                        : AssetImage(CallmaConfig.DEFAULT_PHOTO),
+                    backgroundImage: ProfessionalsHelper.getPhoto(professional.photo),
                     backgroundColor: Colors.transparent,
                     radius: 35,
                   ),

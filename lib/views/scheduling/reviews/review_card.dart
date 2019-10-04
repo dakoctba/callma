@@ -1,5 +1,5 @@
-import 'package:callma/config/callma_config.dart';
 import 'package:callma/helpers/application_helper.dart';
+import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/profile.dart';
 import 'package:callma/models/review.dart';
 import 'package:callma/theme/application_style.dart';
@@ -23,9 +23,7 @@ class ReviewCard extends StatelessWidget {
           Row(
             children: <Widget>[
               CircleAvatar(
-                backgroundImage: _review.user.profiles[0].photo != null
-                    ? NetworkImage(_review.user.profiles[0].photo)
-                    : AssetImage(CallmaConfig.DEFAULT_PHOTO),
+                backgroundImage: ProfessionalsHelper.getPhoto(_review.user.profiles[0].photo),
                 backgroundColor: Colors.transparent,
                 radius: 16,
               ),

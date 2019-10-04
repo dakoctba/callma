@@ -1,5 +1,5 @@
+import 'package:callma/blocs/login_bloc.dart';
 import 'package:callma/helpers/application_helper.dart';
-import 'package:callma/services/login_service.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
@@ -7,9 +7,14 @@ import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:callma/views/login/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
-import 'package:callma/exceptions/callma_exception.dart';
+import 'package:provider/provider.dart';
 
-class LoginView extends StatelessWidget with ApplicationHelper {
+class LoginView extends StatefulWidget {
+  @override
+  _LoginViewState createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> with ApplicationHelper {
   final _formKey = GlobalKey<FormState>();
 
   static _launchDialogError(BuildContext context, String message) {
@@ -33,6 +38,8 @@ class LoginView extends StatelessWidget with ApplicationHelper {
 
   @override
   Widget build(BuildContext context) {
+    var bloc = Provider.of<LoginBloc>(context);
+
     return Scaffold(
       appBar: CustomAppBar(),
       body: Form(
@@ -75,11 +82,18 @@ class LoginView extends StatelessWidget with ApplicationHelper {
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     try {
-                      await LoginService.login();
+                      bloc.login("jackson@setbox.com.br", "12345678");
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
-                    } on CallmaException catch (e) {
-                      _launchDialogError(context, e.cause);
+                    } catch (e) {
+                      print(e);
                     }
+
+                    // try {
+                    //   await LoginService.login("jackson@setbox.com.br", "12345678");
+                    //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
+                    // } on CallmaException catch (e) {
+                    //   _launchDialogError(context, e.cause);
+                    // }
                   }
                 }),
             GestureDetector(

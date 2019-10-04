@@ -1,4 +1,4 @@
-import 'package:callma/config/callma_config.dart';
+import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/scheduling/photo/photo_view.dart';
@@ -31,14 +31,13 @@ class ProfessionalDetailsHeader extends StatelessWidget {
                     child: Hero(
                         tag: professional.id,
                         child: CircleAvatar(
-                          backgroundImage: professional.photo != null
-                              ? NetworkImage(professional.photo)
-                              : AssetImage(CallmaConfig.DEFAULT_PHOTO),
+                          backgroundImage: ProfessionalsHelper.getPhoto(professional.photo),
                           backgroundColor: Colors.transparent,
                           radius: 35,
                         )),
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => PhotoView(professional)));
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) => PhotoView(professional.photo)));
                     }),
                 SizedBox(
                   width: 10,

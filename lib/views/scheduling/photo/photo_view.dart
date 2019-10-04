@@ -1,18 +1,19 @@
-import 'package:callma/config/callma_config.dart';
-import 'package:callma/models/professional.dart';
+import 'package:callma/helpers/professionals_helper.dart';
 import 'package:flutter/material.dart';
 
 class PhotoView extends StatelessWidget {
-  final Professional professional;
+  final String _photo;
 
-  PhotoView(this.professional);
+  PhotoView(this._photo);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child:
-              professional.photo != null ? Image.network(professional.photo) : AssetImage(CallmaConfig.DEFAULT_PHOTO)),
+          child: CircleAvatar(
+        backgroundImage: ProfessionalsHelper.getPhoto(_photo),
+        backgroundColor: Colors.transparent,
+      )),
     );
   }
 }

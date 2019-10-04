@@ -1,5 +1,5 @@
-import 'package:callma/config/callma_config.dart';
 import 'package:callma/helpers/application_helper.dart';
+import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/library/badge.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/appointment.dart';
@@ -31,9 +31,7 @@ class AppointmentsView extends StatelessWidget {
                 children: <Widget>[
                   Row(children: <Widget>[
                     CircleAvatar(
-                      backgroundImage: appointment.professional.photo != null
-                          ? NetworkImage(appointment.professional.photo)
-                          : AssetImage(CallmaConfig.DEFAULT_PHOTO),
+                      backgroundImage: ProfessionalsHelper.getPhoto(appointment.professional.photo),
                       backgroundColor: Colors.transparent,
                       radius: 20,
                     ),
