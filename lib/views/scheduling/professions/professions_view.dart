@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
+import 'package:provider/provider.dart';
 
 class ProfessionsView extends StatelessWidget {
   Widget _buildLoadingWidget() {
@@ -18,7 +19,8 @@ class ProfessionsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bloc.getProfessions();
+    final professionsBloc = Provider.of<ProfessionsBloc>(context);
+    professionsBloc.getProfessions();
 
     return Scaffold(
         appBar: CustomAppBar(title: "Profissional"),
@@ -27,7 +29,7 @@ class ProfessionsView extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: StreamBuilder<List<Profession>>(
-                stream: bloc.subject.stream,
+                stream: professionsBloc.data,
                 initialData: [],
                 builder: (context, AsyncSnapshot<List<Profession>> snapshot) {
                   if (snapshot.hasData) {

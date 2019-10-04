@@ -1,3 +1,4 @@
+import 'package:callma/blocs/appointments_bloc.dart';
 import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/library/badge.dart';
@@ -8,7 +9,7 @@ import 'package:callma/views/appointments/details/appointment_details_view.dart'
 import 'package:flutter/material.dart';
 
 import 'package:callma/library/custom_app_bar.dart';
-import 'package:callma/blocs/appointments_bloc.dart';
+import 'package:provider/provider.dart';
 
 class AppointmentsView extends StatelessWidget {
   Widget _buildLoadingWidget() {
@@ -76,7 +77,8 @@ class AppointmentsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bloc.getAppointments();
+    final appointmentsBloc = Provider.of<AppointmentsBloc>(context);
+    appointmentsBloc.getAppointments();
 
     return Scaffold(
         appBar: CustomAppBar(title: "Minhas consultas"),
@@ -84,7 +86,7 @@ class AppointmentsView extends StatelessWidget {
         body: Container(
             padding: EdgeInsets.all(10),
             child: StreamBuilder<List<Appointment>>(
-              stream: bloc.subject.stream,
+              stream: appointmentsBloc.data,
               builder: (context, AsyncSnapshot<List<Appointment>> snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(

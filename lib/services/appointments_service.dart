@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:callma/models/appointment.dart';
 import 'package:callma/services/auth_dio.dart';
 import 'package:dio/dio.dart';

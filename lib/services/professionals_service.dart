@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:callma/models/professional.dart';
 import 'package:callma/services/auth_dio.dart';
 import 'package:dio/dio.dart';
@@ -12,7 +10,7 @@ class ProfessionalsService {
     try {
       Dio dio = await AuthDio.getDio();
 
-      Response response = await dio.get("${DotEnv().env['API_URL']}/api/professionals");
+      Response response = await dio.get("${DotEnv().env['API_URL']}/api/professionals/by_specialty/$specialtyId");
 
       for (Map<String, dynamic> item in response.data) {
         items.add(Professional.fromJson(item));
@@ -24,32 +22,18 @@ class ProfessionalsService {
     return items;
   }
 
-  // static Future<Professional> getProfessional(int id) async {
-  //   try {
-  //     //
-  //     // Token
-  //     //
-  //     SharedPreferences prefs = await SharedPreferences.getInstance();
-  //     String token = await prefs.get("token");
+  static Future<Professional> getProfessional(int id) async {
+    try {
+      Dio dio = await AuthDio.getDio();
 
-  //     //
-  //     // Request
-  //     //
-  //     Dio dio = new Dio();
-  //     dio.options.headers = {'Authorization': 'Bearer ' + token};
-  //     dio.options.contentType = ContentType.parse("application/json");
+      Response response = await dio.get("${DotEnv().env['API_URL']}/api/professionals/$id");
 
-  //     //
-  //     // Response
-  //     //
-  //     Response response = await dio.get("${DotEnv().env['API_URL']}/api/professionals/$id");
+      Professional result = Professional.fromJson(response.data);
+      return result;
+    } catch (e) {
+      print(e);
+    }
 
-  //     Professional result = Professional.fromJson(response.data);
-  //     return result;
-  //   } catch (e) {
-  //     print(e);
-  //   }
-
-  //   return null;
-  // }
+    return null;
+  }
 }

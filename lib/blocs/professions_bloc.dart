@@ -4,18 +4,18 @@ import 'package:callma/models/profession.dart';
 import 'package:callma/services/professions_service.dart';
 
 class ProfessionsBloc {
-  final BehaviorSubject<List<Profession>> _subject = BehaviorSubject<List<Profession>>();
-  BehaviorSubject<List<Profession>> get subject => _subject;
+  List<Profession> professions;
+
+  final _controller = BehaviorSubject<List<Profession>>();
+  Stream<List<Profession>> get data => _controller.stream;
 
   void getProfessions() async {
     List<Profession> response = await ProfessionsService.getProfessions();
-    _subject.sink.add(response);
+    _controller.sink.add(response);
   }
 
   dispose() {
     print("Chamou o dispose em ${this.runtimeType}");
-    _subject.close();
+    _controller.close();
   }
 }
-
-final bloc = ProfessionsBloc();

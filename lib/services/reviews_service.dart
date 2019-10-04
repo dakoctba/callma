@@ -5,7 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ReviewsService {
   static Future<List<Review>> getReviews(int professionalId) async {
-    List<Review> items = new List<Review>();
+    var items = new List<Review>();
 
     try {
       Dio dio = await AuthDio.getDio();

@@ -1,3 +1,4 @@
+import 'package:callma/blocs/professionals_bloc.dart';
 import 'package:flutter/material.dart';
 
 import 'package:callma/theme/application_style.dart';
@@ -5,8 +6,8 @@ import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/views/scheduling/professionals/professional_tile.dart';
-import 'package:callma/blocs/professionals_bloc.dart';
 import 'package:callma/views/scheduling/filters/filters_view.dart';
+import 'package:provider/provider.dart';
 
 class ProfessionalsView extends StatelessWidget {
   final int specialtyId;
@@ -22,7 +23,8 @@ class ProfessionalsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bloc.getProfessionals(specialtyId);
+    final professionalsBloc = Provider.of<ProfessionalsBloc>(context);
+    professionalsBloc.getProfessionals(specialtyId);
 
     return Scaffold(
         appBar: CustomAppBar(title: "Profissionais"),
@@ -37,7 +39,7 @@ class ProfessionalsView extends StatelessWidget {
         body: Container(
           padding: EdgeInsets.all(10),
           child: StreamBuilder<List<Professional>>(
-              stream: bloc.subject.stream,
+              stream: professionalsBloc.data,
               builder: (context, AsyncSnapshot<List<Professional>> snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(

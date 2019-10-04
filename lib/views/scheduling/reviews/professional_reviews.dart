@@ -9,6 +9,7 @@ import 'package:callma/library/custom_text.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/views/scheduling/reviews/professional_reviews_header.dart';
 import 'package:callma/blocs/reviews_bloc.dart';
+import 'package:provider/provider.dart';
 
 class ProfessionalReviews extends StatelessWidget {
   final Professional _professional;
@@ -25,7 +26,8 @@ class ProfessionalReviews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bloc.getReviews(_professional.id);
+    final reviewsBloc = Provider.of<ReviewsBloc>(context);
+    reviewsBloc.getReviews(_professional.id);
 
     return Scaffold(
         appBar: CustomAppBar(title: "Avaliações"),
@@ -43,9 +45,13 @@ class ProfessionalReviews extends StatelessWidget {
                       CustomText(label: "Avaliações"),
                       SizedBox(height: 20),
                       StreamBuilder<List<Review>>(
-                        stream: bloc.subject.stream,
+                        stream: reviewsBloc.data,
                         builder: (context, AsyncSnapshot<List<Review>> snapshot) {
                           if (snapshot.hasData) {
+                            if (snapshot.data.length == 0) {
+                              return Text("O profissional ainda não foi avaliado.");
+                            }
+
                             return ListView.separated(
                               shrinkWrap: true,
                               physics: ClampingScrollPhysics(),

@@ -12,7 +12,7 @@ class InfoCard extends StatelessWidget {
     var userBloc = Provider.of<LoginBloc>(context);
 
     return StreamBuilder<User>(
-      stream: userBloc.saida,
+      stream: userBloc.result,
       builder: (context, AsyncSnapshot<User> snapshot) {
         if (snapshot.hasData) {
           User user = snapshot.data;
@@ -51,7 +51,7 @@ class InfoCard extends StatelessWidget {
             ),
           );
         } else {
-          return Text("Nada ainda");
+          return Text("Usuário não logado...");
         }
       },
     );

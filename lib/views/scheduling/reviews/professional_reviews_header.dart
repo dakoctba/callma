@@ -6,6 +6,7 @@ import 'package:callma/theme/application_style.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -60,11 +61,12 @@ class ProfessionalReviewssHeader extends StatelessWidget {
     );
   }
 
-  _metrics() {
-    bloc.getSummary(professional.id);
+  _metrics(BuildContext context) {
+    final summaryBloc = Provider.of<SummaryBloc>(context);
+    summaryBloc.getSummary(professional.id);
 
     return StreamBuilder<Summary>(
-      stream: bloc.subject.stream,
+      stream: summaryBloc.data,
       builder: (context, AsyncSnapshot<Summary> snapshot) {
         if (snapshot.hasData) {
           return IntrinsicHeight(
@@ -155,7 +157,7 @@ class ProfessionalReviewssHeader extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            _metrics()
+            _metrics(context)
           ],
         ),
       ),

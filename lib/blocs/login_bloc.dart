@@ -4,17 +4,23 @@ import 'package:rxdart/subjects.dart';
 
 class LoginBloc {
   User _user;
-  User get loggedUser => _user;
+  User get currentUser => _user;
 
-  // 1
   final _controller = new BehaviorSubject<User>();
 
-  // 2
-  Stream<User> get saida => _controller.stream;
+  Stream<User> get result => _controller.stream;
 
-  void login(String user, String password) async {
-    _user = await LoginService.login(user, password);
-    _controller.sink.add(_user);
+  get() {
+    return _user;
+  }
+
+  Future<void> login(String user, String password) async {
+    try {
+      _user = await LoginService.login(user, password);
+      _controller.sink.add(_user);
+    } catch (e) {
+      throw e;
+    }
   }
 
   dispose() {

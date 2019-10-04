@@ -4,18 +4,19 @@ import 'package:callma/models/specialty.dart';
 import 'package:callma/services/specialties_service.dart';
 
 class SpecialtiesBloc {
-  final BehaviorSubject<List<Specialty>> _subject = BehaviorSubject<List<Specialty>>();
-  BehaviorSubject<List<Specialty>> get subject => _subject;
+  List<Specialty> _specialties;
+  List<Specialty> get specialties => _specialties;
+
+  final BehaviorSubject<List<Specialty>> _controller = BehaviorSubject<List<Specialty>>();
+  Stream<List<Specialty>> get data => _controller.stream;
 
   void getSpecialties(int professionId) async {
     List<Specialty> response = await SpecialtiesService.getSpecialties(professionId);
-    _subject.sink.add(response);
+    _controller.sink.add(response);
   }
 
   dispose() {
     print("Chamou o dispose em ${this.runtimeType}");
-    _subject.close();
+    _controller.close();
   }
 }
-
-final bloc = SpecialtiesBloc();

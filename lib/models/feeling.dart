@@ -6,7 +6,7 @@ class Feeling {
 
   Feeling.fromJson(Map<String, dynamic> json) {
     count = json['count'];
-    percent = (json['percent'] as int).toDouble();
+    percent = (json['percent'] as double).toDouble();
   }
 
   Map<String, dynamic> toJson() {

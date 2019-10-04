@@ -5,7 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ProfessionsService {
   static Future<List<Profession>> getProfessions() async {
-    List<Profession> items = new List<Profession>();
+    var items = new List<Profession>();
 
     try {
       Dio dio = await AuthDio.getDio();

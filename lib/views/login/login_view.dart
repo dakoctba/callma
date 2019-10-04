@@ -1,12 +1,12 @@
 import 'package:callma/blocs/login_bloc.dart';
+import 'package:callma/exceptions/callma_exception.dart';
 import 'package:callma/helpers/application_helper.dart';
-import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
-import 'package:callma/views/scheduling/professions/professions_view.dart';
+import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/login/onboarding_view.dart';
+import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
@@ -17,28 +17,19 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> with ApplicationHelper {
   final _formKey = GlobalKey<FormState>();
 
-  static _launchDialogError(BuildContext context, String message) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("Callma"),
-            content: Text(message),
-            actions: <Widget>[
-              FlatButton(
-                child: Text("OK"),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          );
-        });
+  final loginController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  dispose() {
+    super.dispose();
+    loginController.dispose();
+    passwordController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    var bloc = Provider.of<LoginBloc>(context);
+    var userBloc = Provider.of<LoginBloc>(context);
 
     return Scaffold(
       appBar: CustomAppBar(),
@@ -57,7 +48,7 @@ class _LoginViewState extends State<LoginView> with ApplicationHelper {
             TextFormField(
               decoration: InputDecoration(hintText: "E-mail", border: OutlineInputBorder()),
               keyboardType: TextInputType.emailAddress,
-              initialValue: "jackson@setbox.com.br",
+              controller: loginController,
               validator: (email) {
                 if (!ApplicationHelper.isEmailValid(email)) {
                   return "E-mail inválido";
@@ -68,6 +59,7 @@ class _LoginViewState extends State<LoginView> with ApplicationHelper {
             SizedBox(height: 10),
             TextFormField(
               decoration: InputDecoration(hintText: "Senha", border: OutlineInputBorder()),
+              controller: passwordController,
               obscureText: true,
             ),
             SizedBox(height: 10),
@@ -82,10 +74,25 @@ class _LoginViewState extends State<LoginView> with ApplicationHelper {
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     try {
-                      bloc.login("jackson@setbox.com.br", "12345678");
+                      await userBloc.login(loginController.text, passwordController.text);
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
-                    } catch (e) {
-                      print(e);
+                    } on CallmaException catch (e) {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text("Callma"),
+                              content: Text(e.cause),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                )
+                              ],
+                            );
+                          });
                     }
 
                     // try {

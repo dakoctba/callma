@@ -4,18 +4,19 @@ import 'package:callma/models/appointment.dart';
 import 'package:callma/services/appointments_service.dart';
 
 class AppointmentsBloc {
-  final BehaviorSubject<List<Appointment>> _subject = BehaviorSubject<List<Appointment>>();
-  BehaviorSubject<List<Appointment>> get subject => _subject;
+  List<Appointment> _appointments;
+  List<Appointment> get appointments => _appointments;
+
+  final _controller = BehaviorSubject<List<Appointment>>();
+  Stream<List<Appointment>> get data => _controller.stream;
 
   void getAppointments() async {
     List<Appointment> response = await AppointmentsService.getAppointments();
-    _subject.sink.add(response);
+    _controller.sink.add(response);
   }
 
   dispose() {
     print("Chamou o dispose em ${this.runtimeType}");
-    _subject.close();
+    _controller.close();
   }
 }
-
-final bloc = AppointmentsBloc();
