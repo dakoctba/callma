@@ -20,7 +20,7 @@ class ProfessionalDetailsCalendar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                CustomText(label: "Agendamento"),
+                CustomText(label: "Escolha uma data"),
                 SizedBox(height: 20),
                 DatePickerTimeline(
                   DateTime.now(),

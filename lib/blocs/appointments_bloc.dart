@@ -15,6 +15,10 @@ class AppointmentsBloc {
     _controller.sink.add(response);
   }
 
+  Future<void> save(Map<String, dynamic> params) async {
+    await AppointmentsService.save(params);
+  }
+
   dispose() {
     print("Chamou o dispose em ${this.runtimeType}");
     _controller.close();

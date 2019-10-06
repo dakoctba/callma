@@ -1,4 +1,6 @@
 import 'package:callma/helpers/application_helper.dart';
+import 'package:callma/models/address.dart';
+import 'package:callma/models/clinic.dart';
 import 'package:callma/models/professional.dart';
 
 class Appointment {
@@ -12,6 +14,8 @@ class Appointment {
   double price;
   String status;
   String createdAt;
+  Clinic clinic;
+  Address address;
   Professional professional;
 
   Appointment(
@@ -25,6 +29,8 @@ class Appointment {
       this.price,
       this.status,
       this.createdAt,
+      this.clinic,
+      this.address,
       this.professional});
 
   Appointment.fromJson(Map<String, dynamic> json) {
@@ -38,6 +44,8 @@ class Appointment {
     price = json['price'];
     status = json['status'];
     createdAt = json['created_at'];
+    clinic = json['clinic'] != null ? new Clinic.fromJson(json['clinic']) : null;
+    address = json['address'] != null ? new Address.fromJson(json['address']) : null;
     professional = json['professional'] != null ? new Professional.fromJson(json['professional']) : null;
   }
 
@@ -53,6 +61,12 @@ class Appointment {
     data['price'] = this.price;
     data['status'] = this.status;
     data['created_at'] = this.createdAt;
+    if (this.clinic != null) {
+      data['clinic'] = this.clinic.toJson();
+    }
+    if (this.address != null) {
+      data['address'] = this.address.toJson();
+    }
     if (this.professional != null) {
       data['professional'] = this.professional.toJson();
     }

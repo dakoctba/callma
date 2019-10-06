@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:callma/models/login.dart';
 
-class LoginService {
+class UserService {
   static Future<User> login(String user, String password) async {
     Login login = Login(user, password);
 
@@ -22,7 +22,12 @@ class LoginService {
       //
       // Se passou do login, busca os dados do usuário
       //
-      User result = await LoginService.getUser(response.data['id']);
+      User result = await UserService._getUser(response.data['id']);
+
+      if (result != null && result.userType == 'professional') {
+        throw CallmaException("Para o seu perfil de usuário, favor utilizar o aplicativo 'Callma Professional'");
+      }
+
       return result;
     } on DioError catch (e) {
       //
@@ -30,25 +35,25 @@ class LoginService {
       // that falls out of the range of 2xx and is also not 304.
       //
       if (e.response != null) {
-        // print(e.response.statusCode);
-        // print(e.response.data);
-        // print(e.response.headers);
-        // print(e.response.request);
+        print(e.response.statusCode);
+        print(e.response.data);
+        print(e.response.headers);
+        print(e.response.request);
 
         throw new CallmaException(e.response.data["error"]);
       } else {
         //
         // Something happened in setting up or sending the request that triggered an Error
         //
-        // print(e.request);
-        // print(e.message);
+        print(e.request);
+        print(e.message);
 
         throw new CallmaException(e.message);
       }
     }
   }
 
-  static Future<User> getUser(dynamic userId) async {
+  static Future<User> _getUser(dynamic userId) async {
     try {
       Dio dio = await AuthDio.getDio();
 

@@ -5,15 +5,17 @@ class User {
   int id;
   String email;
   String password;
+  String userType;
   String createdAt;
   List<Profile> profiles;
   List<Address> addresses;
 
-  User({this.id, this.email, this.createdAt, this.profiles, this.addresses});
+  User({this.id, this.email, this.userType, this.createdAt, this.profiles, this.addresses});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     email = json['email'];
+    userType = json['user_type'];
     createdAt = json['created_at'];
     if (json['profiles'] != null) {
       profiles = new List<Profile>();
@@ -33,6 +35,7 @@ class User {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['email'] = this.email;
+    data['user_type'] = this.userType;
     data['created_at'] = this.createdAt;
     if (this.profiles != null) {
       data['profiles'] = this.profiles.map((v) => v.toJson()).toList();

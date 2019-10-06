@@ -1,3 +1,4 @@
+import 'package:callma/blocs/appointments_bloc.dart';
 import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
@@ -5,12 +6,14 @@ import 'package:callma/library/custom_button.dart';
 import 'package:callma/library/custom_text.dart';
 import 'package:callma/library/status_view.dart';
 import 'package:callma/models/professional.dart';
+import 'package:callma/store/ApplicationStore.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/scheduling/details/professional_details_address.dart';
 import 'package:callma/views/scheduling/details/professional_details_header.dart';
 import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class ConfirmationView extends StatelessWidget {
   final Professional _professional;
@@ -172,6 +175,29 @@ class ConfirmationView extends StatelessWidget {
     );
   }
 
+  _save(BuildContext context) async {
+    final appointmentsBloc = Provider.of<AppointmentsBloc>(context);
+    final applicationStore = Provider.of<ApplicationStore>(context);
+
+    //
+    // Saving...
+    //
+    Map<String, dynamic> params = new Map<String, dynamic>();
+
+    params['professional_id'] = 1;
+    params['profile_id'] = applicationStore.user.profiles[0].id;
+    params['receipt'] = false;
+    params['payment_status'] = 'confirmed';
+    params['notes'] = 'Salvo pelo flutter';
+    params['status'] = 'scheduled';
+    params['schedule'] = ApplicationHelper.formatDateToBd(DateTime.now());
+    params['address_id'] = 52;
+    params['price'] = 145.0;
+    params['clinic_id'] = 140;
+
+    await appointmentsBloc.save(params);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -191,13 +217,19 @@ class ConfirmationView extends StatelessWidget {
               SizedBox(height: 30),
               CustomButton(
                   label: "Agendar consulta",
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            StatusView("Consulta agendada com sucesso", true, "Voltar para tela inicial", () {
-                              Navigator.of(context)
-                                  .pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsView()));
-                            })));
+                  onPressed: () async {
+                    try {
+                      _save(context);
+
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              StatusView("Consulta agendada com sucesso", true, "Voltar para tela inicial", () {
+                                Navigator.of(context)
+                                    .pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsView()));
+                              })));
+                    } catch (e) {
+                      print(e);
+                    }
                   })
             ])));
   }

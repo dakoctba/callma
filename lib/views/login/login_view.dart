@@ -1,36 +1,53 @@
-import 'package:callma/blocs/login_bloc.dart';
+import 'package:callma/blocs/user_bloc.dart';
 import 'package:callma/exceptions/callma_exception.dart';
 import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
+import 'package:callma/models/user.dart';
+import 'package:callma/store/ApplicationStore.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/login/onboarding_view.dart';
 import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LoginView extends StatefulWidget {
-  @override
-  _LoginViewState createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> with ApplicationHelper {
+class LoginView extends StatelessWidget with ApplicationHelper {
   final _formKey = GlobalKey<FormState>();
 
   final loginController = TextEditingController();
   final passwordController = TextEditingController();
 
-  @override
-  dispose() {
-    super.dispose();
-    loginController.dispose();
-    passwordController.dispose();
+  _login(BuildContext context) async {
+    var userBloc = Provider.of<UserBloc>(context);
+    var applicationStore = Provider.of<ApplicationStore>(context);
+
+    try {
+      User user = await userBloc.login(loginController.text, passwordController.text);
+      applicationStore.user = user;
+
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
+    } on CallmaException catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Callma"),
+              content: Text(e.cause),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            );
+          });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    var userBloc = Provider.of<LoginBloc>(context);
-
     return Scaffold(
       appBar: CustomAppBar(),
       body: Form(
@@ -73,34 +90,7 @@ class _LoginViewState extends State<LoginView> with ApplicationHelper {
                 label: "Entrar",
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
-                    try {
-                      await userBloc.login(loginController.text, passwordController.text);
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
-                    } on CallmaException catch (e) {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: Text("Callma"),
-                              content: Text(e.cause),
-                              actions: <Widget>[
-                                FlatButton(
-                                  child: Text("OK"),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                )
-                              ],
-                            );
-                          });
-                    }
-
-                    // try {
-                    //   await LoginService.login("jackson@setbox.com.br", "12345678");
-                    //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
-                    // } on CallmaException catch (e) {
-                    //   _launchDialogError(context, e.cause);
-                    // }
+                    _login(context);
                   }
                 }),
             GestureDetector(
