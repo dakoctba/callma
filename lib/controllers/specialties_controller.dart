@@ -3,12 +3,12 @@ import 'package:rxdart/rxdart.dart';
 import 'package:callma/models/specialty.dart';
 import 'package:callma/services/specialties_service.dart';
 
-class SpecialtiesBloc {
+class SpecialtiesController {
   List<Specialty> _specialties;
   List<Specialty> get specialties => _specialties;
 
   final BehaviorSubject<List<Specialty>> _controller = BehaviorSubject<List<Specialty>>();
-  Stream<List<Specialty>> get data => _controller.stream;
+  Stream<List<Specialty>> get stream => _controller.stream;
 
   void getSpecialties(int professionId) async {
     List<Specialty> response = await SpecialtiesService.getSpecialties(professionId);

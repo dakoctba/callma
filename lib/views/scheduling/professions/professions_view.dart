@@ -1,4 +1,4 @@
-import 'package:callma/blocs/professions_bloc.dart';
+import 'package:callma/controllers/professions_controller.dart';
 import 'package:callma/models/profession.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/scheduling/professions/profession_tile.dart';
@@ -19,8 +19,8 @@ class ProfessionsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final professionsBloc = Provider.of<ProfessionsBloc>(context);
-    professionsBloc.getProfessions();
+    final professionsController = Provider.of<ProfessionsController>(context);
+    professionsController.getProfessions();
 
     return Scaffold(
         appBar: CustomAppBar(title: "Profissional"),
@@ -29,7 +29,7 @@ class ProfessionsView extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: StreamBuilder<List<Profession>>(
-                stream: professionsBloc.data,
+                stream: professionsController.stream,
                 initialData: [],
                 builder: (context, AsyncSnapshot<List<Profession>> snapshot) {
                   if (snapshot.hasData) {

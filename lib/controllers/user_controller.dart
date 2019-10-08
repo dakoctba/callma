@@ -1,17 +1,14 @@
 import 'package:callma/models/user.dart';
-import 'package:callma/services/user_service.dart';
+import 'package:callma/services/users_service.dart';
 import 'package:rxdart/subjects.dart';
 
-class UserBloc {
-  // User _user;
-  // User get currentUser => _user;
-
+class UsersController {
   final _controller = new BehaviorSubject<User>();
-  Stream<User> get result => _controller.stream;
+  Stream<User> get stream => _controller.stream;
 
   Future<User> login(String email, String password) async {
     try {
-      User user = await UserService.login(email, password);
+      User user = await UsersService.login(email, password);
       _controller.sink.add(user);
 
       return user;

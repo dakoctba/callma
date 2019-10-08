@@ -1,9 +1,10 @@
-import 'package:callma/helpers/application_helper.dart';
+import 'package:farm/helpers.dart';
+
 import 'package:callma/models/address.dart';
 import 'package:callma/models/clinic.dart';
 import 'package:callma/models/professional.dart';
 
-class Appointment {
+class Appointment with DateHelper {
   int id;
   int professionalId;
   int profileId;
@@ -37,7 +38,7 @@ class Appointment {
     id = json['id'];
     professionalId = json['professional_id'];
     profileId = json['profile_id'];
-    schedule = ApplicationHelper.buildDate(json['schedule']);
+    schedule = buildDate(json['schedule']);
     paymentStatus = json['payment_status'];
     notes = json['notes'];
     receipt = json['receipt'];

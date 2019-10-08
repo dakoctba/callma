@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:callma/models/login.dart';
 
-class UserService {
+class UsersService {
   static Future<User> login(String user, String password) async {
     Login login = Login(user, password);
 
@@ -22,7 +22,7 @@ class UserService {
       //
       // Se passou do login, busca os dados do usuário
       //
-      User result = await UserService._getUser(response.data['id']);
+      User result = await UsersService._getUser(response.data['id']);
 
       if (result != null && result.userType == 'professional') {
         throw CallmaException("Para o seu perfil de usuário, favor utilizar o aplicativo 'Callma Professional'");

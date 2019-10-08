@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:callma/blocs/summary_bloc.dart';
+import 'package:callma/controllers/summary_controller.dart';
 
 class ProfessionalReviewssHeader extends StatelessWidget {
   final Professional professional;
@@ -62,11 +62,11 @@ class ProfessionalReviewssHeader extends StatelessWidget {
   }
 
   _metrics(BuildContext context) {
-    final summaryBloc = Provider.of<SummaryBloc>(context);
-    summaryBloc.getSummary(professional.id);
+    final summariesController = Provider.of<SummariesController>(context);
+    summariesController.getSummary(professional.id);
 
     return StreamBuilder<Summary>(
-      stream: summaryBloc.data,
+      stream: summariesController.stream,
       builder: (context, AsyncSnapshot<Summary> snapshot) {
         if (snapshot.hasData) {
           return IntrinsicHeight(

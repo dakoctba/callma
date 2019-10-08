@@ -1,4 +1,4 @@
-import 'package:callma/blocs/specialties_bloc.dart';
+import 'package:callma/controllers/specialties_controller.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
@@ -21,8 +21,8 @@ class SpecialtiesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final specialtiesBloc = Provider.of<SpecialtiesBloc>(context);
-    specialtiesBloc.getSpecialties(professionId);
+    final specialtiesController = Provider.of<SpecialtiesController>(context);
+    specialtiesController.getSpecialties(professionId);
 
     return Scaffold(
         appBar: CustomAppBar(title: "Especialidade"),
@@ -30,7 +30,7 @@ class SpecialtiesView extends StatelessWidget {
         body: Column(children: <Widget>[
           Expanded(
               child: StreamBuilder<List<Specialty>>(
-                  stream: specialtiesBloc.data,
+                  stream: specialtiesController.stream,
                   builder: (context, AsyncSnapshot<List<Specialty>> snapshot) {
                     if (snapshot.hasData) {
                       return ListView.separated(

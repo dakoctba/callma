@@ -1,17 +1,16 @@
-import 'package:callma/blocs/appointments_bloc.dart';
-import 'package:callma/helpers/application_helper.dart';
+import 'package:callma/controllers/appointments_controller.dart';
 import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/library/badge.dart';
+import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/appointment.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/appointments/details/appointment_details_view.dart';
+import 'package:farm/helpers.dart';
 import 'package:flutter/material.dart';
-
-import 'package:callma/library/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 
-class AppointmentsView extends StatelessWidget {
+class AppointmentsView extends StatelessWidget with DateHelper {
   Widget _buildLoadingWidget() {
     return Center(
         child: Column(
@@ -48,7 +47,7 @@ class AppointmentsView extends StatelessWidget {
                   Row(children: <Widget>[
                     Icon(Icons.calendar_today, size: 16, color: ApplicationStyle.PRIMARY_GREEN),
                     SizedBox(width: 10),
-                    Expanded(child: Text(ApplicationHelper.formatDate(appointment.schedule)))
+                    Expanded(child: Text(formatDate(appointment.schedule)))
                   ]),
                   SizedBox(height: 5),
                   Row(children: <Widget>[
@@ -77,8 +76,8 @@ class AppointmentsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appointmentsBloc = Provider.of<AppointmentsBloc>(context);
-    appointmentsBloc.getAppointments();
+    final appointmentsController = Provider.of<AppointmentsController>(context);
+    appointmentsController.getAppointments();
 
     return Scaffold(
         appBar: CustomAppBar(title: "Minhas consultas"),
@@ -86,7 +85,7 @@ class AppointmentsView extends StatelessWidget {
         body: Container(
             padding: EdgeInsets.all(10),
             child: StreamBuilder<List<Appointment>>(
-              stream: appointmentsBloc.data,
+              stream: appointmentsController.stream,
               builder: (context, AsyncSnapshot<List<Appointment>> snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(

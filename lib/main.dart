@@ -1,20 +1,22 @@
-import 'package:callma/blocs/appointments_bloc.dart';
-import 'package:callma/blocs/user_bloc.dart';
-import 'package:callma/blocs/professionals_bloc.dart';
-import 'package:callma/blocs/professions_bloc.dart';
-import 'package:callma/blocs/reviews_bloc.dart';
-import 'package:callma/blocs/specialties_bloc.dart';
-import 'package:callma/blocs/summary_bloc.dart';
-import 'package:callma/store/ApplicationStore.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/login/login_view.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-Future main() async {
-  await DotEnv().load('.env');
+import 'package:callma/controllers/appointments_controller.dart';
+import 'package:callma/controllers/professionals_controller.dart';
+import 'package:callma/controllers/professions_controller.dart';
+import 'package:callma/controllers/reviews_controller.dart';
+import 'package:callma/controllers/specialties_controller.dart';
+import 'package:callma/controllers/summary_controller.dart';
+import 'package:callma/controllers/user_controller.dart';
+import 'package:callma/store/ApplicationStore.dart';
+import 'package:callma/theme/application_style.dart';
+import 'package:callma/views/login/login_view.dart';
+
+import 'package:callma/config/initializers/application_initializer.dart';
+
+Future<void> main() async {
+  await ApplicationInitializer.initialize();
   runApp(Application());
 }
 
@@ -24,17 +26,17 @@ class Application extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<ApplicationStore>.value(value: ApplicationStore()),
-        Provider<AppointmentsBloc>.value(value: AppointmentsBloc()),
-        Provider<UserBloc>.value(value: UserBloc()),
-        Provider<ProfessionalsBloc>.value(value: ProfessionalsBloc()),
-        Provider<ProfessionsBloc>.value(value: ProfessionsBloc()),
-        Provider<ReviewsBloc>.value(value: ReviewsBloc()),
-        Provider<SpecialtiesBloc>.value(value: SpecialtiesBloc()),
-        Provider<SummaryBloc>.value(value: SummaryBloc())
+        Provider<AppointmentsController>.value(value: AppointmentsController()),
+        Provider<ProfessionalsController>.value(value: ProfessionalsController()),
+        Provider<ProfessionsController>.value(value: ProfessionsController()),
+        Provider<ReviewsController>.value(value: ReviewsController()),
+        Provider<SpecialtiesController>.value(value: SpecialtiesController()),
+        Provider<SummariesController>.value(value: SummariesController()),
+        Provider<UsersController>.value(value: UsersController()),
       ],
       child: MaterialApp(
           title: 'Callma',
-          debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: DotEnv().env['ENVIRONMENT'] != "production",
           theme: ThemeData(
               inputDecorationTheme: InputDecorationTheme(
                   enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: ApplicationStyle.SECONDARY_GREEN)))),

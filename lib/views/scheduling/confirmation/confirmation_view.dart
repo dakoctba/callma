@@ -1,5 +1,4 @@
-import 'package:callma/blocs/appointments_bloc.dart';
-import 'package:callma/helpers/application_helper.dart';
+import 'package:callma/controllers/appointments_controller.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/library/custom_button.dart';
@@ -11,11 +10,12 @@ import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/scheduling/details/professional_details_address.dart';
 import 'package:callma/views/scheduling/details/professional_details_header.dart';
 import 'package:callma/views/scheduling/professions/professions_view.dart';
+import 'package:farm/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-class ConfirmationView extends StatelessWidget {
+class ConfirmationView extends StatelessWidget with DateHelper {
   final Professional _professional;
   final DateTime _visitDate;
 
@@ -34,7 +34,7 @@ class ConfirmationView extends StatelessWidget {
                 Expanded(
                   child: CustomText(label: "Data da consulta"),
                 ),
-                Text(ApplicationHelper.formatDate(_visitDate))
+                Text(formatDate(_visitDate))
               ],
             ),
             SizedBox(height: 20),
@@ -43,7 +43,7 @@ class ConfirmationView extends StatelessWidget {
                 Expanded(
                   child: CustomText(label: "Horário da consulta"),
                 ),
-                Text(ApplicationHelper.formatDate(_visitDate))
+                Text(formatDate(_visitDate))
               ],
             ),
           ],
@@ -176,7 +176,7 @@ class ConfirmationView extends StatelessWidget {
   }
 
   _save(BuildContext context) async {
-    final appointmentsBloc = Provider.of<AppointmentsBloc>(context);
+    final appointmentsController = Provider.of<AppointmentsController>(context);
     final applicationStore = Provider.of<ApplicationStore>(context);
 
     //
@@ -190,12 +190,12 @@ class ConfirmationView extends StatelessWidget {
     params['payment_status'] = 'confirmed';
     params['notes'] = 'Salvo pelo flutter';
     params['status'] = 'scheduled';
-    params['schedule'] = ApplicationHelper.formatDateToBd(DateTime.now());
+    params['schedule'] = formatDateToBd(DateTime.now());
     params['address_id'] = 52;
     params['price'] = 145.0;
     params['clinic_id'] = 140;
 
-    await appointmentsBloc.save(params);
+    await appointmentsController.save(params);
   }
 
   @override

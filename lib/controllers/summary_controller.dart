@@ -3,9 +3,9 @@ import 'package:rxdart/rxdart.dart';
 
 import 'package:callma/services/summaries_service.dart';
 
-class SummaryBloc {
+class SummariesController {
   final BehaviorSubject<Summary> _controller = BehaviorSubject<Summary>();
-  Stream<Summary> get data => _controller.stream;
+  Stream<Summary> get stream => _controller.stream;
 
   void getSummary(int professionalId) async {
     Summary response = await SummariesService.getSummaries(professionalId);
@@ -17,5 +17,3 @@ class SummaryBloc {
     _controller.close();
   }
 }
-
-final bloc = SummaryBloc();

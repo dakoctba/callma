@@ -3,9 +3,9 @@ import 'package:rxdart/rxdart.dart';
 import 'package:callma/models/review.dart';
 import 'package:callma/services/reviews_service.dart';
 
-class ReviewsBloc {
+class ReviewsController {
   final BehaviorSubject<List<Review>> _controller = BehaviorSubject<List<Review>>();
-  Stream<List<Review>> get data => _controller.stream;
+  Stream<List<Review>> get stream => _controller.stream;
 
   void getReviews(int professionalId) async {
     List<Review> response = await ReviewsService.getReviews(professionalId);

@@ -1,12 +1,12 @@
-import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/profile.dart';
 import 'package:callma/models/review.dart';
 import 'package:callma/theme/application_style.dart';
+import 'package:farm/helpers/date_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-class ReviewCard extends StatelessWidget {
+class ReviewCard extends StatelessWidget with DateHelper {
   final Review _review;
 
   ReviewCard(this._review);
@@ -43,7 +43,7 @@ class ReviewCard extends StatelessWidget {
                   borderColor: ApplicationStyle.SECONDARY_GREY,
                   spacing: 1.0),
               SizedBox(width: 10),
-              Text(ApplicationHelper.formatStringDateWithHours(_review.createdAt))
+              Text(formatStringDateWithHours(_review.createdAt))
             ],
           ),
           SizedBox(height: 10),

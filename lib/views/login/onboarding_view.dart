@@ -1,3 +1,4 @@
+import 'package:callma/helpers/users_helper.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
 import 'package:callma/library/status_view.dart';
@@ -10,7 +11,7 @@ class OnboardingView extends StatefulWidget with ApplicationHelper {
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingView> {
+class _OnboardingScreenState extends State<OnboardingView> with UsersHelper {
   final _formKey = GlobalKey<FormState>();
   bool isChecked = false;
 
@@ -42,7 +43,7 @@ class _OnboardingScreenState extends State<OnboardingView> {
                   decoration: InputDecoration(hintText: "E-mail", border: OutlineInputBorder()),
                   keyboardType: TextInputType.emailAddress,
                   validator: (email) {
-                    if (!ApplicationHelper.isEmailValid(email)) {
+                    if (!isEmailValid(email)) {
                       return "E-mail inválido";
                     }
                     return null;

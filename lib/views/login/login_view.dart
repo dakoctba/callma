@@ -1,6 +1,6 @@
-import 'package:callma/blocs/user_bloc.dart';
+import 'package:callma/controllers/user_controller.dart';
 import 'package:callma/exceptions/callma_exception.dart';
-import 'package:callma/helpers/application_helper.dart';
+import 'package:callma/helpers/users_helper.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
 import 'package:callma/models/user.dart';
@@ -11,18 +11,18 @@ import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LoginView extends StatelessWidget with ApplicationHelper {
+class LoginView extends StatelessWidget with UsersHelper {
   final _formKey = GlobalKey<FormState>();
 
   final loginController = TextEditingController();
   final passwordController = TextEditingController();
 
   _login(BuildContext context) async {
-    var userBloc = Provider.of<UserBloc>(context);
+    var usersController = Provider.of<UsersController>(context);
     var applicationStore = Provider.of<ApplicationStore>(context);
 
     try {
-      User user = await userBloc.login(loginController.text, passwordController.text);
+      User user = await usersController.login(loginController.text, passwordController.text);
       applicationStore.user = user;
 
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
@@ -67,7 +67,7 @@ class LoginView extends StatelessWidget with ApplicationHelper {
               keyboardType: TextInputType.emailAddress,
               controller: loginController,
               validator: (email) {
-                if (!ApplicationHelper.isEmailValid(email)) {
+                if (!isEmailValid(email)) {
                   return "E-mail inválido";
                 }
                 return null;

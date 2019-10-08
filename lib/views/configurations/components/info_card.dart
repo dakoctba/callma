@@ -1,4 +1,4 @@
-import 'package:callma/blocs/user_bloc.dart';
+import 'package:callma/controllers/user_controller.dart';
 import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/profile.dart';
 import 'package:callma/models/user.dart';
@@ -9,10 +9,10 @@ import 'package:provider/provider.dart';
 class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var userBloc = Provider.of<UserBloc>(context);
+    var userController = Provider.of<UsersController>(context);
 
     return StreamBuilder<User>(
-      stream: userBloc.result,
+      stream: userController.stream,
       builder: (context, AsyncSnapshot<User> snapshot) {
         if (snapshot.hasData) {
           User user = snapshot.data;

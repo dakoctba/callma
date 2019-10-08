@@ -8,7 +8,7 @@ import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/library/custom_text.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/views/scheduling/reviews/professional_reviews_header.dart';
-import 'package:callma/blocs/reviews_bloc.dart';
+import 'package:callma/controllers/reviews_controller.dart';
 import 'package:provider/provider.dart';
 
 class ProfessionalReviews extends StatelessWidget {
@@ -26,8 +26,8 @@ class ProfessionalReviews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final reviewsBloc = Provider.of<ReviewsBloc>(context);
-    reviewsBloc.getReviews(_professional.id);
+    final reviewsController = Provider.of<ReviewsController>(context);
+    reviewsController.getReviews(_professional.id);
 
     return Scaffold(
         appBar: CustomAppBar(title: "Avaliações"),
@@ -45,7 +45,7 @@ class ProfessionalReviews extends StatelessWidget {
                       CustomText(label: "Avaliações"),
                       SizedBox(height: 20),
                       StreamBuilder<List<Review>>(
-                        stream: reviewsBloc.data,
+                        stream: reviewsController.stream,
                         builder: (context, AsyncSnapshot<List<Review>> snapshot) {
                           if (snapshot.hasData) {
                             if (snapshot.data.length == 0) {
