@@ -11,22 +11,46 @@ import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LoginView extends StatelessWidget with UsersHelper {
+class LoginView extends StatefulWidget {
+  @override
+  _LoginViewState createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> with UsersHelper {
   final _formKey = GlobalKey<FormState>();
+  bool isLoading = false;
 
   final loginController = TextEditingController();
   final passwordController = TextEditingController();
+
+  Widget _buildLoadingWidget() {
+    return Material(
+      child: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Text("Por favor, aguarde..."), SizedBox(height: 10), CircularProgressIndicator()],
+      )),
+    );
+  }
 
   _login(BuildContext context) async {
     var usersController = Provider.of<UsersController>(context);
     var applicationStore = Provider.of<ApplicationStore>(context);
 
     try {
+      setState(() {
+        isLoading = true;
+      });
+
       User user = await usersController.login(loginController.text, passwordController.text);
       applicationStore.user = user;
 
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
     } on CallmaException catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+
       showDialog(
           context: context,
           builder: (context) {
@@ -50,64 +74,66 @@ class LoginView extends StatelessWidget with UsersHelper {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          padding: EdgeInsets.all(13),
-          children: <Widget>[
-            Padding(
-                padding: EdgeInsets.symmetric(vertical: 40),
-                child: Text(
-                  "Login",
-                  style: TextStyle(fontSize: 24),
-                  textAlign: TextAlign.center,
-                )),
-            TextFormField(
-              decoration: InputDecoration(hintText: "E-mail", border: OutlineInputBorder()),
-              keyboardType: TextInputType.emailAddress,
-              controller: loginController,
-              validator: (email) {
-                if (!isEmailValid(email)) {
-                  return "E-mail inválido";
-                }
-                return null;
-              },
+      body: isLoading
+          ? _buildLoadingWidget()
+          : Form(
+              key: _formKey,
+              child: ListView(
+                padding: EdgeInsets.all(13),
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 40),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(fontSize: 24),
+                        textAlign: TextAlign.center,
+                      )),
+                  TextFormField(
+                    decoration: InputDecoration(hintText: "E-mail", border: OutlineInputBorder()),
+                    keyboardType: TextInputType.emailAddress,
+                    controller: loginController,
+                    validator: (email) {
+                      if (!isEmailValid(email)) {
+                        return "E-mail inválido";
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    decoration: InputDecoration(hintText: "Senha", border: OutlineInputBorder()),
+                    controller: passwordController,
+                    obscureText: true,
+                  ),
+                  SizedBox(height: 10),
+                  GestureDetector(
+                    child: Text("Esqueceu sua senha?", style: TextStyle(color: ApplicationStyle.SECONDARY_GREEN)),
+                    onTap: () {
+                      debugPrint("Esqueci minha senha...");
+                    },
+                  ),
+                  CustomButton(
+                      label: "Entrar",
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          _login(context);
+                        }
+                      }),
+                  GestureDetector(
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+                        Text("Não possui uma conta? ",
+                            style: TextStyle(fontSize: 12, color: ApplicationStyle.SECONDARY_GREEN)),
+                        Text("Cadastre-se",
+                            style: TextStyle(
+                                fontSize: 12, color: ApplicationStyle.SECONDARY_GREEN, fontWeight: FontWeight.bold))
+                      ]),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => OnboardingView()));
+                      }),
+                  SizedBox(height: 20)
+                ],
+              ),
             ),
-            SizedBox(height: 10),
-            TextFormField(
-              decoration: InputDecoration(hintText: "Senha", border: OutlineInputBorder()),
-              controller: passwordController,
-              obscureText: true,
-            ),
-            SizedBox(height: 10),
-            GestureDetector(
-              child: Text("Esqueceu sua senha?", style: TextStyle(color: ApplicationStyle.SECONDARY_GREEN)),
-              onTap: () {
-                debugPrint("Esqueci minha senha...");
-              },
-            ),
-            CustomButton(
-                label: "Entrar",
-                onPressed: () async {
-                  if (_formKey.currentState.validate()) {
-                    _login(context);
-                  }
-                }),
-            GestureDetector(
-                child: Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-                  Text("Não possui uma conta? ",
-                      style: TextStyle(fontSize: 12, color: ApplicationStyle.SECONDARY_GREEN)),
-                  Text("Cadastre-se",
-                      style:
-                          TextStyle(fontSize: 12, color: ApplicationStyle.SECONDARY_GREEN, fontWeight: FontWeight.bold))
-                ]),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => OnboardingView()));
-                }),
-            SizedBox(height: 20)
-          ],
-        ),
-      ),
     );
   }
 }
