@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SummariesService {
-  static Future<Summary> getSummaries(int professionalId) async {
+  static Future<Summary> getSummary(int professionalId) async {
     try {
       Dio dio = await AuthDio.getDio();
 

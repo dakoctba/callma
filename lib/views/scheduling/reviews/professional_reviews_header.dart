@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:callma/controllers/summary_controller.dart';
+import 'package:callma/controllers/summaries_controller.dart';
 
 class ProfessionalReviewssHeader extends StatelessWidget {
   final Professional professional;

@@ -1,10 +1,10 @@
-import 'package:callma/controllers/user_controller.dart';
+import 'package:callma/controllers/appointments_controller.dart';
+import 'package:callma/controllers/users_controller.dart';
 import 'package:callma/exceptions/callma_exception.dart';
 import 'package:callma/helpers/users_helper.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
 import 'package:callma/models/user.dart';
-import 'package:callma/store/ApplicationStore.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/login/onboarding_view.dart';
 import 'package:callma/views/scheduling/professions/professions_view.dart';
@@ -35,7 +35,7 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
 
   _login(BuildContext context) async {
     var usersController = Provider.of<UsersController>(context);
-    var applicationStore = Provider.of<ApplicationStore>(context);
+    final appointmentsController = Provider.of<AppointmentsController>(context);
 
     try {
       setState(() {
@@ -43,7 +43,7 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
       });
 
       User user = await usersController.login(loginController.text, passwordController.text);
-      applicationStore.user = user;
+      appointmentsController.setUser(user);
 
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
     } on CallmaException catch (e) {
@@ -72,11 +72,11 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(),
-      body: isLoading
-          ? _buildLoadingWidget()
-          : Form(
+    return isLoading
+        ? _buildLoadingWidget()
+        : Scaffold(
+            appBar: CustomAppBar(),
+            body: Form(
               key: _formKey,
               child: ListView(
                 padding: EdgeInsets.all(13),
@@ -134,6 +134,6 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
                 ],
               ),
             ),
-    );
+          );
   }
 }

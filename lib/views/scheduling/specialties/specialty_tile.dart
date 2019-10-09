@@ -11,7 +11,6 @@ class SpecialtyTile extends ListTile {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading: const Icon(Icons.fiber_manual_record, color: ApplicationStyle.SECONDARY_GREEN),
         title: Text(specialty.title),
         subtitle: specialty.subtitle != null ? Text(specialty.subtitle) : null,
         trailing: const Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),

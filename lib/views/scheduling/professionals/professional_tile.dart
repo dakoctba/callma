@@ -1,10 +1,11 @@
+import 'package:callma/controllers/appointments_controller.dart';
 import 'package:callma/helpers/professionals_helper.dart';
-import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
-
 import 'package:callma/models/professional.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/scheduling/details/professional_details_view.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class ProfessionalTile extends ListTile {
   final Professional professional;
@@ -13,6 +14,8 @@ class ProfessionalTile extends ListTile {
 
   @override
   Widget build(BuildContext context) {
+    var appointmentsController = Provider.of<AppointmentsController>(context);
+
     return InkWell(
         child: Card(
           child: Container(
@@ -57,6 +60,7 @@ class ProfessionalTile extends ListTile {
               )),
         ),
         onTap: () {
+          appointmentsController.setProfessional(professional);
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalDetailsView(professional)));
         });
   }

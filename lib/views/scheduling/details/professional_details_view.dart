@@ -22,10 +22,10 @@ class ProfessionalDetailsView extends StatelessWidget {
         body: Container(
             padding: EdgeInsets.all(10),
             child: ListView(children: <Widget>[
-              ProfessionalDetailsHeader(_professional),
+              ProfessionalDetailsHeader(),
               ProfessionalDetailsSpecialties(_professional),
-              ProfessionalDetailsAddress(_professional.clinics),
-              ProfessionalDetailsCalendar(_professional)
+              ProfessionalDetailsAddress(),
+              ProfessionalDetailsCalendar()
             ])));
   }
 }

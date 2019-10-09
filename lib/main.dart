@@ -1,19 +1,16 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
+import 'package:callma/config/initializers/application_initializer.dart';
 import 'package:callma/controllers/appointments_controller.dart';
 import 'package:callma/controllers/professionals_controller.dart';
 import 'package:callma/controllers/professions_controller.dart';
 import 'package:callma/controllers/reviews_controller.dart';
 import 'package:callma/controllers/specialties_controller.dart';
-import 'package:callma/controllers/summary_controller.dart';
-import 'package:callma/controllers/user_controller.dart';
-import 'package:callma/store/ApplicationStore.dart';
+import 'package:callma/controllers/summaries_controller.dart';
+import 'package:callma/controllers/users_controller.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/login/login_view.dart';
-
-import 'package:callma/config/initializers/application_initializer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   await ApplicationInitializer.initialize();
@@ -25,7 +22,6 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<ApplicationStore>.value(value: ApplicationStore()),
         Provider<AppointmentsController>.value(value: AppointmentsController()),
         Provider<ProfessionalsController>.value(value: ProfessionalsController()),
         Provider<ProfessionsController>.value(value: ProfessionsController()),

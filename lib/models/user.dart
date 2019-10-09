@@ -6,6 +6,13 @@ class User {
   String email;
   String password;
   String userType;
+
+  bool receiveReceipts;
+  int maxPerimeter;
+  int hoursToSearch;
+  bool showAlerts;
+  int hoursToReceiveAlerts;
+
   String createdAt;
   List<Profile> profiles;
   List<Address> addresses;
@@ -16,6 +23,11 @@ class User {
     id = json['id'];
     email = json['email'];
     userType = json['user_type'];
+    receiveReceipts = json['receive_receipts'];
+    maxPerimeter = json['max_perimeter'];
+    hoursToSearch = json['hours_to_search'];
+    showAlerts = json['show_alerts'];
+    hoursToReceiveAlerts = json['hours_to_receive_alerts'];
     createdAt = json['created_at'];
     if (json['profiles'] != null) {
       profiles = new List<Profile>();
@@ -36,6 +48,11 @@ class User {
     data['id'] = this.id;
     data['email'] = this.email;
     data['user_type'] = this.userType;
+    data['receive_receipts'] = this.receiveReceipts;
+    data['max_perimeter'] = this.maxPerimeter;
+    data['hours_to_search'] = this.hoursToSearch;
+    data['show_alerts'] = this.showAlerts;
+    data['hours_to_receive_alerts'] = this.hoursToReceiveAlerts;
     data['created_at'] = this.createdAt;
     if (this.profiles != null) {
       data['profiles'] = this.profiles.map((v) => v.toJson()).toList();

@@ -48,7 +48,6 @@ class ProfessionsView extends StatelessWidget {
             ),
             Divider(color: ApplicationStyle.SECONDARY_GREY, height: 0),
             ListTile(
-              leading: Icon(Icons.star, color: ApplicationStyle.SECONDARY_GREEN),
               title: Text("Favoritos", style: TextStyle(fontWeight: FontWeight.bold)),
               trailing: Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
             )

@@ -49,7 +49,7 @@ packages:
       name: cloud_firestore
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.9+4"
+    version: "0.12.9+5"
   collection:
     dependency: transitive
     description:
@@ -102,9 +102,11 @@ packages:
   farm:
     dependency: "direct main"
     description:
-      name: farm
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: a81af7e46d8e7ae4afca90808a4e99750a592183
+      url: "git://github.com/flutter-farm/farm.git"
+    source: git
     version: "0.0.6"
   firebase_core:
     dependency: transitive

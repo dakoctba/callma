@@ -1,4 +1,4 @@
-import 'package:callma/controllers/user_controller.dart';
+import 'package:callma/controllers/users_controller.dart';
 import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/profile.dart';
 import 'package:callma/models/user.dart';

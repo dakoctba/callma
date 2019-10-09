@@ -8,7 +8,7 @@ class SummariesController {
   Stream<Summary> get stream => _controller.stream;
 
   void getSummary(int professionalId) async {
-    Summary response = await SummariesService.getSummaries(professionalId);
+    Summary response = await SummariesService.getSummary(professionalId);
     _controller.sink.add(response);
   }
 

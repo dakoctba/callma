@@ -85,7 +85,7 @@ class AppointmentsView extends StatelessWidget with DateHelper {
         body: Container(
             padding: EdgeInsets.all(10),
             child: StreamBuilder<List<Appointment>>(
-              stream: appointmentsController.stream,
+              stream: appointmentsController.appointmentsStream,
               builder: (context, AsyncSnapshot<List<Appointment>> snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
