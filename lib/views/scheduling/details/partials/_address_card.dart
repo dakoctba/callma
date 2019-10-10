@@ -5,7 +5,7 @@ import 'package:callma/theme/application_style.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ProfessionalDetailsAddress extends StatelessWidget {
+class AddressCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appointmentsController = Provider.of<AppointmentsController>(context);

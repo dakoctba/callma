@@ -51,12 +51,5 @@ class ReviewCard extends StatelessWidget with DateHelper {
         ],
       ),
     );
-
-    // return Row(
-    //   children: <Widget>[
-
-    //     Column(children: <Widget>[Text(_review.description)])
-    //   ],
-    // );
   }
 }

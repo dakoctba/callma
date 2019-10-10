@@ -4,16 +4,18 @@ import 'package:callma/models/review.dart';
 import 'package:callma/services/reviews_service.dart';
 
 class ReviewsController {
-  final BehaviorSubject<List<Review>> _controller = BehaviorSubject<List<Review>>();
-  Stream<List<Review>> get stream => _controller.stream;
+  List<Review> _reviews;
+  List<Review> get reviews => _reviews;
+
+  final BehaviorSubject<List<Review>> _reviewsController = BehaviorSubject<List<Review>>();
+  Stream<List<Review>> get reviewsStream => _reviewsController.stream;
 
   void getReviews(int professionalId) async {
-    List<Review> response = await ReviewsService.getReviews(professionalId);
-    _controller.sink.add(response);
+    _reviews = await ReviewsService.getReviews(professionalId);
+    _reviewsController.sink.add(_reviews);
   }
 
   dispose() {
-    print("Chamou o dispose em ${this.runtimeType}");
-    _controller.close();
+    _reviewsController.close();
   }
 }

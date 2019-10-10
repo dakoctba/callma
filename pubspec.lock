@@ -104,7 +104,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: a81af7e46d8e7ae4afca90808a4e99750a592183
+      resolved-ref: d2cd79a25f3f3ced8f36ac8e5112f489048e2549
       url: "git://github.com/flutter-farm/farm.git"
     source: git
     version: "0.0.6"

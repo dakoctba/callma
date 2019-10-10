@@ -3,10 +3,10 @@ import 'package:callma/theme/application_style.dart';
 import 'package:callma/views/scheduling/specialties/specialties_view.dart';
 import 'package:flutter/material.dart';
 
-class ProfessionTile extends ListTile {
+class ProfessionCard extends ListTile {
   final Profession profession;
 
-  ProfessionTile(this.profession);
+  ProfessionCard(this.profession);
 
   @override
   Widget build(BuildContext context) {

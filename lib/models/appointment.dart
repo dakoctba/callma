@@ -1,10 +1,11 @@
+import 'package:callma/enumerations/appointment_status.dart';
 import 'package:farm/helpers.dart';
 
 import 'package:callma/models/address.dart';
 import 'package:callma/models/clinic.dart';
 import 'package:callma/models/professional.dart';
 
-class Appointment with DateHelper {
+class Appointment with DateHelper, EnumHelper {
   int id;
   int professionalId;
   int profileId;
@@ -13,7 +14,7 @@ class Appointment with DateHelper {
   String notes;
   bool receipt;
   double price;
-  String status;
+  AppointmentStatus status;
   String createdAt;
   Clinic clinic;
   Address address;
@@ -40,10 +41,10 @@ class Appointment with DateHelper {
     profileId = json['profile_id'];
     schedule = buildDate(json['schedule']);
     paymentStatus = json['payment_status'];
-    notes = json['notes'];
+    notes = json['notes'] == null ? "" : json['notes'];
     receipt = json['receipt'];
     price = json['price'];
-    status = json['status'];
+    status = enumFromString(AppointmentStatus.values, json['status']);
     createdAt = json['created_at'];
     clinic = json['clinic'] != null ? new Clinic.fromJson(json['clinic']) : null;
     address = json['address'] != null ? new Address.fromJson(json['address']) : null;

@@ -1,7 +1,7 @@
 import 'package:callma/controllers/professions_controller.dart';
 import 'package:callma/models/profession.dart';
 import 'package:callma/theme/application_style.dart';
-import 'package:callma/views/scheduling/professions/profession_tile.dart';
+import 'package:callma/views/scheduling/professions/partials/_profession_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:callma/library/custom_app_bar.dart';
@@ -37,7 +37,7 @@ class ProfessionsView extends StatelessWidget {
                       separatorBuilder: (context, index) => Divider(color: ApplicationStyle.SECONDARY_GREY, height: 0),
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
-                        return ProfessionTile(snapshot.data[index]);
+                        return ProfessionCard(snapshot.data[index]);
                       },
                     );
                   } else {

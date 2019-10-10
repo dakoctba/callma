@@ -2,29 +2,24 @@ import 'package:callma/controllers/appointments_controller.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/library/custom_button.dart';
+import 'package:callma/library/status_view.dart';
 import 'package:callma/views/scheduling/confirmation/partials/_cancellation_policy_card.dart';
 import 'package:callma/views/scheduling/confirmation/partials/_date_and_time_card.dart';
 import 'package:callma/views/scheduling/confirmation/partials/_notes_card.dart';
 import 'package:callma/views/scheduling/confirmation/partials/_patient_card.dart';
 import 'package:callma/views/scheduling/confirmation/partials/_payment_card.dart';
 import 'package:callma/views/scheduling/confirmation/partials/_receipt_card.dart';
-import 'package:callma/views/scheduling/details/professional_details_address.dart';
-import 'package:callma/views/scheduling/details/professional_details_header.dart';
+import 'package:callma/views/scheduling/details/partials/_address_card.dart';
+import 'package:callma/views/scheduling/details/partials/_header_card.dart';
+import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:farm/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ConfirmationView extends StatelessWidget with DateHelper {
-  final DateTime _visitDate;
-
-  ConfirmationView(this._visitDate);
-
   _save(BuildContext context) async {
     final appointmentsController = Provider.of<AppointmentsController>(context);
 
-    //
-    // Saving...
-    //
     if (!appointmentsController.cancellationPolicy) {
       showDialog(
           context: context,
@@ -43,9 +38,14 @@ class ConfirmationView extends StatelessWidget with DateHelper {
             );
           });
       return;
-    }
+    } else {
+      await appointmentsController.save();
 
-    await appointmentsController.save(this._visitDate);
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => StatusView("Consulta agendada com sucesso", true, "Voltar para tela inicial", () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsView()));
+              })));
+    }
   }
 
   @override
@@ -56,9 +56,9 @@ class ConfirmationView extends StatelessWidget with DateHelper {
         body: Container(
             padding: EdgeInsets.all(10),
             child: ListView(children: <Widget>[
-              ProfessionalDetailsHeader(),
-              DateAndTimeCard(_visitDate),
-              ProfessionalDetailsAddress(),
+              HeaderCard(),
+              DateAndTimeCard(),
+              AddressCard(),
               PatientCard(),
               PaymentCard(),
               ReceiptCard(),
@@ -67,16 +67,9 @@ class ConfirmationView extends StatelessWidget with DateHelper {
               SizedBox(height: 30),
               CustomButton(
                   label: "Agendar consulta",
-                  onPressed: () async {
+                  onPressed: () {
                     try {
                       _save(context);
-
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         StatusView("Consulta agendada com sucesso", true, "Voltar para tela inicial", () {
-                      //           Navigator.of(context)
-                      //               .pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsView()));
-                      //         })));
                     } catch (e) {
                       print(e);
                     }

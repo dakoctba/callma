@@ -27,8 +27,6 @@ dependencies:
   cupertino_icons: ^0.1.2
   date_picker_timeline: ^1.0.0
   dio: ^2.1.16
-  farm:
-    git: git://github.com/flutter-farm/farm.git
   flutter_dotenv: ^2.0.3
   flutter_launcher_icons: ^0.7.3
   font_awesome_flutter: ^8.5.0
@@ -45,6 +43,8 @@ dependencies:
   smooth_star_rating: ^1.0.3
   url_launcher: ^5.1.2
   webview_flutter: ^0.3.14+1
+  farm:
+    git: git://github.com/flutter-farm/farm.git
 
 dev_dependencies:
   flutter_test:

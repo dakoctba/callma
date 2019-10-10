@@ -1,9 +1,10 @@
 import 'package:badges/badges.dart' as BadgesPackage;
+import 'package:callma/enumerations/appointment_status.dart';
 import 'package:callma/theme/application_style.dart';
 import 'package:flutter/material.dart';
 
 class Badge extends StatelessWidget {
-  final String status;
+  final AppointmentStatus status;
 
   Badge({@required this.status});
 
@@ -13,15 +14,15 @@ class Badge extends StatelessWidget {
     String text;
 
     switch (status) {
-      case "done":
+      case AppointmentStatus.done:
         text = "Realizada";
         color = ApplicationStyle.SECONDARY_GREY;
         break;
-      case "scheduled":
+      case AppointmentStatus.scheduled:
         text = "Agendada";
         color = ApplicationStyle.PRIMARY_GREEN;
         break;
-      case "canceled":
+      case AppointmentStatus.canceled:
         text = "Cancelada";
         color = ApplicationStyle.PRIMARY_RED;
     }

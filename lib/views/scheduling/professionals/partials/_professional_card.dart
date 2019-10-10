@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-class ProfessionalTile extends ListTile {
+class ProfessionalCard extends ListTile {
   final Professional professional;
 
-  ProfessionalTile(this.professional);
+  ProfessionalCard(this.professional);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class ProfessionalTile extends ListTile {
         ),
         onTap: () {
           appointmentsController.setProfessional(professional);
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalDetailsView(professional)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalDetailsView()));
         });
   }
 }

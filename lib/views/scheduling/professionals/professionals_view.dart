@@ -1,11 +1,11 @@
 import 'package:callma/controllers/professionals_controller.dart';
+import 'package:callma/views/scheduling/professionals/partials/_professional_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:callma/theme/application_style.dart';
 import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/professional.dart';
-import 'package:callma/views/scheduling/professionals/professional_tile.dart';
 import 'package:callma/views/scheduling/filters/filters_view.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +45,7 @@ class ProfessionalsView extends StatelessWidget {
                   return ListView.builder(
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
-                        return ProfessionalTile(snapshot.data[index]);
+                        return ProfessionalCard(snapshot.data[index]);
                       });
                 } else {
                   return _buildLoadingWidget();

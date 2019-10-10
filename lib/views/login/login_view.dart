@@ -6,9 +6,11 @@ import 'package:callma/library/custom_app_bar.dart';
 import 'package:callma/library/custom_button.dart';
 import 'package:callma/models/user.dart';
 import 'package:callma/theme/application_style.dart';
+import 'package:callma/views/help/webview_view.dart';
 import 'package:callma/views/login/onboarding_view.dart';
 import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
@@ -109,7 +111,9 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
                   GestureDetector(
                     child: Text("Esqueceu sua senha?", style: TextStyle(color: ApplicationStyle.SECONDARY_GREEN)),
                     onTap: () {
-                      debugPrint("Esqueci minha senha...");
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              WebviewView("Esqueci minha senha", "${DotEnv().env['API_URL']}/password/new")));
                     },
                   ),
                   CustomButton(

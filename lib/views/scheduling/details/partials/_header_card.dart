@@ -2,14 +2,14 @@ import 'package:callma/controllers/appointments_controller.dart';
 import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/theme/application_style.dart';
+import 'package:callma/views/scheduling/details/partials/_metrics_card.dart';
 import 'package:callma/views/scheduling/photo/photo_view.dart';
-import 'package:callma/views/scheduling/details/professional_details_metrics.dart';
-import 'package:callma/views/scheduling/reviews/professional_reviews.dart';
+import 'package:callma/views/scheduling/reviews/reviews_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProfessionalDetailsHeader extends StatelessWidget {
+class HeaderCard extends StatelessWidget {
   _buildUrl(Professional professional) {
     return "https://www.callma.com.br?${professional.profession.professionalClassBoardName}=${professional.professionalClassBoardId}";
   }
@@ -92,7 +92,7 @@ class ProfessionalDetailsHeader extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 20),
-                  ProfessionalDetailsMetrics(snapshot.data),
+                  MetricsCard(),
                   SizedBox(height: 30),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 80, vertical: 0),
@@ -105,8 +105,7 @@ class ProfessionalDetailsHeader extends StatelessWidget {
                           color: Colors.white,
                           textColor: ApplicationStyle.SECONDARY_GREEN,
                           onPressed: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) => ProfessionalReviews(snapshot.data)));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ReviewsView()));
                           },
                           child: Text("Avaliações")),
                     ),

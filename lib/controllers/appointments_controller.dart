@@ -1,3 +1,4 @@
+import 'package:callma/enumerations/appointment_status.dart';
 import 'package:callma/models/appointment.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/models/user.dart';
@@ -5,7 +6,7 @@ import 'package:callma/services/appointments_service.dart';
 import 'package:farm/helpers.dart';
 import 'package:rxdart/rxdart.dart';
 
-class AppointmentsController with DateHelper {
+class AppointmentsController with DateHelper, EnumHelper {
   //
   // Appointments
   //
@@ -46,6 +47,20 @@ class AppointmentsController with DateHelper {
   setProfessional(Professional professional) {
     _professional = professional;
     _professionalController.sink.add(professional);
+  }
+
+  //
+  // Date of appointment
+  //
+  DateTime _date;
+  DateTime get date => _date;
+
+  final _dateController = BehaviorSubject<DateTime>();
+  Stream<DateTime> get dateStream => _dateController.stream;
+
+  setDate(DateTime date) {
+    _date = date;
+    _dateController.sink.add(date);
   }
 
   //
@@ -93,13 +108,13 @@ class AppointmentsController with DateHelper {
   //
   // Save appointment
   //
-  Future<void> save(DateTime visitDate) async {
+  Future<void> save() async {
     var params = new Map<String, dynamic>();
     params['professional_id'] = this.professional.id;
-    params['profile_id'] = this.user.profiles[0].id; // ?
+    params['profile_id'] = this.user.profiles[0].id;
     params['payment_status'] = 'confirmed';
-    params['status'] = 'scheduled';
-    params['schedule'] = formatDateToBd(visitDate);
+    params['status'] = enumToString(AppointmentStatus.scheduled);
+    params['schedule'] = formatDateToBd(this.date);
     params['address_id'] = this.user.addresses[0].id;
     params['price'] = this.professional.price;
     params['clinic_id'] = this.professional.clinics[0].id;
@@ -114,6 +129,7 @@ class AppointmentsController with DateHelper {
   dispose() {
     _appointmentsController.close();
     _cancellationPolicyController.close();
+    _dateController.close();
     _notesController.close();
     _professionalController.close();
     _receiptController.close();
