@@ -22,7 +22,7 @@ class AppointmentDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: "Detalhes da consulta"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.LIST_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: Container(
             padding: EdgeInsets.all(10),
             child: ListView(

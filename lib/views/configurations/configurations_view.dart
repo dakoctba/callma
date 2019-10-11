@@ -19,7 +19,7 @@ class ConfigurationsView extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => QrCodeView()));
               })
         ]),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.CONFIGURATIONS_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: ConfigurationBody());
   }
 }

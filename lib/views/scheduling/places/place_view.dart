@@ -46,7 +46,7 @@ class PlaceView extends StatelessWidget {
 
     return Scaffold(
         appBar: CustomAppBar(title: "Local"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: Column(children: <Widget>[
           Expanded(
             child: ListView(

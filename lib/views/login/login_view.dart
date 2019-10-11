@@ -1,5 +1,7 @@
 import 'package:callma/controllers/appointments_controller.dart';
+import 'package:callma/controllers/menu_controller.dart';
 import 'package:callma/controllers/users_controller.dart';
+import 'package:callma/enumerations/menu_option.dart';
 import 'package:callma/exceptions/callma_exception.dart';
 import 'package:callma/helpers/users_helper.dart';
 import 'package:callma/library/custom_app_bar.dart';
@@ -47,6 +49,7 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
       User user = await usersController.login(loginController.text, passwordController.text);
       appointmentsController.setUser(user);
 
+      Provider.of<MenuController>(context).setOption(MenuOption.home);
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
     } on CallmaException catch (e) {
       setState(() {

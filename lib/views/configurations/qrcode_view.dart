@@ -8,7 +8,7 @@ class QrCodeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: "Meu QrCode"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: Center(
             child: QrImage(
           data: "https://callma.com.br",

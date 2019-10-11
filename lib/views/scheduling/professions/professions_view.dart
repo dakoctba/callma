@@ -24,7 +24,7 @@ class ProfessionsView extends StatelessWidget {
 
     return Scaffold(
         appBar: CustomAppBar(title: "Profissional"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: Column(
           children: <Widget>[
             Expanded(

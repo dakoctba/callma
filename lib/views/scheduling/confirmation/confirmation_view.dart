@@ -55,7 +55,7 @@ class ConfirmationView extends StatelessWidget with DateHelper {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: "Agendar consulta"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: Container(
             padding: EdgeInsets.all(10),
             child: ListView(children: <Widget>[

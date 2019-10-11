@@ -26,7 +26,7 @@ class SpecialtiesView extends StatelessWidget {
 
     return Scaffold(
         appBar: CustomAppBar(title: "Especialidade"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: Column(children: <Widget>[
           Expanded(
               child: StreamBuilder<List<Specialty>>(

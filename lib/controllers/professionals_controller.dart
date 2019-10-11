@@ -4,11 +4,10 @@ import 'package:callma/models/professional.dart';
 import 'package:callma/services/professionals_service.dart';
 
 class ProfessionalsController {
-  List<Professional> _professionals;
-  List<Professional> get professionals => _professionals;
-
   final BehaviorSubject<List<Professional>> _controller = BehaviorSubject<List<Professional>>();
   Stream<List<Professional>> get stream => _controller;
+
+  List<Professional> get professionals => _controller.value;
 
   void getProfessionals(String sex, int specialtyId) async {
     List<Professional> response = await ProfessionalsService.getProfessionals(sex, specialtyId);

@@ -77,11 +77,11 @@ class AppointmentsView extends StatelessWidget with DateHelper {
   @override
   Widget build(BuildContext context) {
     final appointmentsController = Provider.of<AppointmentsController>(context);
-    appointmentsController.getAppointments();
+    appointmentsController.getAppointments(appointmentsController.user.id);
 
     return Scaffold(
         appBar: CustomAppBar(title: "Minhas consultas"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.LIST_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: Container(
             padding: EdgeInsets.all(10),
             child: StreamBuilder<List<Appointment>>(

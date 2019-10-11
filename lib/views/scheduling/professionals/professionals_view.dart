@@ -33,7 +33,7 @@ class ProfessionalsView extends StatelessWidget {
 
     return Scaffold(
         appBar: CustomAppBar(title: "Profissionais"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.search),
           backgroundColor: ApplicationStyle.PRIMARY_GREEN,

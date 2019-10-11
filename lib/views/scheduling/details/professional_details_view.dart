@@ -11,7 +11,7 @@ class ProfessionalDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: "Detalhes do profissional"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: Container(
             padding: EdgeInsets.all(10),
             child: ListView(children: <Widget>[HeaderCard(), SpecialtiesCard(), AddressCard(), CalendarCard()])));

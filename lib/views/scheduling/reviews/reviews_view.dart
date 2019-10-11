@@ -34,7 +34,7 @@ class ReviewsView extends StatelessWidget {
 
         return Scaffold(
             appBar: CustomAppBar(title: "Avaliações"),
-            bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+            bottomNavigationBar: CustomBottomNavigationBar(),
             body: StreamBuilder<List<Review>>(
                 stream: reviewsController.reviewsStream,
                 builder: (context, AsyncSnapshot<List<Review>> snapshot) {

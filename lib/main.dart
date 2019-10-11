@@ -1,5 +1,6 @@
 import 'package:callma/config/initializers/application_initializer.dart';
 import 'package:callma/controllers/appointments_controller.dart';
+import 'package:callma/controllers/menu_controller.dart';
 import 'package:callma/controllers/professionals_controller.dart';
 import 'package:callma/controllers/professions_controller.dart';
 import 'package:callma/controllers/reviews_controller.dart';
@@ -23,6 +24,7 @@ class Application extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<AppointmentsController>.value(value: AppointmentsController()),
+        Provider<MenuController>.value(value: MenuController()),
         Provider<ProfessionalsController>.value(value: ProfessionalsController()),
         Provider<ProfessionsController>.value(value: ProfessionsController()),
         Provider<ReviewsController>.value(value: ReviewsController()),

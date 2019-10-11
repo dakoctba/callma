@@ -11,98 +11,85 @@ class AppointmentsController with DateHelper, EnumHelper {
   //
   // Appointments
   //
-  List<Appointment> _appointments;
-  List<Appointment> get appointments => _appointments;
-
   final _appointmentsController = BehaviorSubject<List<Appointment>>();
   Stream<List<Appointment>> get appointmentsStream => _appointmentsController.stream;
 
-  void getAppointments() async {
-    _appointments = await AppointmentsService.getAppointments();
-    _appointmentsController.sink.add(_appointments);
+  List<Appointment> get appointments => _appointmentsController.value;
+
+  void getAppointments(int userId) async {
+    List<Appointment> appointments = await AppointmentsService.getAppointments(userId);
+    _appointmentsController.sink.add(appointments);
   }
 
   //
   // User
   //
-  User _user;
-  User get user => _user;
-
   final _userController = BehaviorSubject<User>();
   Stream<User> get userStream => _userController.stream;
 
+  User get user => _userController.value;
+
   void setUser(User user) {
-    _user = user;
     _userController.sink.add(user);
   }
 
   //
   // Professional
   //
-  Professional _professional;
-  Professional get professional => _professional;
-
   final _professionalController = BehaviorSubject<Professional>();
   Stream<Professional> get professionalStream => _professionalController.stream;
 
+  Professional get professional => _professionalController.value;
+
   void setProfessional(Professional professional) {
-    _professional = professional;
     _professionalController.sink.add(professional);
   }
 
   //
   // Date of appointment
   //
-  DateTime _date;
-  DateTime get date => _date;
-
   final _dateController = BehaviorSubject<DateTime>();
   Stream<DateTime> get dateStream => _dateController.stream;
 
+  DateTime get date => _dateController.value;
+
   void setDate(DateTime date) {
-    _date = date;
     _dateController.sink.add(date);
   }
 
   //
   // Receipt
   //
-  bool _receipt = false;
-  bool get receipt => _receipt;
-
   final _receiptController = BehaviorSubject<bool>.seeded(false);
   Stream<bool> get receiptStream => _receiptController.stream;
 
+  bool get receipt => _receiptController.value;
+
   void setReceipt(bool option) {
-    _receipt = option;
     _receiptController.sink.add(option);
   }
 
   //
   // Notes
   //
-  String _notes;
-  String get notes => _notes;
-
   final _notesController = BehaviorSubject<String>();
   Stream<String> get notesStream => _notesController.stream;
 
+  String get notes => _notesController.value;
+
   void setNotes(String notes) {
-    _notes = notes;
     _notesController.sink.add(notes);
   }
 
   //
   // Cancellation Policy
   //
-  bool _cancellationPolicy = false;
-  bool get cancellationPolicy => _cancellationPolicy;
-
   final _cancellationPolicyController = BehaviorSubject<bool>.seeded(false);
   Stream<bool> get cancellationPolicyStream => _cancellationPolicyController.stream;
 
+  bool get cancellationPolicy => _cancellationPolicyController.value;
+
   void setCancellationPolicy(bool option) {
-    _cancellationPolicy = option;
     _cancellationPolicyController.sink.add(option);
   }
 

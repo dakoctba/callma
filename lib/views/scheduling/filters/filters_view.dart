@@ -21,7 +21,7 @@ class _FiltersScreenState extends State<FiltersView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: "Filtros"),
-        bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.HOME_OPTION),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         body: Container(
           padding: EdgeInsets.all(10.0),
           child: ListView(

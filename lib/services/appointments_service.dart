@@ -7,13 +7,13 @@ import 'dart:convert';
 import 'package:logger/logger.dart';
 
 class AppointmentsService {
-  static Future<List<Appointment>> getAppointments() async {
+  static Future<List<Appointment>> getAppointments(int userId) async {
     List<Appointment> items = new List<Appointment>();
 
     try {
       Dio dio = await AuthDio.getDio();
 
-      Response response = await dio.get("${DotEnv().env['API_URL']}/api/users/1/appointments");
+      Response response = await dio.get("${DotEnv().env['API_URL']}/api/users/$userId/appointments");
 
       for (Map<String, dynamic> item in response.data) {
         items.add(Appointment.fromJson(item));
