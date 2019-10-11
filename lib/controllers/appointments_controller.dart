@@ -4,6 +4,7 @@ import 'package:callma/models/professional.dart';
 import 'package:callma/models/user.dart';
 import 'package:callma/services/appointments_service.dart';
 import 'package:farm/helpers.dart';
+import 'package:logger/logger.dart';
 import 'package:rxdart/rxdart.dart';
 
 class AppointmentsController with DateHelper, EnumHelper {
@@ -30,7 +31,7 @@ class AppointmentsController with DateHelper, EnumHelper {
   final _userController = BehaviorSubject<User>();
   Stream<User> get userStream => _userController.stream;
 
-  setUser(User user) {
+  void setUser(User user) {
     _user = user;
     _userController.sink.add(user);
   }
@@ -44,7 +45,7 @@ class AppointmentsController with DateHelper, EnumHelper {
   final _professionalController = BehaviorSubject<Professional>();
   Stream<Professional> get professionalStream => _professionalController.stream;
 
-  setProfessional(Professional professional) {
+  void setProfessional(Professional professional) {
     _professional = professional;
     _professionalController.sink.add(professional);
   }
@@ -58,7 +59,7 @@ class AppointmentsController with DateHelper, EnumHelper {
   final _dateController = BehaviorSubject<DateTime>();
   Stream<DateTime> get dateStream => _dateController.stream;
 
-  setDate(DateTime date) {
+  void setDate(DateTime date) {
     _date = date;
     _dateController.sink.add(date);
   }
@@ -72,7 +73,7 @@ class AppointmentsController with DateHelper, EnumHelper {
   final _receiptController = BehaviorSubject<bool>.seeded(false);
   Stream<bool> get receiptStream => _receiptController.stream;
 
-  setReceipt(bool option) {
+  void setReceipt(bool option) {
     _receipt = option;
     _receiptController.sink.add(option);
   }
@@ -86,7 +87,7 @@ class AppointmentsController with DateHelper, EnumHelper {
   final _notesController = BehaviorSubject<String>();
   Stream<String> get notesStream => _notesController.stream;
 
-  setNotes(String notes) {
+  void setNotes(String notes) {
     _notes = notes;
     _notesController.sink.add(notes);
   }
@@ -100,7 +101,7 @@ class AppointmentsController with DateHelper, EnumHelper {
   final _cancellationPolicyController = BehaviorSubject<bool>.seeded(false);
   Stream<bool> get cancellationPolicyStream => _cancellationPolicyController.stream;
 
-  setCancellationPolicy(bool option) {
+  void setCancellationPolicy(bool option) {
     _cancellationPolicy = option;
     _cancellationPolicyController.sink.add(option);
   }
@@ -121,12 +122,12 @@ class AppointmentsController with DateHelper, EnumHelper {
     params['receipt'] = this.receipt;
     params['notes'] = this.notes;
 
-    print("Criando consulta com os parâmetros $params");
+    Logger().d(params);
 
     await AppointmentsService.save(params);
   }
 
-  dispose() {
+  void dispose() {
     _appointmentsController.close();
     _cancellationPolicyController.close();
     _dateController.close();

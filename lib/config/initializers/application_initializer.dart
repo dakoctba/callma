@@ -7,8 +7,10 @@ class ApplicationInitializer {
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
+    // ignore: avoid_print
     print("${packageInfo.appName} (${packageInfo.version})");
 
+    // ignore: avoid_print
     DotEnv().env.forEach((k, v) => print("$k = $v"));
   }
 }

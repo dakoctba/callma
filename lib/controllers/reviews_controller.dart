@@ -15,7 +15,7 @@ class ReviewsController {
     _reviewsController.sink.add(_reviews);
   }
 
-  dispose() {
+  void dispose() {
     _reviewsController.close();
   }
 }

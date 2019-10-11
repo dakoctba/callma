@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
 
+import 'package:logger/logger.dart';
+
 class AppointmentsService {
   static Future<List<Appointment>> getAppointments() async {
     List<Appointment> items = new List<Appointment>();
@@ -17,7 +19,7 @@ class AppointmentsService {
         items.add(Appointment.fromJson(item));
       }
     } catch (e) {
-      print(e);
+      Logger().e(e);
     }
 
     return items;

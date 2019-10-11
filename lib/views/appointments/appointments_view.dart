@@ -19,7 +19,7 @@ class AppointmentsView extends StatelessWidget with DateHelper {
     ));
   }
 
-  _buildCard(BuildContext context, Appointment appointment) {
+  Widget _buildCard(BuildContext context, Appointment appointment) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => AppointmentDetailsView(appointment)));

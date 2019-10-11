@@ -1,3 +1,4 @@
+import 'package:callma/controllers/appointments_controller.dart';
 import 'package:callma/controllers/professionals_controller.dart';
 import 'package:callma/views/scheduling/professionals/partials/_professional_card.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,11 @@ class ProfessionalsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final professionalsController = Provider.of<ProfessionalsController>(context);
-    professionalsController.getProfessionals(specialtyId);
+    final appointmentsController = Provider.of<AppointmentsController>(context);
+
+    String sex = appointmentsController.user.profiles[0].sex;
+
+    professionalsController.getProfessionals(sex, specialtyId);
 
     return Scaffold(
         appBar: CustomAppBar(title: "Profissionais"),

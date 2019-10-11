@@ -2,6 +2,7 @@ import 'package:callma/models/review.dart';
 import 'package:callma/services/auth_dio.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:logger/logger.dart';
 
 class ReviewsService {
   static Future<List<Review>> getReviews(int professionalId) async {
@@ -16,7 +17,7 @@ class ReviewsService {
         items.add(Review.fromJson(item));
       }
     } catch (e) {
-      print(e);
+      Logger().e(e);
     }
 
     return items;

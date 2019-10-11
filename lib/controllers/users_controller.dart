@@ -17,8 +17,7 @@ class UsersController {
     }
   }
 
-  dispose() {
-    print("Chamou o dispose em ${this.runtimeType}");
+  void dispose() {
     _controller.close();
   }
 }

@@ -1,8 +1,8 @@
-import 'package:callma/views/configurations/components/info_card.dart';
-import 'package:callma/theme/application_style.dart';
-import 'package:flutter/material.dart';
 import 'package:callma/library/tile_data.dart';
-import 'package:flutter/services.dart';
+import 'package:callma/theme/application_style.dart';
+import 'package:callma/views/configurations/components/info_card.dart';
+import 'package:callma/views/login/login_view.dart';
+import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class ConfigurationBody extends StatelessWidget {
@@ -13,7 +13,7 @@ class ConfigurationBody extends StatelessWidget {
   static const String URL_POLITICA_DE_PRIVACIDADE = "https://callma.com.br/politica-de-privacidade";
   static const String URL_CERTA_MEI = "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
 
-  Iterable<ListTile> _getItems() {
+  Iterable<ListTile> _getItems(BuildContext context) {
     List<TileData> items = new List<TileData>();
 
     items.add(new TileData(
@@ -69,7 +69,8 @@ class ConfigurationBody extends StatelessWidget {
         label: "Sair",
         icon: Icons.exit_to_app,
         onTap: () {
-          SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+          // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginView()));
         }));
 
     return items.map((item) {
@@ -88,8 +89,9 @@ class ConfigurationBody extends StatelessWidget {
       InfoCard(),
       Expanded(
         child: ListView(
-            children: ListTile.divideTiles(context: context, color: ApplicationStyle.TERTIARY_GREY, tiles: _getItems())
-                .toList()),
+            children:
+                ListTile.divideTiles(context: context, color: ApplicationStyle.TERTIARY_GREY, tiles: _getItems(context))
+                    .toList()),
       )
     ]);
   }

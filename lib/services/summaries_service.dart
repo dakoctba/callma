@@ -2,6 +2,7 @@ import 'package:callma/models/summary.dart';
 import 'package:callma/services/auth_dio.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:logger/logger.dart';
 
 class SummariesService {
   static Future<Summary> getSummary(int professionalId) async {
@@ -13,7 +14,7 @@ class SummariesService {
       Summary summary = Summary.fromJson(response.data);
       return summary;
     } catch (e) {
-      print(e);
+      Logger().e(e);
     }
 
     return null;

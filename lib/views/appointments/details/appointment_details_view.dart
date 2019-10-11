@@ -8,7 +8,7 @@ class AppointmentDetailsView extends StatelessWidget {
 
   AppointmentDetailsView(this._appointment);
 
-  _body() {
+  Widget _body() {
     return Card(
         child: Container(
             padding: EdgeInsets.all(20),

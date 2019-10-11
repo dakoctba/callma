@@ -23,7 +23,7 @@ class Summary {
     return data;
   }
 
-  _buildFeelingMap(Map<String, dynamic> feelings) {
+  Map<String, Feeling> _buildFeelingMap(Map<String, dynamic> feelings) {
     Map<String, Feeling> result = feelings.map((k, v) {
       return new MapEntry(k, Feeling.fromJson(v));
     });

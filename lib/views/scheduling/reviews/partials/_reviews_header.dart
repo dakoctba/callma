@@ -17,7 +17,7 @@ class ProfessionalReviewssHeader extends StatelessWidget {
 
   ProfessionalReviewssHeader(this.professional);
 
-  _buildUrl() {
+  String _buildUrl() {
     return "https://www.callma.com.br?${professional.profession.professionalClassBoardName}=${professional.professionalClassBoardId}";
   }
 
@@ -29,7 +29,7 @@ class ProfessionalReviewssHeader extends StatelessWidget {
     ));
   }
 
-  _buildFeelingsChartItem(IconData icon, double value) {
+  Widget _buildFeelingsChartItem(IconData icon, double value) {
     return Container(
       padding: EdgeInsets.all(2),
       child: Row(children: <Widget>[
@@ -49,7 +49,7 @@ class ProfessionalReviewssHeader extends StatelessWidget {
     );
   }
 
-  _buildFeelingsChart(Map<String, Feeling> feelings) {
+  Widget _buildFeelingsChart(Map<String, Feeling> feelings) {
     return Column(
       children: <Widget>[
         _buildFeelingsChartItem(FontAwesomeIcons.grinHearts, feelings['excellent'].percent),
@@ -61,7 +61,7 @@ class ProfessionalReviewssHeader extends StatelessWidget {
     );
   }
 
-  _metrics(BuildContext context) {
+  Widget _metrics(BuildContext context) {
     final summariesController = Provider.of<SummariesController>(context);
     summariesController.getSummary(professional.id);
 

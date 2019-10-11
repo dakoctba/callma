@@ -24,10 +24,18 @@ class ProfessionalCard extends ListTile {
                 children: <Widget>[
                   Hero(
                       tag: professional.id,
-                      child: CircleAvatar(
-                        backgroundImage: ProfessionalsHelper.getPhoto(professional.photo),
-                        backgroundColor: Colors.transparent,
-                      )),
+                      child: Container(
+                          child: CircleAvatar(
+                            backgroundImage: ProfessionalsHelper.getPhoto(professional.photo),
+                            backgroundColor: Colors.transparent,
+                          ),
+                          width: 40.0,
+                          height: 40.0,
+                          padding: const EdgeInsets.all(2.0), // borde width
+                          decoration: new BoxDecoration(
+                            color: professional.sex == "M" ? Colors.blue : Colors.pink, // border color
+                            shape: BoxShape.circle,
+                          ))),
                   SizedBox(width: 20),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

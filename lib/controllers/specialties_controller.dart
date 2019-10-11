@@ -15,8 +15,7 @@ class SpecialtiesController {
     _controller.sink.add(response);
   }
 
-  dispose() {
-    print("Chamou o dispose em ${this.runtimeType}");
+  void dispose() {
     _controller.close();
   }
 }

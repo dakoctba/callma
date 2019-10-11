@@ -65,7 +65,7 @@ class HelpBody extends StatelessWidget {
     });
   }
 
-  static _launchAbout(BuildContext context) {
+  static void _launchAbout(BuildContext context) {
     showDialog(
         context: context,
         builder: (context) {

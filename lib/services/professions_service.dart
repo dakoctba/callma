@@ -2,6 +2,7 @@ import 'package:callma/models/profession.dart';
 import 'package:callma/services/auth_dio.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:logger/logger.dart';
 
 class ProfessionsService {
   static Future<List<Profession>> getProfessions() async {
@@ -16,7 +17,7 @@ class ProfessionsService {
         items.add(Profession.fromJson(item));
       }
     } catch (e) {
-      print(e);
+      Logger().e(e);
     }
 
     return items;

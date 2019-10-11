@@ -3,6 +3,7 @@ import 'package:callma/models/user.dart';
 import 'package:callma/services/auth_dio.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:callma/models/login.dart';
@@ -35,18 +36,18 @@ class UsersService {
       // that falls out of the range of 2xx and is also not 304.
       //
       if (e.response != null) {
-        print(e.response.statusCode);
-        print(e.response.data);
-        print(e.response.headers);
-        print(e.response.request);
+        Logger().e(e.response.statusCode);
+        Logger().e(e.response.data);
+        Logger().e(e.response.headers);
+        Logger().e(e.response.request);
 
         throw new CallmaException(e.response.data["error"]);
       } else {
         //
         // Something happened in setting up or sending the request that triggered an Error
         //
-        print(e.request);
-        print(e.message);
+        Logger().e(e.request);
+        Logger().e(e.message);
 
         throw new CallmaException(e.message);
       }
@@ -62,7 +63,7 @@ class UsersService {
       User result = User.fromJson(response.data);
       return result;
     } catch (e) {
-      print(e);
+      Logger().e(e);
     }
 
     return null;

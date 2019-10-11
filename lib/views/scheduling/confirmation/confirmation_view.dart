@@ -14,10 +14,11 @@ import 'package:callma/views/scheduling/details/partials/_header_card.dart';
 import 'package:callma/views/scheduling/professions/professions_view.dart';
 import 'package:farm/helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class ConfirmationView extends StatelessWidget with DateHelper {
-  _save(BuildContext context) async {
+  void _save(BuildContext context) async {
     final appointmentsController = Provider.of<AppointmentsController>(context);
 
     if (!appointmentsController.cancellationPolicy) {
@@ -71,7 +72,7 @@ class ConfirmationView extends StatelessWidget with DateHelper {
                     try {
                       _save(context);
                     } catch (e) {
-                      print(e);
+                      Logger().e(e);
                     }
                   })
             ])));

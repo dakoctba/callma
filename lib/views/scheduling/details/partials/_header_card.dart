@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HeaderCard extends StatelessWidget {
-  _buildUrl(Professional professional) {
+  String _buildUrl(Professional professional) {
     return "https://www.callma.com.br?${professional.profession.professionalClassBoardName}=${professional.professionalClassBoardId}";
   }
 

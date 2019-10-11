@@ -10,13 +10,12 @@ class ProfessionalsController {
   final BehaviorSubject<List<Professional>> _controller = BehaviorSubject<List<Professional>>();
   Stream<List<Professional>> get stream => _controller;
 
-  void getProfessionals(int specialtyId) async {
-    List<Professional> response = await ProfessionalsService.getProfessionals(specialtyId);
+  void getProfessionals(String sex, int specialtyId) async {
+    List<Professional> response = await ProfessionalsService.getProfessionals(sex, specialtyId);
     _controller.sink.add(response);
   }
 
-  dispose() {
-    print("Chamou o dispose em ${this.runtimeType}");
+  void dispose() {
     _controller.close();
   }
 }

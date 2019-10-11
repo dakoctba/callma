@@ -11,13 +11,13 @@ class StatusView extends StatelessWidget {
 
   StatusView(this.message, this.success, this.buttonMessage, this.onPressed);
 
-  _getIcon() {
+  Icon _getIcon() {
     return this.success == true
         ? Icon(Icons.check, color: ApplicationStyle.SECONDARY_GREEN, size: 150)
         : Icon(Icons.clear, color: ApplicationStyle.PRIMARY_RED, size: 150);
   }
 
-  _getText() {
+  Text _getText() {
     return this.success == true
         ? Text(this.message,
             style: TextStyle(fontSize: 24, color: ApplicationStyle.SECONDARY_GREEN), textAlign: TextAlign.center)
@@ -25,7 +25,7 @@ class StatusView extends StatelessWidget {
             style: TextStyle(fontSize: 24, color: ApplicationStyle.PRIMARY_RED), textAlign: TextAlign.center);
   }
 
-  _body() {
+  Widget _body() {
     return Center(
         child: Padding(
             padding: EdgeInsets.all(20),

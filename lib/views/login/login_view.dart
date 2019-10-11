@@ -35,7 +35,7 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
     );
   }
 
-  _login(BuildContext context) async {
+  void _login(BuildContext context) async {
     var usersController = Provider.of<UsersController>(context);
     final appointmentsController = Provider.of<AppointmentsController>(context);
 

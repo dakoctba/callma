@@ -11,6 +11,7 @@ class Professional {
   double price;
   int atendimentos;
   int dias;
+  String sex;
   Profession profession;
   List<Specialty> specialties;
   List<Clinic> clinics;
@@ -24,6 +25,7 @@ class Professional {
       this.price,
       this.atendimentos,
       this.dias,
+      this.sex,
       this.profession,
       List<Specialty> specialties,
       this.clinics});
@@ -37,6 +39,7 @@ class Professional {
     price = json['price'];
     atendimentos = json['atendimentos'];
     dias = json['dias'];
+    sex = json['sex'];
     profession = json['profession'] != null ? new Profession.fromJson(json['profession']) : null;
     if (json['specialties'] != null) {
       specialties = new List<Specialty>();
@@ -62,6 +65,7 @@ class Professional {
     data['price'] = this.price;
     data['atendimentos'] = this.atendimentos;
     data['dias'] = this.dias;
+    data['sex'] = this.sex;
     if (this.profession != null) {
       data['profession'] = this.profession.toJson();
     }
