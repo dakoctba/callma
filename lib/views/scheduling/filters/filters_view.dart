@@ -157,7 +157,7 @@ class _FiltersScreenState extends State<FiltersView> {
                   child: CustomButton(
                       label: "Filtrar resultado",
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsView(0)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfessionalsView(0)));
                       }))
             ],
           ),

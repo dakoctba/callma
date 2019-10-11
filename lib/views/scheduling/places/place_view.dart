@@ -21,7 +21,7 @@ class PlaceView extends StatelessWidget {
       title: Text("Consultório"),
       trailing: Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsView(this.specialtyId)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfessionalsView(this.specialtyId)));
       },
     );
 
@@ -33,7 +33,7 @@ class PlaceView extends StatelessWidget {
       title: Text("Domicílio"),
       trailing: Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalsView(this.specialtyId)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfessionalsView(this.specialtyId)));
       },
     );
 

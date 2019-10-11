@@ -70,7 +70,7 @@ class ConfigurationBody extends StatelessWidget {
         icon: Icons.exit_to_app,
         onTap: () {
           // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginView()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginView()));
         }));
 
     return items.map((item) {

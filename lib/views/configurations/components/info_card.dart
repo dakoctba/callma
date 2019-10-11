@@ -30,7 +30,7 @@ class InfoCard extends StatelessWidget {
                         radius: 30,
                       ),
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PhotoView(profile.photo)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => PhotoView(profile.photo)));
                       }),
                   Padding(
                     padding: EdgeInsets.only(left: 10),

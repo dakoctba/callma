@@ -105,7 +105,7 @@ class HeaderCard extends StatelessWidget {
                           color: Colors.white,
                           textColor: ApplicationStyle.SECONDARY_GREEN,
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ReviewsView()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ReviewsView()));
                           },
                           child: Text("Avaliações")),
                     ),

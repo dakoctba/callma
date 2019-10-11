@@ -24,7 +24,7 @@ class CalendarCard extends StatelessWidget {
                   DateTime.now(),
                   onDateChange: (date) {
                     appointmentsController.setDate(date);
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConfirmationView()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ConfirmationView()));
                   },
                 )
               ],

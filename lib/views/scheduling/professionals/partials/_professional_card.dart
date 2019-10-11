@@ -69,7 +69,7 @@ class ProfessionalCard extends ListTile {
         ),
         onTap: () {
           appointmentsController.setProfessional(professional);
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfessionalDetailsView()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfessionalDetailsView()));
         });
   }
 }

@@ -42,10 +42,12 @@ class ConfirmationView extends StatelessWidget with DateHelper {
     } else {
       await appointmentsController.save();
 
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => StatusView("Consulta agendada com sucesso", true, "Voltar para tela inicial", () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfessionsView()));
-              })));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => StatusView("Consulta agendada com sucesso", true, "Voltar para tela inicial", () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfessionsView()));
+                  })));
     }
   }
 

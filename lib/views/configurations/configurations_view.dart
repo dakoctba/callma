@@ -16,7 +16,7 @@ class ConfigurationsView extends StatelessWidget {
                 child: Icon(CallmaIcons.qrcode),
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => QrCodeView()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => QrCodeView()));
               })
         ]),
         bottomNavigationBar: CustomBottomNavigationBar(CustomBottomNavigationBar.CONFIGURATIONS_OPTION),

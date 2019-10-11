@@ -15,7 +15,7 @@ class SpecialtyTile extends ListTile {
         subtitle: specialty.subtitle != null ? Text(specialty.subtitle) : null,
         trailing: const Icon(Icons.keyboard_arrow_right, color: ApplicationStyle.SECONDARY_GREEN),
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => PlaceView(specialty.id)));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceView(specialty.id)));
         });
   }
 }

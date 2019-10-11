@@ -38,7 +38,7 @@ class ProfessionalsView extends StatelessWidget {
           child: Icon(Icons.search),
           backgroundColor: ApplicationStyle.PRIMARY_GREEN,
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => FiltersView()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => FiltersView()));
           },
         ),
         body: Container(

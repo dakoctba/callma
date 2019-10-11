@@ -41,8 +41,10 @@ class HelpBody extends StatelessWidget {
     items.add(new TileData(
         label: "Política de privacidade",
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => WebviewView("Política de privacidade", URL_POLITICA_DE_PRIVACIDADE)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => WebviewView("Política de privacidade", URL_POLITICA_DE_PRIVACIDADE)));
         }));
     items.add(new TileData(
         label: "Formalização MEI",

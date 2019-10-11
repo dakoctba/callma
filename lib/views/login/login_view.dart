@@ -111,9 +111,11 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
                   GestureDetector(
                     child: Text("Esqueceu sua senha?", style: TextStyle(color: ApplicationStyle.SECONDARY_GREEN)),
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              WebviewView("Esqueci minha senha", "${DotEnv().env['API_URL']}/password/new")));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  WebviewView("Esqueci minha senha", "${DotEnv().env['API_URL']}/password/new")));
                     },
                   ),
                   CustomButton(
@@ -132,7 +134,7 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
                                 fontSize: 12, color: ApplicationStyle.SECONDARY_GREEN, fontWeight: FontWeight.bold))
                       ]),
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => OnboardingView()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingView()));
                       }),
                   SizedBox(height: 20)
                 ],
