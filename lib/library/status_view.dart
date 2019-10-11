@@ -26,24 +26,27 @@ class StatusView extends StatelessWidget {
   }
 
   Widget _body() {
-    return Center(
-        child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      _getIcon(),
-                      _getText(),
-                    ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Center(
+          child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        _getIcon(),
+                        _getText(),
+                      ],
+                    ),
                   ),
-                ),
-                CustomButton(label: this.buttonMessage, onPressed: this.onPressed)
-              ],
-            )));
+                  CustomButton(label: this.buttonMessage, onPressed: this.onPressed)
+                ],
+              ))),
+    );
   }
 
   @override
