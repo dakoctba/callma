@@ -11,22 +11,10 @@ class StatusView extends StatelessWidget {
 
   StatusView(this.message, this.success, this.buttonMessage, this.onPressed);
 
-  Icon _getIcon() {
-    return this.success == true
-        ? Icon(Icons.check, color: ApplicationStyle.SECONDARY_GREEN, size: 150)
-        : Icon(Icons.clear, color: ApplicationStyle.PRIMARY_RED, size: 150);
-  }
-
-  Text _getText() {
-    return this.success == true
-        ? Text(this.message,
-            style: TextStyle(fontSize: 24, color: ApplicationStyle.SECONDARY_GREEN), textAlign: TextAlign.center)
-        : Text(this.message,
-            style: TextStyle(fontSize: 24, color: ApplicationStyle.PRIMARY_RED), textAlign: TextAlign.center);
-  }
-
-  Widget _body() {
-    return WillPopScope(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: WillPopScope(
       onWillPop: () async => false,
       child: Center(
           child: Padding(
@@ -38,19 +26,20 @@ class StatusView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        _getIcon(),
-                        _getText(),
+                        Icon(Icons.check,
+                            color: this.success ? ApplicationStyle.SECONDARY_GREEN : ApplicationStyle.PRIMARY_RED,
+                            size: 150),
+                        Text(this.message,
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: this.success ? ApplicationStyle.SECONDARY_GREEN : ApplicationStyle.PRIMARY_RED),
+                            textAlign: TextAlign.center),
                       ],
                     ),
                   ),
                   CustomButton(label: this.buttonMessage, onPressed: this.onPressed)
                 ],
               ))),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: _body());
+    ));
   }
 }
