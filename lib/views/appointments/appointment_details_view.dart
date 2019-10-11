@@ -8,16 +8,6 @@ class AppointmentDetailsView extends StatelessWidget {
 
   AppointmentDetailsView(this._appointment);
 
-  Widget _body() {
-    return Card(
-        child: Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[Text(_appointment.notes)],
-            )));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +16,15 @@ class AppointmentDetailsView extends StatelessWidget {
         body: Container(
             padding: EdgeInsets.all(10),
             child: ListView(
-              children: <Widget>[_body()],
+              children: <Widget>[
+                Card(
+                    child: Container(
+                        padding: EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[Text(_appointment.notes)],
+                        )))
+              ],
             )));
   }
 }
