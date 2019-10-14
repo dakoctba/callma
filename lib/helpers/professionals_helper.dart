@@ -1,4 +1,4 @@
-import 'package:callma/config/callma_config.dart';
+import 'package:callma/settings.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionalsHelper {
@@ -6,7 +6,7 @@ class ProfessionalsHelper {
     try {
       return NetworkImage(photo);
     } catch (e) {
-      return AssetImage(CallmaConfig.DEFAULT_PHOTO);
+      return AssetImage(Settings.DEFAULT_PHOTO);
     }
   }
 }
