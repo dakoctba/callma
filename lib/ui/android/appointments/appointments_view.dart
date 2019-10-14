@@ -1,4 +1,5 @@
 import 'package:callma/blocs/appointment.bloc.dart';
+import 'package:callma/blocs/user.bloc.dart';
 import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/ui/shared/badge.dart';
 import 'package:callma/ui/shared/custom_app_bar.dart';
@@ -46,7 +47,7 @@ class AppointmentsView extends StatelessWidget with DateHelper {
                     ]),
                     SizedBox(height: 5),
                     Row(children: <Widget>[
-                      Icon(Icons.pin_drop, size: 16, color: PRIMARY_GREEN),
+                      Icon(Icons.place, size: 16, color: PRIMARY_GREEN),
                       SizedBox(width: 10),
                       Expanded(
                           child:
@@ -81,8 +82,10 @@ class AppointmentsView extends StatelessWidget with DateHelper {
 
   @override
   Widget build(BuildContext context) {
+    final userBloc = Provider.of<UserBloc>(context);
+
     final appointmentsController = Provider.of<AppointmentBloc>(context);
-    appointmentsController.getAppointments(1); // TODO: HARDCODE
+    appointmentsController.getAppointments(userBloc.user.id);
 
     return Scaffold(
         appBar: CustomAppBar(title: "Minhas consultas"),

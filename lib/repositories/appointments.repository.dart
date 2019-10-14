@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
 
+import 'package:logger/logger.dart';
+
 class AppointmentRepository {
   Future<List<Appointment>> getAppointments(int userId) async {
     Dio dio = await AuthDio.getDio();
@@ -20,10 +22,15 @@ class AppointmentRepository {
   }
 
   Future<void> save(Map<String, dynamic> params) async {
-    Dio dio = await AuthDio.getDio();
+    try {
+      Dio dio = await AuthDio.getDio();
 
-    var url = "${DotEnv().env['API_URL']}/api/users/1/appointments";
+      var url = "${DotEnv().env['API_URL']}/api/users/1/appointments";
 
-    await dio.post(url, data: json.encode(params));
+      await dio.post(url, data: json.encode(params));
+    } catch (e) {
+      Logger().e(e);
+      throw e;
+    }
   }
 }

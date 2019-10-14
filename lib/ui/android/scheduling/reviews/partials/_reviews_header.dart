@@ -101,9 +101,9 @@ class ProfessionalReviewssHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appointmentsBloc = Provider.of<AppointmentBloc>(context);
+    final appointmentBloc = Provider.of<AppointmentBloc>(context);
 
-    var professional = appointmentsBloc.professional;
+    var professional = appointmentBloc.professional;
 
     return Card(
       child: Container(

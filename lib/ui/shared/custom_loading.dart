@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomLoading extends StatelessWidget {
-  final String text;
+  final String _text;
 
-  CustomLoading(this.text);
+  CustomLoading(this._text);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class CustomLoading extends StatelessWidget {
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Carregando avaliações..."),
+        Text(this._text),
         SizedBox(height: 10),
         CircularProgressIndicator()
       ],

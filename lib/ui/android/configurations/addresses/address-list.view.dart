@@ -39,7 +39,7 @@ class AddressListView extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Row(
             children: <Widget>[
-              Icon(Icons.pin_drop, color: PRIMARY_GREEN),
+              Icon(Icons.place, color: PRIMARY_GREEN),
               SizedBox(
                 width: 20,
               ),

@@ -22,7 +22,7 @@ class _ReceiptCardState extends State<ReceiptCard> {
           child: Row(
             children: <Widget>[
               Expanded(
-                child: CustomText(label: "Quero o recibo médico"),
+                child: CustomText(label: "Desejo receber o recibo médico"),
               ),
               Switch(
                   value: option,

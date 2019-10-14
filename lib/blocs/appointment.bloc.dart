@@ -26,6 +26,17 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
   void changeCancellationPolicy(value) => this._cancellationPolicy = value;
 
   //
+  // Clinic
+  //
+  int _clinicId = null;
+  int get clinicId => _clinicId;
+
+  void setClinicId(clinicId) {
+    this._clinicId = clinicId;
+    notifyListeners();
+  }
+
+  //
   // Receipt
   //
   bool _receipt = false;
@@ -70,15 +81,15 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
   //
   // Appointments
   //
-  final _appointmentsBloc = BehaviorSubject<List<Appointment>>();
-  Stream<List<Appointment>> get appointmentsStream => _appointmentsBloc.stream;
+  final _appointmentBloc = BehaviorSubject<List<Appointment>>();
+  Stream<List<Appointment>> get appointmentsStream => _appointmentBloc.stream;
 
-  List<Appointment> get appointments => _appointmentsBloc.value;
+  List<Appointment> get appointments => _appointmentBloc.value;
 
   void getAppointments(int userId) async {
     List<Appointment> appointments =
         await _appointmentRepository.getAppointments(userId);
-    _appointmentsBloc.sink.add(appointments);
+    _appointmentBloc.sink.add(appointments);
   }
 
   //
@@ -87,7 +98,7 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
   Future<void> save() async {
     var params = new Map<String, dynamic>();
     params['address_id'] = this._addressId;
-    params['clinic_id'] = this.professional.clinics[0].id;
+    params['clinic_id'] = this._clinicId;
     params['notes'] = this._notes;
     params['payment_status'] = 'confirmed';
     params['price'] = this.professional.price;
@@ -107,12 +118,13 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
   void _reset() {
     this._addressId = null;
     this._cancellationPolicy = false;
-    this._receipt = false;
+    this._clinicId = null;
     this._date = null;
-    this._user = null;
-    this._professional = null;
     this._notes = "";
+    this._professional = null;
     this._profileId = null;
+    this._receipt = false;
+    this._user = null;
   }
 
   void dispose() {

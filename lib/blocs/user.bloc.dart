@@ -8,10 +8,11 @@ import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserBloc extends ChangeNotifier {
-  var user = User();
+  var _user = User();
+  User get user => user;
 
   UserBloc() {
-    user = null;
+    _user = null;
     loadUser();
   }
 
@@ -20,15 +21,15 @@ class UserBloc extends ChangeNotifier {
       var prefs = await SharedPreferences.getInstance();
       var repository = new UserRepository();
 
-      user = await repository.login(email, password);
+      _user = await repository.login(email, password);
 
-      await prefs.setString('user', jsonEncode(user));
+      await prefs.setString('user', jsonEncode(_user));
 
-      return user;
-    } catch (ex) {
-      Logger().e(ex);
-      user = null;
-      return null;
+      return _user;
+    } catch (e) {
+      Logger().e(e);
+      _user = null;
+      throw e;
     }
   }
 
@@ -47,7 +48,7 @@ class UserBloc extends ChangeNotifier {
   void logout() async {
     var prefs = await SharedPreferences.getInstance();
     await prefs.setString('user', null);
-    user = null;
+    _user = null;
     notifyListeners();
   }
 
@@ -57,7 +58,7 @@ class UserBloc extends ChangeNotifier {
     if (userData != null) {
       var res = User.fromJson(jsonDecode(userData));
       Settings.user = res;
-      user = res;
+      _user = res;
     }
   }
 

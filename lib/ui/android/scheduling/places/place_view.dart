@@ -23,7 +23,7 @@ class PlaceView extends StatelessWidget {
     addressBloc.getAddresses(userBloc.user.id);
 
     return Scaffold(
-        appBar: CustomAppBar(title: "Local"),
+        appBar: CustomAppBar(title: "Local da consulta"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: SingleChildScrollView(
             child: Container(

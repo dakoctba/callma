@@ -20,6 +20,8 @@ import 'package:provider/provider.dart';
 class ConfirmationView extends StatelessWidget with DateHelper {
   @override
   Widget build(BuildContext context) {
+    final appointmentBloc = Provider.of<AppointmentBloc>(context);
+
     return Scaffold(
         appBar: CustomAppBar(title: "Agendar consulta"),
         bottomNavigationBar: CustomBottomNavigationBar(),
@@ -28,7 +30,7 @@ class ConfirmationView extends StatelessWidget with DateHelper {
             child: ListView(children: <Widget>[
               HeaderCard(),
               DateAndTimeCard(),
-              AddressCard(),
+              appointmentBloc.addressId == null ? AddressCard() : Container(),
               PatientCard(),
               PaymentCard(),
               ReceiptCard(),
@@ -48,9 +50,13 @@ class ConfirmationView extends StatelessWidget with DateHelper {
   }
 
   void _save(BuildContext context) async {
-    final appointmentsBloc = Provider.of<AppointmentBloc>(context);
+    final appointmentBloc = Provider.of<AppointmentBloc>(context);
 
-    if (!appointmentsBloc.cancellationPolicy) {
+    bool askForClinicAddress = appointmentBloc.addressId == null &&
+        appointmentBloc.professional.clinics.length > 1 &&
+        appointmentBloc.clinicId == null;
+
+    if (!appointmentBloc.cancellationPolicy) {
       showDialog(
           context: context,
           builder: (context) {
@@ -69,8 +75,27 @@ class ConfirmationView extends StatelessWidget with DateHelper {
             );
           });
       return;
+    } else if (askForClinicAddress) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Local de atendimento"),
+              content:
+                  Text("Você precisa selecionar um local para atendimento"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            );
+          });
+      return;
     } else {
-      await appointmentsBloc.save();
+      await appointmentBloc.save();
 
       Navigator.push(
           context,

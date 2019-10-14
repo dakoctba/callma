@@ -1,4 +1,5 @@
 import 'package:callma/blocs/appointment.bloc.dart';
+import 'package:callma/models/clinic.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/shared/custom_text.dart';
@@ -25,20 +26,40 @@ class AddressCard extends StatelessWidget {
                   shrinkWrap: true,
                   physics: ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        Text(professional.clinics[index].address),
-                        Text(
-                            "${professional.clinics[index].district} - ${professional.clinics[index].city}/ ${professional.clinics[index].state}"),
-                        Text(professional.clinics[index].zipcode),
-                      ],
-                    );
+                    Clinic clinic = professional.clinics[index];
+                    return _buildCard(context, clinic);
                   },
                   separatorBuilder: (context, index) =>
                       Divider(color: SECONDARY_GREY, height: 20),
                 )
               ],
             )));
+  }
+
+  InkWell _buildCard(BuildContext context, Clinic clinic) {
+    var appointmentBloc = Provider.of<AppointmentBloc>(context);
+
+    return InkWell(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(clinic.address),
+                Text("${clinic.district} - ${clinic.city}/ ${clinic.state}"),
+                Text(clinic.zipcode),
+              ],
+            ),
+          ),
+          appointmentBloc.clinicId == clinic.id
+              ? Icon(Icons.done, color: PRIMARY_GREEN)
+              : Container()
+        ],
+      ),
+      onTap: () {
+        appointmentBloc.setClinicId(clinic.id);
+      },
+    );
   }
 }
