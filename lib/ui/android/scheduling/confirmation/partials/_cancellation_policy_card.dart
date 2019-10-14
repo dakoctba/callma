@@ -24,7 +24,7 @@ class _CancellationPolicyCardState extends State<CancellationPolicyCard> {
                 setState(() {
                   option = value;
                 });
-                bloc.cancellationPolicy = value;
+                bloc.changeCancellationPolicy(value);
               }),
           Expanded(
             child: Text("Entendi a política de cancelamento"),

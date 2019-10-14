@@ -18,6 +18,35 @@ import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class ConfirmationView extends StatelessWidget with DateHelper {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: CustomAppBar(title: "Agendar consulta"),
+        bottomNavigationBar: CustomBottomNavigationBar(),
+        body: Container(
+            padding: EdgeInsets.all(10),
+            child: ListView(children: <Widget>[
+              HeaderCard(),
+              DateAndTimeCard(),
+              AddressCard(),
+              PatientCard(),
+              PaymentCard(),
+              ReceiptCard(),
+              NotesCard(),
+              CancellationPolicyCard(),
+              SizedBox(height: 30),
+              CustomButton(
+                  label: "Agendar consulta",
+                  onPressed: () {
+                    try {
+                      _save(context);
+                    } catch (e) {
+                      Logger().e(e);
+                    }
+                  })
+            ])));
+  }
+
   void _save(BuildContext context) async {
     final appointmentsBloc = Provider.of<AppointmentBloc>(context);
 
@@ -54,34 +83,5 @@ class ConfirmationView extends StatelessWidget with DateHelper {
                             builder: (context) => ProfessionsView()));
                   })));
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: CustomAppBar(title: "Agendar consulta"),
-        bottomNavigationBar: CustomBottomNavigationBar(),
-        body: Container(
-            padding: EdgeInsets.all(10),
-            child: ListView(children: <Widget>[
-              HeaderCard(),
-              DateAndTimeCard(),
-              AddressCard(),
-              PatientCard(),
-              PaymentCard(),
-              ReceiptCard(),
-              NotesCard(),
-              CancellationPolicyCard(),
-              SizedBox(height: 30),
-              CustomButton(
-                  label: "Agendar consulta",
-                  onPressed: () {
-                    try {
-                      _save(context);
-                    } catch (e) {
-                      Logger().e(e);
-                    }
-                  })
-            ])));
   }
 }

@@ -9,13 +9,25 @@ import 'package:logger/logger.dart';
 import 'package:rxdart/rxdart.dart';
 
 class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
-  bool cancellationPolicy = false;
-  bool receipt = false;
-  DateTime date = null;
   User user = null;
   Professional professional = null;
-  String notes = "";
   int profileId;
+
+  bool _cancellationPolicy = false;
+  bool get cancellationPolicy => _cancellationPolicy;
+  void changeCancellationPolicy(bool value) => this._cancellationPolicy = value;
+
+  String _notes = "";
+  String get notes => _notes;
+  void changeNotes(String notes) => this._notes = notes;
+
+  bool _receipt = false;
+  bool get receipt => _receipt;
+  void changeReceipt(bool value) => this._receipt = value;
+
+  DateTime _date = null;
+  DateTime get date => _date;
+  void setDate(DateTime date) => this._date = date;
 
   var _appointmentRepository = new AppointmentRepository();
 
@@ -40,13 +52,13 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
     var params = new Map<String, dynamic>();
     // params['address_id'] = this.user.addresses[0].id;
     params['clinic_id'] = this.professional.clinics[0].id;
-    params['notes'] = this.notes;
+    params['notes'] = this._notes;
     params['payment_status'] = 'confirmed';
     params['price'] = this.professional.price;
     params['professional_id'] = this.professional.id;
     params['profile_id'] = this.profileId;
-    params['receipt'] = this.receipt;
-    params['schedule'] = formatDateToBd(this.date);
+    params['receipt'] = this._receipt;
+    params['schedule'] = formatDateToBd(this._date);
     params['status'] = enumToString(AppointmentStatus.scheduled);
 
     Logger().d("Vai salvar a consulta com os seguintes parâmetros $params");

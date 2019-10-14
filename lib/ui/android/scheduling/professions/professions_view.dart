@@ -1,7 +1,7 @@
 import 'package:callma/blocs/profession.bloc.dart';
 import 'package:callma/models/profession.dart';
 import 'package:callma/themes/callma.theme.dart';
-import 'package:callma/ui/android/scheduling/professions/partials/_profession_card.dart';
+import 'package:callma/ui/android/scheduling/specialties/specialties_view.dart';
 import 'package:callma/ui/shared/custom_app_bar.dart';
 import 'package:callma/ui/shared/custom_bottom_navigation_bar.dart';
 import 'package:callma/ui/shared/custom_loading.dart';
@@ -30,7 +30,8 @@ class ProfessionsView extends StatelessWidget {
                           Divider(color: SECONDARY_GREY, height: 0),
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
-                        return ProfessionCard(snapshot.data[index]);
+                        return _buildProfessionTile(
+                            context, snapshot.data[index]);
                       },
                     );
                   } else {
@@ -48,5 +49,20 @@ class ProfessionsView extends StatelessWidget {
             )
           ],
         ));
+  }
+
+  ListTile _buildProfessionTile(BuildContext context, Profession profession) {
+    return ListTile(
+        title: Text(profession.title),
+        subtitle:
+            profession.subtitle != null ? Text(profession.subtitle) : null,
+        trailing:
+            const Icon(Icons.keyboard_arrow_right, color: SECONDARY_GREEN),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SpecialtiesView(profession.id)));
+        });
   }
 }

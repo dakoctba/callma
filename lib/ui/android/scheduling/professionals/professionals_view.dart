@@ -1,4 +1,5 @@
 import 'package:callma/blocs/professional.bloc.dart';
+import 'package:callma/blocs/user.bloc.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/android/scheduling/filters/filters_view.dart';
@@ -17,7 +18,10 @@ class ProfessionalsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = Provider.of<ProfessionalBloc>(context);
 
-    bloc.getProfessionals("M", specialtyId); // TODO HARDCODE
+    var userBloc = Provider.of<UserBloc>(context);
+    var sex = userBloc.user.profiles[0].sex;
+
+    bloc.getProfessionals(sex, specialtyId);
 
     return Scaffold(
         appBar: CustomAppBar(title: "Profissionais"),
@@ -36,6 +40,16 @@ class ProfessionalsView extends StatelessWidget {
               stream: bloc.stream,
               builder: (context, AsyncSnapshot<List<Professional>> snapshot) {
                 if (snapshot.hasData) {
+                  if (snapshot.data.length == 0) {
+                    return Card(
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                            "Ops! Ainda não temos nenhum profissional nessa especialidade"),
+                      ),
+                    );
+                  }
+
                   return ListView.builder(
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {

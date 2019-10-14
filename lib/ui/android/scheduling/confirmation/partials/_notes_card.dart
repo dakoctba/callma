@@ -20,7 +20,7 @@ class NotesCard extends StatelessWidget {
               decoration: InputDecoration(border: OutlineInputBorder()),
               maxLines: 3,
               onChanged: (notes) {
-                bloc.notes = notes;
+                bloc.changeNotes(notes);
               },
             )
           ],

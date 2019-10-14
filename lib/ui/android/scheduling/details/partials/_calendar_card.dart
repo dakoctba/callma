@@ -23,7 +23,7 @@ class CalendarCard extends StatelessWidget {
                 DatePickerTimeline(
                   DateTime.now(),
                   onDateChange: (date) {
-                    bloc.date = date;
+                    bloc.setDate(date);
                     Navigator.push(
                         context,
                         MaterialPageRoute(

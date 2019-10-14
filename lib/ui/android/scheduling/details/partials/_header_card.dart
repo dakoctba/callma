@@ -10,10 +10,6 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HeaderCard extends StatelessWidget {
-  String _buildUrl(Professional professional) {
-    return "https://www.callma.com.br?${professional.profession.professionalClassBoardName}=${professional.professionalClassBoardId}";
-  }
-
   @override
   Widget build(BuildContext context) {
     var bloc = Provider.of<AppointmentBloc>(context);
@@ -116,5 +112,12 @@ class HeaderCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _buildUrl(Professional professional) {
+    String boardClass = professional.profession.professionalClassBoardName;
+    String boardId = professional.professionalClassBoardId;
+
+    return "https://www.callma.com.br?${boardClass}=${boardId}";
   }
 }

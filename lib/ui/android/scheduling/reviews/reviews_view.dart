@@ -1,3 +1,4 @@
+import 'package:callma/blocs/appointment.bloc.dart';
 import 'package:callma/blocs/review.bloc.dart';
 import 'package:callma/models/review.dart';
 import 'package:callma/themes/callma.theme.dart';
@@ -13,7 +14,10 @@ import 'package:provider/provider.dart';
 class ReviewsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final appointmentBloc = Provider.of<AppointmentBloc>(context);
     final bloc = Provider.of<ReviewBloc>(context);
+
+    bloc.getReviews(appointmentBloc.professional.id);
 
     return Scaffold(
         appBar: CustomAppBar(title: "Avaliações"),

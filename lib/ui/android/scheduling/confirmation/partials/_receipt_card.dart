@@ -32,7 +32,7 @@ class _ReceiptCardState extends State<ReceiptCard> {
                     setState(() {
                       option = value;
                     });
-                    bloc.receipt = value;
+                    bloc.changeReceipt(value);
                   })
             ],
           )),
