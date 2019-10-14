@@ -5,7 +5,7 @@
 - [ ] Avaliar uma consulta
 - [ ] Cadastrar favoritos
 - [ ] Mostrar favoritos
-- [ ] Escolher endereço
+- [x] Escolher endereço
 
 ## Profissional
 
