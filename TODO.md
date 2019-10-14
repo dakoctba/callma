@@ -1,11 +1,14 @@
 # TODO
 
-## Funcionalidades a fazer
+## Paciente
+
+- [ ] Avaliar uma consulta
+- [ ] Cadastrar favoritos
+- [ ] Mostrar favoritos
+- [ ] Escolher endereço
+
+## Profissional
 
 - [ ] Login profissional
 - [ ] Aceitar uma consulta
 - [ ] Finalizar uma consulta
-- [ ] Avaliar uma consulta
-- [ ] Cadastrar favoritos
-- [ ] Mostrar favoritos
-- [x] Escolher endereço
