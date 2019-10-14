@@ -5,23 +5,12 @@ import 'package:callma/ui/android/scheduling/reviews/partials/_review_card.dart'
 import 'package:callma/ui/android/scheduling/reviews/partials/_reviews_header.dart';
 import 'package:callma/ui/shared/custom_app_bar.dart';
 import 'package:callma/ui/shared/custom_bottom_navigation_bar.dart';
+import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:callma/ui/shared/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ReviewsView extends StatelessWidget {
-  Widget _buildLoadingWidget() {
-    return Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Carregando avaliações..."),
-        SizedBox(height: 10),
-        CircularProgressIndicator()
-      ],
-    ));
-  }
-
   @override
   Widget build(BuildContext context) {
     final bloc = Provider.of<ReviewBloc>(context);
@@ -70,7 +59,7 @@ class ReviewsView extends StatelessWidget {
                                     },
                                   );
                                 } else {
-                                  return _buildLoadingWidget();
+                                  return CustomLoading("Carregando avaliações");
                                 }
                               },
                             )

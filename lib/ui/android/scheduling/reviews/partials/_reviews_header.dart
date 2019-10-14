@@ -5,6 +5,7 @@ import 'package:callma/models/feeling.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/models/summary.dart';
 import 'package:callma/themes/callma.theme.dart';
+import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -15,18 +16,6 @@ import 'package:url_launcher/url_launcher.dart';
 class ProfessionalReviewssHeader extends StatelessWidget {
   String _buildUrl(Professional professional) {
     return "https://www.callma.com.br?${professional.profession.professionalClassBoardName}=${professional.professionalClassBoardId}";
-  }
-
-  Widget _buildLoadingWidget() {
-    return Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Carregando avaliações..."),
-        SizedBox(height: 10),
-        CircularProgressIndicator()
-      ],
-    ));
   }
 
   Widget _buildFeelingsChartItem(IconData icon, double value) {
@@ -104,7 +93,7 @@ class ProfessionalReviewssHeader extends StatelessWidget {
             ],
           ));
         } else {
-          return _buildLoadingWidget();
+          return CustomLoading("Carregando avaliações");
         }
       },
     );

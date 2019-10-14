@@ -6,23 +6,12 @@ import 'package:callma/ui/shared/custom_bottom_navigation_bar.dart';
 import 'package:callma/models/appointment.dart';
 import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/android/appointments/appointment_details_view.dart';
+import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:farm/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AppointmentsView extends StatelessWidget with DateHelper {
-  Widget _buildLoadingWidget() {
-    return Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Carregando consultas..."),
-        SizedBox(height: 10),
-        CircularProgressIndicator()
-      ],
-    ));
-  }
-
   Widget _buildCard(BuildContext context, Appointment appointment) {
     return InkWell(
         child: Card(
@@ -114,7 +103,7 @@ class AppointmentsView extends StatelessWidget with DateHelper {
                         return _buildCard(context, snapshot.data[index]);
                       });
                 } else {
-                  return _buildLoadingWidget();
+                  return CustomLoading("Carregando consultas");
                 }
               },
             )));

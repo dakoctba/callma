@@ -4,22 +4,11 @@ import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/android/scheduling/professions/partials/_profession_card.dart';
 import 'package:callma/ui/shared/custom_app_bar.dart';
 import 'package:callma/ui/shared/custom_bottom_navigation_bar.dart';
+import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProfessionsView extends StatelessWidget {
-  Widget _buildLoadingWidget() {
-    return Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Carregando profissões..."),
-        SizedBox(height: 10),
-        CircularProgressIndicator()
-      ],
-    ));
-  }
-
   @override
   Widget build(BuildContext context) {
     final professionBloc = Provider.of<ProfessionBloc>(context);
@@ -45,7 +34,7 @@ class ProfessionsView extends StatelessWidget {
                       },
                     );
                   } else {
-                    return _buildLoadingWidget();
+                    return CustomLoading("Carregando profissões");
                   }
                 },
               ),

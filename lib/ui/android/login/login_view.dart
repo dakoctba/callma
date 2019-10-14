@@ -11,6 +11,7 @@ import 'package:callma/ui/android/login/onboarding_view.dart';
 import 'package:callma/ui/android/scheduling/professions/professions_view.dart';
 import 'package:callma/ui/shared/custom_app_bar.dart';
 import 'package:callma/ui/shared/custom_button.dart';
+import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,7 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? _buildLoadingWidget()
+        ? Material(child: CustomLoading("Por favor, aguarde..."))
         : Scaffold(
             appBar: CustomAppBar(),
             body: Form(
@@ -108,20 +109,6 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
               ),
             ),
           );
-  }
-
-  Widget _buildLoadingWidget() {
-    return Material(
-      child: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("Por favor, aguarde..."),
-          SizedBox(height: 10),
-          CircularProgressIndicator()
-        ],
-      )),
-    );
   }
 
   void _login(BuildContext context) async {

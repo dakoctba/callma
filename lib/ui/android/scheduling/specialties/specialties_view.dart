@@ -4,24 +4,13 @@ import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/android/scheduling/specialties/specialty_tile.dart';
 import 'package:callma/ui/shared/custom_app_bar.dart';
 import 'package:callma/ui/shared/custom_bottom_navigation_bar.dart';
+import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SpecialtiesView extends StatelessWidget {
   final int professionId;
   SpecialtiesView(this.professionId);
-
-  Widget _buildLoadingWidget() {
-    return Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Carregando especialidades..."),
-        SizedBox(height: 10),
-        CircularProgressIndicator()
-      ],
-    ));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +34,7 @@ class SpecialtiesView extends StatelessWidget {
                             return SpecialtyTile(snapshot.data[index]);
                           });
                     } else {
-                      return _buildLoadingWidget();
+                      return CustomLoading("Carregando especialidades");
                     }
                   }))
         ]));
