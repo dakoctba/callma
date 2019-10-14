@@ -9,27 +9,63 @@ import 'package:logger/logger.dart';
 import 'package:rxdart/rxdart.dart';
 
 class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
-  User user = null;
-  Professional professional = null;
-  int profileId;
+  var _appointmentRepository = new AppointmentRepository();
 
+  //
+  // Address
+  //
+  int _addressId;
+  int get addressId => _addressId;
+  void setAddress(addressId) => this._addressId = addressId;
+
+  //
+  // Cancelation Policy
+  //
   bool _cancellationPolicy = false;
   bool get cancellationPolicy => _cancellationPolicy;
-  void changeCancellationPolicy(bool value) => this._cancellationPolicy = value;
+  void changeCancellationPolicy(value) => this._cancellationPolicy = value;
 
-  String _notes = "";
-  String get notes => _notes;
-  void changeNotes(String notes) => this._notes = notes;
-
+  //
+  // Receipt
+  //
   bool _receipt = false;
   bool get receipt => _receipt;
-  void changeReceipt(bool value) => this._receipt = value;
+  void changeReceipt(value) => this._receipt = value;
 
+  //
+  // Date
+  //
   DateTime _date = null;
   DateTime get date => _date;
-  void setDate(DateTime date) => this._date = date;
+  void setDate(date) => this._date = date;
 
-  var _appointmentRepository = new AppointmentRepository();
+  //
+  // User
+  //
+  User _user = null;
+  User get user => _user;
+
+  //
+  // Professional
+  //
+  Professional _professional = null;
+  Professional get professional => _professional;
+  void setProfessional(Professional professional) =>
+      this._professional = professional;
+
+  //
+  // User
+  //
+  String _notes = "";
+  String get notes => _notes;
+  void changeNotes(notes) => this._notes = notes;
+
+  //
+  // Profile (dependent)
+  //
+  int _profileId;
+  int get profileId => this._profileId;
+  void setProfileId(profile) => this._profileId = profile;
 
   //
   // Appointments
@@ -50,7 +86,7 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
   //
   Future<void> save() async {
     var params = new Map<String, dynamic>();
-    // params['address_id'] = this.user.addresses[0].id;
+    params['address_id'] = this._addressId;
     params['clinic_id'] = this.professional.clinics[0].id;
     params['notes'] = this._notes;
     params['payment_status'] = 'confirmed';
@@ -64,6 +100,19 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
     Logger().d("Vai salvar a consulta com os seguintes parâmetros $params");
 
     await _appointmentRepository.save(params);
+
+    _reset();
+  }
+
+  void _reset() {
+    this._addressId = null;
+    this._cancellationPolicy = false;
+    this._receipt = false;
+    this._date = null;
+    this._user = null;
+    this._professional = null;
+    this._notes = "";
+    this._profileId = null;
   }
 
   void dispose() {

@@ -72,7 +72,7 @@ class ProfessionalCard extends ListTile {
               )),
         ),
         onTap: () {
-          bloc.professional = professional;
+          bloc.setProfessional(professional);
           Navigator.push(
               context,
               MaterialPageRoute(

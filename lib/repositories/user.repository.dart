@@ -1,4 +1,5 @@
 import 'package:callma/exceptions/callma_exception.dart';
+import 'package:callma/models/address.dart';
 import 'package:callma/models/user.dart';
 import 'package:callma/repositories/auth_dio.dart';
 import 'package:dio/dio.dart';
@@ -57,19 +58,26 @@ class UserRepository {
     }
   }
 
-  Future<User> _getUser(dynamic userId) async {
-    try {
-      Dio dio = await AuthDio.getDio();
+  Future<User> _getUser(int userId) async {
+    Dio dio = await AuthDio.getDio();
 
-      Response response =
-          await dio.get("${DotEnv().env['API_URL']}/api/users/$userId");
+    Response response =
+        await dio.get("${DotEnv().env['API_URL']}/api/users/$userId");
 
-      User result = User.fromJson(response.data);
-      return result;
-    } catch (e) {
-      Logger().e(e);
-    }
+    User result = User.fromJson(response.data);
+    return result;
+  }
 
-    return null;
+  Future<List<Address>> getAddresses(int userId) async {
+    Dio dio = await AuthDio.getDio();
+
+    Response response =
+        await dio.get("${DotEnv().env['API_URL']}/api/users/$userId/addresses");
+
+    List<Address> result = (response.data as List)
+        .map((address) => Address.fromJson(address))
+        .toList();
+
+    return result;
   }
 }

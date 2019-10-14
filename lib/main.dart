@@ -1,3 +1,4 @@
+import 'package:callma/blocs/address.bloc.dart';
 import 'package:callma/blocs/appointment.bloc.dart';
 import 'package:callma/blocs/menu.bloc.dart';
 import 'package:callma/blocs/profession.bloc.dart';
@@ -23,6 +24,7 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<AddressBloc>.value(value: AddressBloc()),
         ChangeNotifierProvider<AppointmentBloc>.value(value: AppointmentBloc()),
         ChangeNotifierProvider<MenuBloc>.value(value: MenuBloc()),
         ChangeNotifierProvider<ProfessionalBloc>.value(

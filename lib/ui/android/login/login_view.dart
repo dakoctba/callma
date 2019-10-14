@@ -122,7 +122,7 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
 
       User user =
           await userBloc.login(loginController.text, passwordController.text);
-      appointmentBloc.profileId = user.profiles[0].id;
+      appointmentBloc.setProfileId(user.profiles[0].id);
 
       Provider.of<MenuBloc>(context).setOption(MenuOption.home);
       Navigator.pushReplacement(
