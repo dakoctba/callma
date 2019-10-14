@@ -64,8 +64,7 @@ class ReviewsView extends StatelessWidget {
                                     itemCount: snapshot.data.length,
                                     separatorBuilder: (context, index) =>
                                         Divider(
-                                            color: CallmaTheme.SECONDARY_GREY,
-                                            height: 0),
+                                            color: SECONDARY_GREY, height: 0),
                                     itemBuilder: (context, index) {
                                       return ReviewCard(snapshot.data[index]);
                                     },

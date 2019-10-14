@@ -41,8 +41,8 @@ class _FiltersScreenState extends State<FiltersView> {
                           min: 0.0,
                           max: 2000.0,
                           label: "R\$ ${valor.toStringAsFixed(2)}",
-                          activeColor: CallmaTheme.SECONDARY_GREEN,
-                          inactiveColor: CallmaTheme.PRIMARY_GREEN,
+                          activeColor: SECONDARY_GREEN,
+                          inactiveColor: PRIMARY_GREEN,
                           onChanged: (double value) {
                             setState(() {
                               valor = value;
@@ -72,10 +72,9 @@ class _FiltersScreenState extends State<FiltersView> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius:
                                         new BorderRadius.circular(18.0),
-                                    side: BorderSide(
-                                        color: CallmaTheme.SECONDARY_GREEN)),
+                                    side: BorderSide(color: SECONDARY_GREEN)),
                                 color: Colors.white,
-                                textColor: CallmaTheme.SECONDARY_GREEN,
+                                textColor: SECONDARY_GREEN,
                                 onPressed: () {},
                                 child: Text("Alterar")),
                           )
@@ -112,8 +111,8 @@ class _FiltersScreenState extends State<FiltersView> {
                           max: 24.0,
                           labels: RangeLabels("${horarioInicio.toInt()}:00",
                               "${horarioFim.toInt()}:00"),
-                          activeColor: CallmaTheme.SECONDARY_GREEN,
-                          inactiveColor: CallmaTheme.PRIMARY_GREEN,
+                          activeColor: SECONDARY_GREEN,
+                          inactiveColor: PRIMARY_GREEN,
                           onChanged: (RangeValues values) {
                             setState(() {
                               horarioInicio = values.start;
@@ -144,8 +143,8 @@ class _FiltersScreenState extends State<FiltersView> {
                           min: 1.0,
                           max: 100.0,
                           label: "${distancia.toInt()} km",
-                          activeColor: CallmaTheme.SECONDARY_GREEN,
-                          inactiveColor: CallmaTheme.PRIMARY_GREEN,
+                          activeColor: SECONDARY_GREEN,
+                          inactiveColor: PRIMARY_GREEN,
                           onChanged: (double value) {
                             setState(() {
                               distancia = value;

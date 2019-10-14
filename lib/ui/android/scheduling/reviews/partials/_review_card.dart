@@ -40,8 +40,8 @@ class ReviewCard extends StatelessWidget with DateHelper {
                   starCount: 5,
                   rating: _review.stars.toDouble(),
                   size: 16,
-                  color: CallmaTheme.PRIMARY_GREEN,
-                  borderColor: CallmaTheme.SECONDARY_GREY,
+                  color: PRIMARY_GREEN,
+                  borderColor: SECONDARY_GREY,
                   spacing: 1.0),
               SizedBox(width: 10),
               Text(formatStringDateWithHours(_review.createdAt))

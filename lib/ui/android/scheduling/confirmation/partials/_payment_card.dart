@@ -23,9 +23,9 @@ class PaymentCard extends StatelessWidget {
                   child: RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(18.0),
-                          side: BorderSide(color: CallmaTheme.SECONDARY_GREEN)),
+                          side: BorderSide(color: SECONDARY_GREEN)),
                       color: Colors.white,
-                      textColor: CallmaTheme.SECONDARY_GREEN,
+                      textColor: SECONDARY_GREEN,
                       onPressed: () {},
                       child: Text("Alterar")),
                 )

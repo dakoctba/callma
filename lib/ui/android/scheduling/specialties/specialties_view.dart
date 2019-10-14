@@ -38,8 +38,8 @@ class SpecialtiesView extends StatelessWidget {
                   builder: (context, AsyncSnapshot<List<Specialty>> snapshot) {
                     if (snapshot.hasData) {
                       return ListView.separated(
-                          separatorBuilder: (context, index) => Divider(
-                              color: CallmaTheme.SECONDARY_GREY, height: 0),
+                          separatorBuilder: (context, index) =>
+                              Divider(color: SECONDARY_GREY, height: 0),
                           itemCount: snapshot.data.length,
                           itemBuilder: (context, index) {
                             return SpecialtyTile(snapshot.data[index]);

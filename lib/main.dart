@@ -44,11 +44,7 @@ class Main extends StatelessWidget {
     return MaterialApp(
         title: 'Callma',
         debugShowCheckedModeBanner: DotEnv().env['ENVIRONMENT'] != "production",
-        theme: ThemeData(
-            inputDecorationTheme: InputDecorationTheme(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: CallmaTheme.SECONDARY_GREEN)))),
+        theme: defaultTheme(),
         home: LoginView());
   }
 }

@@ -67,7 +67,7 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
                   SizedBox(height: 10),
                   GestureDetector(
                     child: Text("Esqueceu sua senha?",
-                        style: TextStyle(color: CallmaTheme.SECONDARY_GREEN)),
+                        style: TextStyle(color: SECONDARY_GREEN)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -90,12 +90,11 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
                           children: <Widget>[
                             Text("Não possui uma conta? ",
                                 style: TextStyle(
-                                    fontSize: 12,
-                                    color: CallmaTheme.SECONDARY_GREEN)),
+                                    fontSize: 12, color: SECONDARY_GREEN)),
                             Text("Cadastre-se",
                                 style: TextStyle(
                                     fontSize: 12,
-                                    color: CallmaTheme.SECONDARY_GREEN,
+                                    color: SECONDARY_GREEN,
                                     fontWeight: FontWeight.bold))
                           ]),
                       onTap: () {

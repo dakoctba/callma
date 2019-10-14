@@ -58,14 +58,12 @@ class HeaderCard extends StatelessWidget {
                     ),
                     Text(
                       professional.profession.title,
-                      style: TextStyle(
-                          fontSize: 13, color: CallmaTheme.PRIMARY_GREY),
+                      style: TextStyle(fontSize: 13, color: PRIMARY_GREY),
                     ),
                     InkWell(
                       child: Text(
                         "${professional.profession.professionalClassBoardName} ${professional.professionalClassBoardId}",
-                        style: TextStyle(
-                            fontSize: 13, color: CallmaTheme.SECONDARY_BLUE),
+                        style: TextStyle(fontSize: 13, color: SECONDARY_BLUE),
                       ),
                       onTap: () async {
                         if (await canLaunch(_buildUrl(professional))) {
@@ -86,7 +84,7 @@ class HeaderCard extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: CallmaTheme.PRIMARY_GREEN),
+                          color: PRIMARY_GREEN),
                     )
                   ],
                 ),
@@ -102,9 +100,9 @@ class HeaderCard extends StatelessWidget {
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(18.0),
-                        side: BorderSide(color: CallmaTheme.SECONDARY_GREEN)),
+                        side: BorderSide(color: SECONDARY_GREEN)),
                     color: Colors.white,
-                    textColor: CallmaTheme.SECONDARY_GREEN,
+                    textColor: SECONDARY_GREEN,
                     onPressed: () {
                       Navigator.push(
                           context,

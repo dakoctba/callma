@@ -38,7 +38,7 @@ class ProfessionsView extends StatelessWidget {
                   if (snapshot.hasData) {
                     return ListView.separated(
                       separatorBuilder: (context, index) =>
-                          Divider(color: CallmaTheme.SECONDARY_GREY, height: 0),
+                          Divider(color: SECONDARY_GREY, height: 0),
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
                         return ProfessionCard(snapshot.data[index]);
@@ -50,12 +50,12 @@ class ProfessionsView extends StatelessWidget {
                 },
               ),
             ),
-            Divider(color: CallmaTheme.SECONDARY_GREY, height: 0),
+            Divider(color: SECONDARY_GREY, height: 0),
             ListTile(
               title: Text("Favoritos",
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              trailing: Icon(Icons.keyboard_arrow_right,
-                  color: CallmaTheme.SECONDARY_GREEN),
+              trailing:
+                  Icon(Icons.keyboard_arrow_right, color: SECONDARY_GREEN),
             )
           ],
         ));

@@ -17,10 +17,9 @@ class PlaceView extends StatelessWidget {
     // Consultório
     //
     ListTile consultorio = ListTile(
-      leading: Icon(Icons.public, color: CallmaTheme.SECONDARY_GREEN),
+      leading: Icon(Icons.public, color: SECONDARY_GREEN),
       title: Text("Consultório"),
-      trailing:
-          Icon(Icons.keyboard_arrow_right, color: CallmaTheme.SECONDARY_GREEN),
+      trailing: Icon(Icons.keyboard_arrow_right, color: SECONDARY_GREEN),
       onTap: () {
         Navigator.push(
             context,
@@ -33,10 +32,9 @@ class PlaceView extends StatelessWidget {
     // Consultório
     //
     ListTile domicilio = ListTile(
-      leading: Icon(Icons.location_on, color: CallmaTheme.SECONDARY_GREEN),
+      leading: Icon(Icons.location_on, color: SECONDARY_GREEN),
       title: Text("Domicílio"),
-      trailing:
-          Icon(Icons.keyboard_arrow_right, color: CallmaTheme.SECONDARY_GREEN),
+      trailing: Icon(Icons.keyboard_arrow_right, color: SECONDARY_GREEN),
       onTap: () {
         Navigator.push(
             context,
@@ -59,9 +57,7 @@ class PlaceView extends StatelessWidget {
           Expanded(
             child: ListView(
                 children: ListTile.divideTiles(
-                        context: context,
-                        color: CallmaTheme.TERTIARY_GREY,
-                        tiles: items)
+                        context: context, color: TERTIARY_GREY, tiles: items)
                     .toList()),
           ),
           CustomButton(label: "Adicionar endereço", onPressed: () {})

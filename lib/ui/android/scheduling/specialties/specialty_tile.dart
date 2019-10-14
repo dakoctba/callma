@@ -13,8 +13,8 @@ class SpecialtyTile extends ListTile {
     return ListTile(
         title: Text(specialty.title),
         subtitle: specialty.subtitle != null ? Text(specialty.subtitle) : null,
-        trailing: const Icon(Icons.keyboard_arrow_right,
-            color: CallmaTheme.SECONDARY_GREEN),
+        trailing:
+            const Icon(Icons.keyboard_arrow_right, color: SECONDARY_GREEN),
         onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => PlaceView(specialty.id)));

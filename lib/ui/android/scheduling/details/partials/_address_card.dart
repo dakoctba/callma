@@ -1,7 +1,7 @@
 import 'package:callma/blocs/appointment.bloc.dart';
-import 'package:callma/ui/shared/custom_text.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/themes/callma.theme.dart';
+import 'package:callma/ui/shared/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +36,7 @@ class AddressCard extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, index) =>
-                      Divider(color: CallmaTheme.SECONDARY_GREY, height: 20),
+                      Divider(color: SECONDARY_GREY, height: 20),
                 )
               ],
             )));

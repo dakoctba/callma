@@ -60,9 +60,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
               }
             },
             type: BottomNavigationBarType.fixed,
-            backgroundColor: CallmaTheme.PRIMARY_GREEN,
+            backgroundColor: PRIMARY_GREEN,
             selectedItemColor: Colors.white,
-            unselectedItemColor: CallmaTheme.SECONDARY_GREEN,
+            unselectedItemColor: SECONDARY_GREEN,
             showSelectedLabels: false, // Não mostrar as labels nos botões
             showUnselectedLabels: false, // Não mostrar as labels nos botões
           );

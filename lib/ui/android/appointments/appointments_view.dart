@@ -45,21 +45,19 @@ class AppointmentsView extends StatelessWidget with DateHelper {
                             Text(appointment.professional.name,
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Text(appointment.professional.profession.title,
-                                style:
-                                    TextStyle(color: CallmaTheme.PRIMARY_GREY))
+                                style: TextStyle(color: PRIMARY_GREY))
                           ]))
                     ]),
                     SizedBox(height: 20),
                     Row(children: <Widget>[
                       Icon(Icons.calendar_today,
-                          size: 16, color: CallmaTheme.PRIMARY_GREEN),
+                          size: 16, color: PRIMARY_GREEN),
                       SizedBox(width: 10),
                       Expanded(child: Text(formatDate(appointment.schedule)))
                     ]),
                     SizedBox(height: 5),
                     Row(children: <Widget>[
-                      Icon(Icons.pin_drop,
-                          size: 16, color: CallmaTheme.PRIMARY_GREEN),
+                      Icon(Icons.pin_drop, size: 16, color: PRIMARY_GREEN),
                       SizedBox(width: 10),
                       Expanded(
                           child:
@@ -72,7 +70,7 @@ class AppointmentsView extends StatelessWidget with DateHelper {
                           child: Container(
                               child: Row(children: <Widget>[
                             Icon(Icons.attach_money,
-                                size: 16, color: CallmaTheme.PRIMARY_GREEN),
+                                size: 16, color: PRIMARY_GREEN),
                             SizedBox(width: 10),
                             Expanded(
                                 child: Text(

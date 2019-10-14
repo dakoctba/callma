@@ -16,15 +16,15 @@ class Badge extends StatelessWidget {
     switch (status) {
       case AppointmentStatus.done:
         text = "Realizada";
-        color = CallmaTheme.SECONDARY_GREY;
+        color = SECONDARY_GREY;
         break;
       case AppointmentStatus.scheduled:
         text = "Agendada";
-        color = CallmaTheme.PRIMARY_GREEN;
+        color = PRIMARY_GREEN;
         break;
       case AppointmentStatus.canceled:
         text = "Cancelada";
-        color = CallmaTheme.PRIMARY_RED;
+        color = PRIMARY_RED;
     }
 
     return BadgesPackage.Badge(

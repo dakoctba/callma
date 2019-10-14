@@ -26,8 +26,8 @@ class _ReceiptCardState extends State<ReceiptCard> {
               ),
               Switch(
                   value: option,
-                  activeColor: CallmaTheme.PRIMARY_GREEN,
-                  inactiveTrackColor: CallmaTheme.SECONDARY_GREY,
+                  activeColor: PRIMARY_GREEN,
+                  inactiveTrackColor: SECONDARY_GREY,
                   onChanged: (value) {
                     setState(() {
                       option = value;

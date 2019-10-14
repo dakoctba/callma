@@ -16,7 +16,7 @@ class CustomButton extends StatelessWidget {
         height: 44.0,
         width: 240.0,
         child: RaisedButton(
-            color: CallmaTheme.SECONDARY_GREEN,
+            color: SECONDARY_GREEN,
             textColor: Colors.white,
             onPressed: this.onPressed,
             child: Text(this.label)),

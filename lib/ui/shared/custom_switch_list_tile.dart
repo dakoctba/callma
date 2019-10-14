@@ -13,7 +13,7 @@ class CustomSwitchListTile extends StatelessWidget {
         value: true,
         title: new Text(label),
         onChanged: (value) {},
-        activeTrackColor: CallmaTheme.PRIMARY_GREEN,
-        activeColor: CallmaTheme.SECONDARY_GREEN);
+        activeTrackColor: PRIMARY_GREEN,
+        activeColor: SECONDARY_GREEN);
   }
 }

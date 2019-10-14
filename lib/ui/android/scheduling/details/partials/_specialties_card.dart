@@ -15,7 +15,7 @@ class SpecialtiesCard extends StatelessWidget {
               children: <Widget>[
                 Icon(
                   Icons.fiber_manual_record,
-                  color: CallmaTheme.PRIMARY_GREEN,
+                  color: PRIMARY_GREEN,
                   size: 14,
                 ),
                 SizedBox(width: 10),

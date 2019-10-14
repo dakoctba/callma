@@ -14,8 +14,8 @@ class ProfessionCard extends ListTile {
         title: Text(profession.title),
         subtitle:
             profession.subtitle != null ? Text(profession.subtitle) : null,
-        trailing: const Icon(Icons.keyboard_arrow_right,
-            color: CallmaTheme.SECONDARY_GREEN),
+        trailing:
+            const Icon(Icons.keyboard_arrow_right, color: SECONDARY_GREEN),
         onTap: () {
           Navigator.push(
               context,

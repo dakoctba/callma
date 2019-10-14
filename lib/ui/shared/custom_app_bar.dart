@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ? Image.asset("assets/images/logos/logo.png")
             : Text(title),
         centerTitle: this.title == null ? true : false,
-        backgroundColor: CallmaTheme.PRIMARY_GREEN,
+        backgroundColor: PRIMARY_GREEN,
         actions: this.actions);
   }
 

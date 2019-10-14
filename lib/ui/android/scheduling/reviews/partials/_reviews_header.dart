@@ -35,15 +35,15 @@ class ProfessionalReviewssHeader extends StatelessWidget {
       child: Row(children: <Widget>[
         Icon(
           icon,
-          color: CallmaTheme.PRIMARY_GREEN,
+          color: PRIMARY_GREEN,
           size: 14,
         ),
         new LinearPercentIndicator(
           width: 140.0,
           lineHeight: 6.0,
           percent: (value / 100),
-          backgroundColor: CallmaTheme.TERTIARY_GREY,
-          progressColor: CallmaTheme.TERTIARY_GREEN,
+          backgroundColor: TERTIARY_GREY,
+          progressColor: TERTIARY_GREEN,
         )
       ]),
     );
@@ -89,13 +89,13 @@ class ProfessionalReviewssHeader extends StatelessWidget {
                       starCount: 5,
                       rating: snapshot.data.average,
                       size: 16,
-                      color: CallmaTheme.PRIMARY_GREEN,
-                      borderColor: CallmaTheme.SECONDARY_GREY,
+                      color: PRIMARY_GREEN,
+                      borderColor: SECONDARY_GREY,
                       spacing: 1.0),
                   Text("${snapshot.data.reviews} avaliações")
                 ],
               ),
-              VerticalDivider(color: CallmaTheme.PRIMARY_GREY),
+              VerticalDivider(color: PRIMARY_GREY),
               Column(
                 children: <Widget>[
                   _buildFeelingsChart(snapshot.data.feelings),
@@ -150,14 +150,12 @@ class ProfessionalReviewssHeader extends StatelessWidget {
                     ),
                     Text(
                       professional.profession.title,
-                      style: TextStyle(
-                          fontSize: 13, color: CallmaTheme.PRIMARY_GREY),
+                      style: TextStyle(fontSize: 13, color: PRIMARY_GREY),
                     ),
                     InkWell(
                       child: Text(
                         "${professional.profession.professionalClassBoardName} ${professional.professionalClassBoardId}",
-                        style: TextStyle(
-                            fontSize: 13, color: CallmaTheme.SECONDARY_BLUE),
+                        style: TextStyle(fontSize: 13, color: SECONDARY_BLUE),
                       ),
                       onTap: () async {
                         if (await canLaunch(_buildUrl(professional))) {

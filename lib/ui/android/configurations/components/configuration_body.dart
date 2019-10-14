@@ -78,10 +78,9 @@ class ConfigurationBody extends StatelessWidget {
 
     return items.map((item) {
       return ListTile(
-        leading: Icon(item.icon, color: CallmaTheme.SECONDARY_GREEN),
+        leading: Icon(item.icon, color: SECONDARY_GREEN),
         title: Text(item.label),
-        trailing: Icon(Icons.keyboard_arrow_right,
-            color: CallmaTheme.SECONDARY_GREEN),
+        trailing: Icon(Icons.keyboard_arrow_right, color: SECONDARY_GREEN),
         onTap: item.onTap,
       );
     });
@@ -95,7 +94,7 @@ class ConfigurationBody extends StatelessWidget {
         child: ListView(
             children: ListTile.divideTiles(
                     context: context,
-                    color: CallmaTheme.TERTIARY_GREY,
+                    color: TERTIARY_GREY,
                     tiles: _getItems(context))
                 .toList()),
       )

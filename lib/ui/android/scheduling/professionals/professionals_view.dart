@@ -35,7 +35,7 @@ class ProfessionalsView extends StatelessWidget {
         bottomNavigationBar: CustomBottomNavigationBar(),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.search),
-          backgroundColor: CallmaTheme.PRIMARY_GREEN,
+          backgroundColor: PRIMARY_GREEN,
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => FiltersView()));

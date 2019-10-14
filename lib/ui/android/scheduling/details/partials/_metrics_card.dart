@@ -25,7 +25,7 @@ class MetricsCard extends StatelessWidget {
           ],
         ),
         VerticalDivider(
-          color: CallmaTheme.PRIMARY_GREY,
+          color: PRIMARY_GREY,
         ),
         Column(
           children: <Widget>[
@@ -34,7 +34,7 @@ class MetricsCard extends StatelessWidget {
             Text('estrelas')
           ],
         ),
-        VerticalDivider(color: CallmaTheme.PRIMARY_GREY),
+        VerticalDivider(color: PRIMARY_GREY),
         Column(
           children: <Widget>[
             Text("${professional.dias}",

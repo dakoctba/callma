@@ -27,16 +27,14 @@ class StatusView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Icon(Icons.check,
-                            color: this.success
-                                ? CallmaTheme.SECONDARY_GREEN
-                                : CallmaTheme.PRIMARY_RED,
+                            color: this.success ? SECONDARY_GREEN : PRIMARY_RED,
                             size: 150),
                         Text(this.message,
                             style: TextStyle(
                                 fontSize: 24,
                                 color: this.success
-                                    ? CallmaTheme.SECONDARY_GREEN
-                                    : CallmaTheme.PRIMARY_RED),
+                                    ? SECONDARY_GREEN
+                                    : PRIMARY_RED),
                             textAlign: TextAlign.center),
                       ],
                     ),
