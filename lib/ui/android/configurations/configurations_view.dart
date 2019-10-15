@@ -23,7 +23,7 @@ class ConfigurationsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(title: "Minha conta", actions: <Widget>[
+        appBar: CustomAppBar("Minha conta", actions: <Widget>[
           GestureDetector(
               child: Padding(
                 padding: EdgeInsets.all(10),

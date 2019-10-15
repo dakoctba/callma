@@ -20,7 +20,7 @@ class ReviewsView extends StatelessWidget {
     bloc.getReviews(appointmentBloc.professional.id);
 
     return Scaffold(
-        appBar: CustomAppBar(title: "Avaliações"),
+        appBar: CustomAppBar("Avaliações"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: StreamBuilder<List<Review>>(
             stream: bloc.reviewsStream,

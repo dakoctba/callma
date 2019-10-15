@@ -11,7 +11,7 @@ class WebviewView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: _title),
+      appBar: CustomAppBar(_title),
       body: WebView(
         initialUrl: _url,
         javascriptMode: JavascriptMode.unrestricted,

@@ -11,7 +11,7 @@ class AppointmentDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(title: "Detalhes da consulta"),
+        appBar: CustomAppBar("Detalhes da consulta"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: Container(
             padding: EdgeInsets.all(10),

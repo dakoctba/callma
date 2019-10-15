@@ -19,7 +19,7 @@ class SpecialtiesView extends StatelessWidget {
     specialtyBloc.getSpecialties(professionId);
 
     return Scaffold(
-        appBar: CustomAppBar(title: "Especialidade"),
+        appBar: CustomAppBar("Especialidade"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: Column(children: <Widget>[
           Expanded(

@@ -1,16 +1,12 @@
-import 'package:callma/enumerations/menu_option.dart';
 import 'package:flutter/material.dart';
-import 'package:rxdart/subjects.dart';
 
 class MenuBloc extends ChangeNotifier {
-  final _menuBloc = BehaviorSubject<MenuOption>.seeded(MenuOption.home);
-  Stream<MenuOption> get menuStream => _menuBloc.stream;
+  int _selectedOption = 0;
+  int get selectedOption => _selectedOption;
 
-  MenuOption get option {
-    return _menuBloc.value;
-  }
+  void setOption(int option) {
+    this._selectedOption = option;
 
-  void setOption(MenuOption option) {
-    _menuBloc.sink.add(option);
+    notifyListeners();
   }
 }

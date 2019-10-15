@@ -1,19 +1,19 @@
 import 'package:callma/blocs/appointment.bloc.dart';
 import 'package:callma/blocs/menu.bloc.dart';
 import 'package:callma/blocs/user.bloc.dart';
-import 'package:callma/enumerations/menu_option.dart';
-import 'package:callma/exceptions/callma_exception.dart';
+import 'package:callma/enumerations/user_type.dart';
 import 'package:callma/helpers/users_helper.dart';
 import 'package:callma/models/user.dart';
 import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/android/help/webview_view.dart';
 import 'package:callma/ui/android/login/onboarding_view.dart';
+import 'package:callma/ui/android/professional/home/home.view.dart';
 import 'package:callma/ui/android/scheduling/professions/professions_view.dart';
-import 'package:callma/ui/shared/custom_app_bar.dart';
 import 'package:callma/ui/shared/custom_button.dart';
 import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
@@ -32,9 +32,8 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
   Widget build(BuildContext context) {
     return isLoading
         ? Material(child: CustomLoading("Por favor, aguarde..."))
-        : Scaffold(
-            appBar: CustomAppBar(),
-            body: Form(
+        : Material(
+            child: Form(
               key: _formKey,
               child: ListView(
                 padding: EdgeInsets.all(13),
@@ -124,20 +123,32 @@ class _LoginViewState extends State<LoginView> with UsersHelper {
           await userBloc.login(loginController.text, passwordController.text);
       appointmentBloc.setProfileId(user.profiles[0].id);
 
-      Provider.of<MenuBloc>(context).setOption(MenuOption.home);
+      Provider.of<MenuBloc>(context).setOption(0);
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => ProfessionsView()));
-    } on CallmaException catch (e) {
+          context,
+          MaterialPageRoute(
+              builder: (context) => user.userType == UserType.professional
+                  ? HomeView()
+                  : ProfessionsView()));
+    } catch (e) {
       setState(() {
         isLoading = false;
       });
+
+      String message;
+      try {
+        message = e.message;
+      } catch (ex) {
+        Logger().e(ex);
+        message = "Erro não tratato";
+      }
 
       showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text("Callma"),
-              content: Text(e.cause),
+              title: Text("Ops"),
+              content: Text(message),
               actions: <Widget>[
                 FlatButton(
                   child: Text("OK"),

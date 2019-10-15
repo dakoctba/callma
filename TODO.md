@@ -8,6 +8,7 @@
 - [x] Escolher uma clínica
 - [ ] Detalhes da consulta
 - [x] Escolher endereço
+- [ ] Ícones das profissões
 
 ## Profissional
 

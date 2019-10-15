@@ -88,7 +88,7 @@ class AppointmentsView extends StatelessWidget with DateHelper {
     appointmentsController.getAppointments(userBloc.user.id);
 
     return Scaffold(
-        appBar: CustomAppBar(title: "Minhas consultas"),
+        appBar: CustomAppBar("Minhas consultas"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: Container(
             padding: EdgeInsets.all(10),

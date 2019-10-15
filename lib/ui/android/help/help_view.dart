@@ -7,7 +7,7 @@ class HelpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(title: "Ajuda"),
+        appBar: CustomAppBar("Ajuda"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: HelpBody());
   }

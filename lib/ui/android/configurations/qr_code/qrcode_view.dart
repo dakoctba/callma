@@ -15,7 +15,7 @@ class QrCodeView extends StatelessWidget {
     var content = {"userId": userBloc.user.id, "texto": "Show de bola"};
 
     return Scaffold(
-        appBar: CustomAppBar(title: "Meu QrCode"),
+        appBar: CustomAppBar("Meu QrCode"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: Center(
             child: QrImage(

@@ -19,91 +19,96 @@ class PlaceView extends StatelessWidget {
   Widget build(BuildContext context) {
     var userBloc = Provider.of<UserBloc>(context);
     var addressBloc = Provider.of<AddressBloc>(context);
+    var appointmentBloc = Provider.of<AppointmentBloc>(context);
 
     addressBloc.getAddresses(userBloc.user.id);
 
     return Scaffold(
-        appBar: CustomAppBar(title: "Local da consulta"),
+        appBar: CustomAppBar("Local da consulta"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: SingleChildScrollView(
             child: Container(
           padding: EdgeInsets.all(10),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                _buildCard(
-                  context,
-                  null,
-                  Icons.public,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Text("Consultório"),
-                    ],
-                  ),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: <
+                  Widget>[
+            InkWell(
+              child: _buildCard(
+                Icons.public,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Text("Consultório"),
+                  ],
                 ),
-                StreamBuilder<List<Address>>(
-                    stream: addressBloc.addressesStream,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return ListView.builder(
-                            shrinkWrap: true,
-                            physics: ClampingScrollPhysics(),
-                            itemCount: snapshot.data.length,
-                            itemBuilder: (context, index) {
-                              Address address = snapshot.data[index];
+              ),
+              onTap: () {
+                appointmentBloc.setAddress(null);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            ProfessionalsView(this.specialtyId)));
+              },
+            ),
+            StreamBuilder<List<Address>>(
+                stream: addressBloc.addressesStream,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        physics: ClampingScrollPhysics(),
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+                          Address address = snapshot.data[index];
 
-                              return _buildCard(
-                                context,
-                                address.id,
-                                Icons.place,
-                                Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: <Widget>[
-                                    Text("Rua ${address.address}"),
-                                    Text(
-                                      "${address.district} - ${address.city}/ ${address.state}",
-                                      style: TextStyle(color: PRIMARY_GREY),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            });
-                      } else {
-                        return CustomLoading("Carregando endereços...");
-                      }
-                    })
-              ]),
+                          return InkWell(
+                            child: _buildCard(
+                              Icons.place,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: <Widget>[
+                                  Text("Rua ${address.address}"),
+                                  Text(
+                                    "${address.district} - ${address.city}/ ${address.state}",
+                                    style: TextStyle(color: PRIMARY_GREY),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              appointmentBloc.setAddress(address.id);
+
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProfessionalsView(this.specialtyId)));
+                            },
+                          );
+                        });
+                  } else {
+                    return CustomLoading("Carregando endereços...");
+                  }
+                })
+          ]),
         )));
   }
 
-  Widget _buildCard(
-      BuildContext context, int addressId, IconData icon, Widget address) {
-    return InkWell(
-      child: Card(
-        child: Container(
-            padding: EdgeInsets.all(20),
-            child: Row(
-              children: <Widget>[
-                Icon(icon, color: PRIMARY_GREEN),
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(child: address),
-                Icon(Icons.keyboard_arrow_right, color: PRIMARY_GREEN)
-              ],
-            )),
-      ),
-      onTap: () {
-        var appointmentBloc = Provider.of<AppointmentBloc>(context);
-        appointmentBloc.setAddress(addressId);
-
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ProfessionalsView(this.specialtyId)));
-      },
+  Widget _buildCard(IconData icon, Widget address) {
+    return Card(
+      child: Container(
+          padding: EdgeInsets.all(20),
+          child: Row(
+            children: <Widget>[
+              Icon(icon, color: PRIMARY_GREEN),
+              SizedBox(
+                width: 20,
+              ),
+              Expanded(child: address),
+              Icon(Icons.keyboard_arrow_right, color: PRIMARY_GREEN)
+            ],
+          )),
     );
   }
 }

@@ -23,7 +23,7 @@ class ConfirmationView extends StatelessWidget with DateHelper {
     final appointmentBloc = Provider.of<AppointmentBloc>(context);
 
     return Scaffold(
-        appBar: CustomAppBar(title: "Agendar consulta"),
+        appBar: CustomAppBar("Agendar consulta"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: Container(
             padding: EdgeInsets.all(10),

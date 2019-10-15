@@ -24,7 +24,7 @@ class ProfessionalsView extends StatelessWidget {
     bloc.getProfessionals(sex, specialtyId);
 
     return Scaffold(
-        appBar: CustomAppBar(title: "Profissionais"),
+        appBar: CustomAppBar("Profissionais"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.search),

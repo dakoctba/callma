@@ -14,7 +14,7 @@ class AddressListView extends StatelessWidget {
     bloc.getAddresses(1);
 
     return Scaffold(
-      appBar: CustomAppBar(title: "Meus endereços"),
+      appBar: CustomAppBar("Meus endereços"),
       body: StreamBuilder<List<Address>>(
         stream: bloc.addressesStream,
         builder: (context, snapshot) {

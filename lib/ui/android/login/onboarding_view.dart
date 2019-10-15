@@ -1,7 +1,6 @@
 import 'package:callma/helpers/application_helper.dart';
 import 'package:callma/helpers/users_helper.dart';
 import 'package:callma/ui/android/scheduling/professions/professions_view.dart';
-import 'package:callma/ui/shared/custom_app_bar.dart';
 import 'package:callma/ui/shared/custom_button.dart';
 import 'package:callma/ui/shared/status_view.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +16,8 @@ class _OnboardingScreenState extends State<OnboardingView> with UsersHelper {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: CustomAppBar(),
-        body: Form(
+    return Material(
+        child: Form(
             key: _formKey,
             child: ListView(
               padding: EdgeInsets.all(13),

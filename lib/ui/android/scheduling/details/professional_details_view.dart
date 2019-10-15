@@ -14,7 +14,7 @@ class ProfessionalDetailsView extends StatelessWidget {
     final appointmentBloc = Provider.of<AppointmentBloc>(context);
 
     return Scaffold(
-        appBar: CustomAppBar(title: "Detalhes do profissional"),
+        appBar: CustomAppBar("Detalhes do profissional"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: Container(
             padding: EdgeInsets.all(10),

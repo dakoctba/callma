@@ -1,11 +1,13 @@
+import 'package:callma/enumerations/user_type.dart';
 import 'package:callma/models/address.dart';
 import 'package:callma/models/profile.dart';
+import 'package:farm/helpers.dart';
 
-class User {
+class User with EnumHelper {
   int id;
   String email;
   String password;
-  String userType;
+  UserType userType;
 
   bool receiveReceipts;
   int maxPerimeter;
@@ -17,12 +19,18 @@ class User {
   List<Profile> profiles;
   List<Address> addresses;
 
-  User({this.id, this.email, this.userType, this.createdAt, this.profiles, this.addresses});
+  User(
+      {this.id,
+      this.email,
+      this.userType,
+      this.createdAt,
+      this.profiles,
+      this.addresses});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     email = json['email'];
-    userType = json['user_type'];
+    userType = enumFromString(UserType.values, json['user_type']);
     receiveReceipts = json['receive_receipts'];
     maxPerimeter = json['max_perimeter'];
     hoursToSearch = json['hours_to_search'];
@@ -47,7 +55,7 @@ class User {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['email'] = this.email;
-    data['user_type'] = this.userType;
+    data['user_type'] = enumToString(this.userType);
     data['receive_receipts'] = this.receiveReceipts;
     data['max_perimeter'] = this.maxPerimeter;
     data['hours_to_search'] = this.hoursToSearch;

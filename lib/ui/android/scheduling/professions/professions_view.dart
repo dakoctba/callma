@@ -6,6 +6,7 @@ import 'package:callma/ui/shared/custom_app_bar.dart';
 import 'package:callma/ui/shared/custom_bottom_navigation_bar.dart';
 import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class ProfessionsView extends StatelessWidget {
@@ -14,8 +15,17 @@ class ProfessionsView extends StatelessWidget {
     final professionBloc = Provider.of<ProfessionBloc>(context);
     professionBloc.getProfessions();
 
+    var professionIcons = Map<int, IconData>();
+    professionIcons[1] = FontAwesomeIcons.dumbbell;
+    professionIcons[2] = FontAwesomeIcons.userNurse;
+    professionIcons[3] = FontAwesomeIcons.userInjured;
+    professionIcons[4] = Icons.record_voice_over;
+    professionIcons[5] = Icons.fastfood;
+    professionIcons[6] = FontAwesomeIcons.users;
+    professionIcons[7] = FontAwesomeIcons.accessibleIcon;
+
     return Scaffold(
-        appBar: CustomAppBar(title: "Profissional"),
+        appBar: CustomAppBar("Profissional"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: Column(
           children: <Widget>[
@@ -30,12 +40,12 @@ class ProfessionsView extends StatelessWidget {
                           Divider(color: SECONDARY_GREY, height: 0),
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
-                        return _buildProfessionTile(
-                            context, snapshot.data[index]);
+                        return _buildProfessionTile(context,
+                            snapshot.data[index], professionIcons[index + 1]);
                       },
                     );
                   } else {
-                    return CustomLoading("Carregando profissões");
+                    return CustomLoading("Carregando profissões...");
                   }
                 },
               ),
@@ -51,8 +61,10 @@ class ProfessionsView extends StatelessWidget {
         ));
   }
 
-  ListTile _buildProfessionTile(BuildContext context, Profession profession) {
+  ListTile _buildProfessionTile(
+      BuildContext context, Profession profession, IconData icon) {
     return ListTile(
+        leading: Icon(icon, color: PRIMARY_GREEN),
         title: Text(profession.title),
         subtitle:
             profession.subtitle != null ? Text(profession.subtitle) : null,

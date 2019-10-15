@@ -1,4 +1,5 @@
-import 'package:callma/exceptions/callma_exception.dart';
+import 'dart:convert';
+
 import 'package:callma/models/address.dart';
 import 'package:callma/models/user.dart';
 import 'package:callma/repositories/auth_dio.dart';
@@ -7,15 +8,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:callma/models/login.dart';
-
 class UserRepository {
   Future<User> login(String email, String password) async {
-    Login login = Login(email, password);
+    var login = {
+      "user": {"email": email, "password": password}
+    };
 
     try {
       Response response = await Dio()
-          .post("${DotEnv().env['API_URL']}/login", data: login.toJson());
+          .post("${DotEnv().env['API_URL']}/login", data: jsonEncode(login));
 
       String token =
           response.headers.value("authorization").replaceAll('Bearer ', '');
@@ -27,12 +28,6 @@ class UserRepository {
       // Se passou do login, busca os dados do usuário
       //
       User result = await _getUser(response.data['id']);
-
-      if (result != null && result.userType == 'professional') {
-        throw CallmaException(
-            "Para o seu perfil de usuário, favor utilizar o aplicativo 'Callma Professional'");
-      }
-
       return result;
     } on DioError catch (e) {
       //
@@ -45,7 +40,7 @@ class UserRepository {
         Logger().e(e.response.headers);
         Logger().e(e.response.request);
 
-        throw new CallmaException(e.response.data["error"]);
+        throw new Exception(e.response.data["error"]);
       } else {
         //
         // Something happened in setting up or sending the request that triggered an Error
@@ -53,7 +48,7 @@ class UserRepository {
         Logger().e(e.request);
         Logger().e(e.message);
 
-        throw new CallmaException(e.message);
+        throw new Exception(e.message);
       }
     }
   }
