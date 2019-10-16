@@ -1,6 +1,7 @@
 import 'package:callma/enumerations/appointment_status.dart';
 import 'package:callma/models/appointment.dart';
 import 'package:callma/themes/callma.theme.dart';
+import 'package:callma/ui/android/appointments/appointments.view.dart';
 import 'package:callma/ui/android/help/webview.view.dart';
 import 'package:callma/ui/android/scheduling/confirmation/partials/_date_and_time_card.view.dart';
 import 'package:callma/ui/android/scheduling/details/partials/_clinics_card.view.dart';
@@ -10,6 +11,7 @@ import 'package:callma/ui/shared/custom_app_bar.dart';
 import 'package:callma/ui/shared/custom_bottom_navigation_bar/custom_bottom_navigation_bar.dart';
 import 'package:callma/ui/shared/custom_button.dart';
 import 'package:callma/ui/shared/custom_text.dart';
+import 'package:callma/ui/shared/status.view.dart';
 import 'package:flutter/material.dart';
 
 class AppointmentDetailsView extends StatefulWidget {
@@ -125,7 +127,20 @@ class _AppointmentDetailsViewState extends State<AppointmentDetailsView> {
     if (appointment.status == AppointmentStatus.scheduled) {
       return Column(
         children: <Widget>[
-          CustomButton("Cancelar consulta", () async {}, success: false),
+          CustomButton("Cancelar consulta", () async {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => StatusView(
+                            "Consulta cancelada com sucesso",
+                            true,
+                            "Voltar para a listagem", () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AppointmentsView()));
+                        })));
+          }, success: false),
           InkWell(
             child: Text(
               "Política de cancelamento",

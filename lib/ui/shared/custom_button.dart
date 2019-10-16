@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
             color: success ? SECONDARY_GREEN : PRIMARY_RED,
             textColor: Colors.white,
             onPressed: this.onPressed,
-            child: Text(this.label)),
+            child: Text(this.label, textAlign: TextAlign.center)),
       ),
     );
   }
