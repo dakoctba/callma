@@ -1,22 +1,23 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:callma/enumerations/appointment_status.dart';
+import 'package:callma/models/address.dart';
 import 'package:callma/models/appointment.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/models/user.dart';
 import 'package:callma/repositories/appointments.repository.dart';
 import 'package:farm/helpers.dart';
-import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:rxdart/rxdart.dart';
 
-class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
+class AppointmentBloc extends BlocBase with DateHelper, EnumHelper {
   var _appointmentRepository = new AppointmentRepository();
 
   //
   // Address
   //
-  int _addressId;
-  int get addressId => _addressId;
-  void setAddress(addressId) => this._addressId = addressId;
+  Address _address;
+  Address get address => _address;
+  void setAddress(Address address) => this._address = address;
 
   //
   // Cancelation Policy
@@ -31,9 +32,12 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
   int _clinicId = null;
   int get clinicId => _clinicId;
 
+  var _clinicController = BehaviorSubject<int>();
+  Stream<int> get clinicStream => _clinicController.stream;
+
   void setClinicId(clinicId) {
     this._clinicId = clinicId;
-    notifyListeners();
+    _clinicController.sink.add(clinicId);
   }
 
   //
@@ -97,7 +101,7 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
   //
   Future<void> save() async {
     var params = new Map<String, dynamic>();
-    params['address_id'] = this._addressId;
+    params['address_id'] = this._address?.id;
     params['clinic_id'] = this._clinicId;
     params['notes'] = this._notes;
     params['payment_status'] = 'confirmed';
@@ -116,7 +120,7 @@ class AppointmentBloc extends ChangeNotifier with DateHelper, EnumHelper {
   }
 
   void _reset() {
-    this._addressId = null;
+    this._address = null;
     this._cancellationPolicy = false;
     this._clinicId = null;
     this._date = null;

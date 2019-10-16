@@ -24,6 +24,8 @@ class UserRepository {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString("token", token);
 
+      Logger().i("Token [$token]");
+
       //
       // Se passou do login, busca os dados do usuário
       //

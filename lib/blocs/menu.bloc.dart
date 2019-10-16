@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:bloc_pattern/bloc_pattern.dart';
 
-class MenuBloc extends ChangeNotifier {
+class MenuBloc extends BlocBase {
   int _selectedOption = 0;
   int get selectedOption => _selectedOption;
 

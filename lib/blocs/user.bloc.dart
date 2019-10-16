@@ -1,13 +1,13 @@
 import 'dart:convert';
 
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:callma/models/user.dart';
 import 'package:callma/repositories/user.repository.dart';
 import 'package:callma/settings.dart';
-import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserBloc extends ChangeNotifier {
+class UserBloc extends BlocBase {
   var user = User();
 
   UserBloc() {
@@ -32,18 +32,6 @@ class UserBloc extends ChangeNotifier {
     }
   }
 
-  // Future<UserModel> create(CreateUserModel model) async {
-  //   try {
-  //     var repository = new AccountRepository();
-  //     var res = await repository.create(model);
-  //     return res;
-  //   } catch (ex) {
-  //     print(ex);
-  //     user = null;
-  //     return null;
-  //   }
-  // }
-
   void logout() async {
     var prefs = await SharedPreferences.getInstance();
     await prefs.setString('user', null);
@@ -60,24 +48,4 @@ class UserBloc extends ChangeNotifier {
       user = res;
     }
   }
-
-  // var _userRepository = UserRepository();
-
-  // final _controller = new BehaviorSubject<User>();
-  // Stream<User> get stream => _controller.stream;
-
-  // Future<User> login(String email, String password) async {
-  //   try {
-  //     User user = await _userRepository.login(email, password);
-  //     _controller.sink.add(user);
-
-  //     return user;
-  //   } catch (e) {
-  //     throw e;
-  //   }
-  // }
-
-  // void dispose() {
-  //   _controller.close();
-  // }
 }

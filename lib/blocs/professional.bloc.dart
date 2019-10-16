@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
-
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:callma/models/professional.dart';
 import 'package:callma/repositories/professional.repository.dart';
+import 'package:rxdart/rxdart.dart';
 
-class ProfessionalBloc extends ChangeNotifier {
+class ProfessionalBloc extends BlocBase {
   var _professionalRepository = ProfessionalRepository();
 
   final BehaviorSubject<List<Professional>> _controller =

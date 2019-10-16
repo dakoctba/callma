@@ -1,17 +1,24 @@
 # TODO
 
+## Sistema
+
+- [ ] Transformar todas as partials para Stateless
+- [ ] Limpar listas (streams) antes de repopulá-las
+- [ ] Preparar apresentação
+
 ## Paciente
 
 - [ ] Avaliar uma consulta
 - [ ] Cadastrar favoritos
 - [ ] Mostrar favoritos
-- [x] Escolher uma clínica
-- [ ] Detalhes da consulta
+- [x] Detalhes da consulta
 - [x] Escolher endereço
-- [ ] Ícones das profissões
+- [x] Escolher uma clínica
+- [x] Ícones das profissões
+- [x] Mostrar botão de cancelamento de consulta apenas se o status for agendado
 
 ## Profissional
 
-- [ ] Login profissional
+- [x] Login profissional
 - [ ] Aceitar uma consulta
 - [ ] Finalizar uma consulta

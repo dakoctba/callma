@@ -1,15 +1,27 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:callma/blocs/user.bloc.dart';
 import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/profile.dart';
 import 'package:callma/models/user.dart';
-import 'package:callma/ui/android/scheduling/photo/photo_view.dart';
+import 'package:callma/ui/android/scheduling/photo/photo.view.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class InfoCard extends StatelessWidget {
+class InfoCard extends StatefulWidget {
+  @override
+  _InfoCardState createState() => _InfoCardState();
+}
+
+class _InfoCardState extends State<InfoCard> {
+  UserBloc userBloc;
+
+  @override
+  void initState() {
+    userBloc = BlocProvider.getBloc<UserBloc>();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var userBloc = Provider.of<UserBloc>(context);
     User user = userBloc.user;
 
     if (user == null) {
@@ -20,7 +32,7 @@ class InfoCard extends StatelessWidget {
 
     return Card(
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(5),
         child: Row(
           children: <Widget>[
             InkWell(

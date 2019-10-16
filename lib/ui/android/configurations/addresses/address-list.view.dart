@@ -1,22 +1,34 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:callma/blocs/address.bloc.dart';
 import 'package:callma/models/address.dart';
 import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/shared/custom_app_bar.dart';
-import 'package:callma/ui/shared/custom_bottom_navigation_bar.dart';
+import 'package:callma/ui/shared/custom_bottom_navigation_bar/custom_bottom_navigation_bar.dart';
 import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class AddressListView extends StatelessWidget {
+class AddressListView extends StatefulWidget {
+  @override
+  _AddressListViewState createState() => _AddressListViewState();
+}
+
+class _AddressListViewState extends State<AddressListView> {
+  AddressBloc addressBloc;
+
+  @override
+  void initState() {
+    addressBloc = BlocProvider.getBloc<AddressBloc>();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var bloc = Provider.of<AddressBloc>(context);
-    bloc.getAddresses(1);
+    addressBloc.getAddresses(1);
 
     return Scaffold(
       appBar: CustomAppBar("Meus endereços"),
       body: StreamBuilder<List<Address>>(
-        stream: bloc.addressesStream,
+        stream: addressBloc.addressesStream,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(

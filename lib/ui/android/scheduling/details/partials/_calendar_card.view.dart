@@ -6,12 +6,12 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class CalendarCard extends StatefulWidget {
+class CalendarCardView extends StatefulWidget {
   @override
-  _CalendarCardState createState() => _CalendarCardState();
+  _CalendarCardViewState createState() => _CalendarCardViewState();
 }
 
-class _CalendarCardState extends State<CalendarCard> {
+class _CalendarCardViewState extends State<CalendarCardView> {
   AppointmentBloc appointmentBloc;
 
   @override

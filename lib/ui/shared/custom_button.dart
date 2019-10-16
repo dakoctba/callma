@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-
 import 'package:callma/themes/callma.theme.dart';
+import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;
   final Function onPressed;
+  final bool success;
 
-  CustomButton({@required this.label, @required this.onPressed});
+  CustomButton(this.label, this.onPressed, {this.success = true});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CustomButton extends StatelessWidget {
         height: 44.0,
         width: 240.0,
         child: RaisedButton(
-            color: SECONDARY_GREEN,
+            color: success ? SECONDARY_GREEN : PRIMARY_RED,
             textColor: Colors.white,
             onPressed: this.onPressed,
             child: Text(this.label)),

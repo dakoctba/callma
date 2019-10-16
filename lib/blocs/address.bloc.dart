@@ -1,9 +1,9 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:callma/models/address.dart';
 import 'package:callma/repositories/user.repository.dart';
-import 'package:flutter/widgets.dart';
-import 'package:rxdart/subjects.dart';
+import 'package:rxdart/rxdart.dart';
 
-class AddressBloc extends ChangeNotifier {
+class AddressBloc extends BlocBase {
   var _userRepository = UserRepository();
   List<Address> _addresses;
 

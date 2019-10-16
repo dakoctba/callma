@@ -4,20 +4,20 @@ import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/shared/custom_text.dart';
 import 'package:flutter/material.dart';
 
-class SpecialtiesCard extends StatefulWidget {
+class SpecialtiesCardView extends StatefulWidget {
   final Professional professional;
 
-  SpecialtiesCard(this.professional);
+  SpecialtiesCardView(this.professional);
 
   @override
-  _SpecialtiesCardState createState() =>
-      _SpecialtiesCardState(this.professional);
+  _SpecialtiesCardViewState createState() =>
+      _SpecialtiesCardViewState(this.professional);
 }
 
-class _SpecialtiesCardState extends State<SpecialtiesCard> {
+class _SpecialtiesCardViewState extends State<SpecialtiesCardView> {
   final Professional professional;
 
-  _SpecialtiesCardState(this.professional);
+  _SpecialtiesCardViewState(this.professional);
 
   @override
   void initState() {

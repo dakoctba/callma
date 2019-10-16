@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
-
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:callma/models/specialty.dart';
 import 'package:callma/repositories/specialty.repository.dart';
+import 'package:rxdart/rxdart.dart';
 
-class SpecialtyBloc extends ChangeNotifier {
+class SpecialtyBloc extends BlocBase {
   var _specialtyRepository = SpecialtyRepository();
 
   List<Specialty> _specialties;

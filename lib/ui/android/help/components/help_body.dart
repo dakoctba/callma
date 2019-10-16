@@ -1,15 +1,22 @@
 import 'package:callma/ui/shared/tile_data.dart';
 import 'package:callma/themes/callma.theme.dart';
-import 'package:callma/ui/android/help/webview_view.dart';
+import 'package:callma/ui/android/help/webview.view.dart';
 import 'package:flutter/material.dart';
 
-class HelpBody extends StatelessWidget {
+class HelpBody extends StatefulWidget {
+  @override
+  _HelpBodyState createState() => _HelpBodyState();
+}
+
+class _HelpBodyState extends State<HelpBody> {
   static const String URL_FAQ = "https://callma.com.br/faq";
   static const String URL_FALE_COM_A_GENTE = "https://callma.com.br/contato";
   static const String URL_COMO_FUNCIONA = "https://callma.com.br/como-funciona";
   static const String URL_TERMOS_DE_USO = "https://callma.com.br/termos-de-uso";
   static const String URL_POLITICA_DE_PRIVACIDADE =
       "https://callma.com.br/politica-de-privacidade";
+  static const String URL_POLITICA_DE_CANCELAMENTO =
+      "https://callma.com.br/politica-de-cancelamento";
   static const String URL_CERTA_MEI =
       "https://www.certamei.com.br?utm_source=callma&utm_medium=app";
 
@@ -17,32 +24,43 @@ class HelpBody extends StatelessWidget {
     List<TileData> items = new List<TileData>();
 
     items.add(new TileData(
-        label: "Perguntas frequentes",
+        label: "Como funciona",
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  WebviewView("Perguntas frequentes", URL_FAQ)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => WebviewView(URL_COMO_FUNCIONA)));
         }));
     items.add(new TileData(
         label: "Fale com a gente",
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  WebviewView("Fale com a gente", URL_FALE_COM_A_GENTE)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => WebviewView(URL_FALE_COM_A_GENTE)));
         }));
     items.add(new TileData(
-        label: "Como funciona",
+        label: "Formalização MEI",
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  WebviewView("Como funciona", URL_COMO_FUNCIONA)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => WebviewView(URL_CERTA_MEI)));
         }));
     items.add(new TileData(
-        label: "Termos de uso",
+        label: "Perguntas frequentes",
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  WebviewView("Termos de uso", URL_TERMOS_DE_USO)));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => WebviewView(URL_FAQ)));
+        }));
+    items.add(new TileData(
+        label: "Política de cancelamento",
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      WebviewView(URL_POLITICA_DE_CANCELAMENTO)));
         }));
     items.add(new TileData(
         label: "Política de privacidade",
@@ -50,16 +68,18 @@ class HelpBody extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => WebviewView(
-                      "Política de privacidade", URL_POLITICA_DE_PRIVACIDADE)));
+                  builder: (context) =>
+                      WebviewView(URL_POLITICA_DE_PRIVACIDADE)));
         }));
     items.add(new TileData(
-        label: "Formalização MEI",
+        label: "Termos de uso",
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  WebviewView("Formalização MEI", URL_CERTA_MEI)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => WebviewView(URL_TERMOS_DE_USO)));
         }));
+
     items.add(new TileData(
         label: "Sobre o aplicativo",
         onTap: () {

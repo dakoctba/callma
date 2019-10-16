@@ -1,10 +1,9 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:callma/models/summary.dart';
-import 'package:flutter/material.dart';
+import 'package:callma/repositories/summary.repository.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'package:callma/repositories/summary.repository.dart';
-
-class SummaryBloc extends ChangeNotifier {
+class SummaryBloc extends BlocBase {
   var _summaryRepository = SummaryRepository();
 
   final BehaviorSubject<Summary> _controller = BehaviorSubject<Summary>();

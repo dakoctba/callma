@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
-
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:callma/models/profession.dart';
 import 'package:callma/repositories/profession.repository.dart';
+import 'package:rxdart/rxdart.dart';
 
-class ProfessionBloc extends ChangeNotifier {
+class ProfessionBloc extends BlocBase {
   var _professionRepository = ProfessionRepository();
 
   List<Profession> professions;
