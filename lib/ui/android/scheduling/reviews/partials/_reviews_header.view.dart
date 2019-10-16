@@ -6,6 +6,7 @@ import 'package:callma/models/professional.dart';
 import 'package:callma/models/summary.dart';
 import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/android/help/webview.view.dart';
+import 'package:callma/ui/android/scheduling/photo/photo.view.dart';
 import 'package:callma/ui/shared/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -49,12 +50,20 @@ class _ProfessionalReviewssHeaderViewState
               children: <Widget>[
                 Hero(
                   tag: professional.id,
-                  child: CircleAvatar(
-                    backgroundImage:
-                        ProfessionalsHelper.getPhoto(professional.photo),
-                    backgroundColor: Colors.transparent,
-                    radius: 35,
-                  ),
+                  child: InkWell(
+                      child: CircleAvatar(
+                        backgroundImage:
+                            ProfessionalsHelper.getPhoto(professional.photo),
+                        backgroundColor: Colors.transparent,
+                        radius: 35,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    PhotoView(professional.photo)));
+                      }),
                 ),
                 SizedBox(
                   width: 10,

@@ -2,6 +2,7 @@ import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/profile.dart';
 import 'package:callma/models/review.dart';
 import 'package:callma/themes/callma.theme.dart';
+import 'package:callma/ui/android/scheduling/photo/photo.view.dart';
 import 'package:farm/helpers/date_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
@@ -31,12 +32,20 @@ class _ReviewCardViewState extends State<ReviewCardView> with DateHelper {
         children: <Widget>[
           Row(
             children: <Widget>[
-              CircleAvatar(
-                backgroundImage: ProfessionalsHelper.getPhoto(
-                    _review.user.profiles[0].photo),
-                backgroundColor: Colors.transparent,
-                radius: 16,
-              ),
+              InkWell(
+                  child: CircleAvatar(
+                    backgroundImage: ProfessionalsHelper.getPhoto(
+                        _review.user.profiles[0].photo),
+                    backgroundColor: Colors.transparent,
+                    radius: 16,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PhotoView(_review.user.profiles[0].photo)));
+                  }),
               SizedBox(width: 10),
               Text(profile.name)
             ],
