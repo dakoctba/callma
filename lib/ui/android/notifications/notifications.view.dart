@@ -13,7 +13,7 @@ class _NotificationsViewState extends State<NotificationsView> {
     return Scaffold(
       appBar: CustomAppBar("Notificações"),
       bottomNavigationBar: CustomBottomNavigationBar(),
-      body: Text("Você não tem nenhuma notificação"),
+      body: Center(child: Text("Você não tem nenhuma notificação")),
     );
   }
 }

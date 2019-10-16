@@ -1,3 +1,4 @@
+import 'package:callma/ui/android/notifications/notifications.view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:callma/themes/callma.theme.dart';
@@ -16,7 +17,29 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             : Text(title),
         centerTitle: this.title == null ? true : false,
         backgroundColor: PRIMARY_GREEN,
-        actions: this.actions);
+        actions: _getActions(context));
+  }
+
+  List<Widget> _getActions(BuildContext context) {
+    var _actions = List<Widget>();
+
+    _actions.add(GestureDetector(
+        child: Padding(
+          padding: EdgeInsets.all(5),
+          child: Icon(Icons.notifications),
+        ),
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => NotificationsView()));
+        }));
+
+    if (actions != null) {
+      _actions.addAll(actions);
+    }
+
+    _actions.add(SizedBox(width: 10));
+
+    return _actions;
   }
 
   @override

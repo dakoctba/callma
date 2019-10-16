@@ -82,7 +82,7 @@ class _ConfigurationsViewState extends State<ConfigurationsView> {
         }));
     items.add(new TileData(
         label: "Favoritos",
-        icon: Icons.star,
+        icon: Icons.favorite_border,
         onTap: () {
           debugPrint("Clicou em Favoritos");
         }));
@@ -107,13 +107,13 @@ class _ConfigurationsViewState extends State<ConfigurationsView> {
         }));
     items.add(new TileData(
         label: "Preferências",
-        icon: Icons.settings,
+        icon: Icons.tune,
         onTap: () {
           debugPrint("Clicou em Preferências");
         }));
     items.add(new TileData(
         label: "Programa de pontos",
-        icon: Icons.all_inclusive,
+        icon: Icons.loyalty,
         onTap: () {
           debugPrint("Clicou em Programa de pontos");
         }));

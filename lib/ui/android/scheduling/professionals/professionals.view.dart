@@ -56,12 +56,9 @@ class _ProfessionalsViewState extends State<ProfessionalsView> {
               builder: (context, AsyncSnapshot<List<Professional>> snapshot) {
                 if (snapshot.hasData) {
                   if (snapshot.data.length == 0) {
-                    return Card(
-                      child: Container(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                            "Ops! Ainda não temos nenhum profissional nessa especialidade"),
-                      ),
+                    return Center(
+                      child: Text(
+                          "Ainda não temos nenhum profissional nessa especialidade"),
                     );
                   }
 

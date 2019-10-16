@@ -28,7 +28,7 @@ class _ProfessionsViewState extends State<ProfessionsView> {
     professionBloc.getProfessions();
 
     var professionIcons = Map<int, IconData>();
-    professionIcons[1] = FontAwesomeIcons.dumbbell;
+    professionIcons[1] = Icons.fitness_center;
     professionIcons[2] = FontAwesomeIcons.userNurse;
     professionIcons[3] = FontAwesomeIcons.userInjured;
     professionIcons[4] = Icons.record_voice_over;
@@ -37,7 +37,7 @@ class _ProfessionsViewState extends State<ProfessionsView> {
     professionIcons[7] = FontAwesomeIcons.accessibleIcon;
 
     return Scaffold(
-        appBar: CustomAppBar("Profissional"),
+        appBar: CustomAppBar("Profissão"),
         bottomNavigationBar: CustomBottomNavigationBar(),
         body: Column(
           children: <Widget>[

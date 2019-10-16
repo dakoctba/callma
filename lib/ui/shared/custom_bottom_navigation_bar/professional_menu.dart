@@ -3,7 +3,6 @@ import 'package:callma/blocs/menu.bloc.dart';
 import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/android/configurations/configurations.view.dart';
 import 'package:callma/ui/android/help/help.view.dart';
-import 'package:callma/ui/android/notifications/notifications.view.dart';
 import 'package:callma/ui/android/professional/financial/financial.view.dart';
 import 'package:callma/ui/android/professional/home/home.view.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +28,7 @@ class _ProfessionalMenuState extends State<ProfessionalMenu> {
           BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today), title: Text('Agenda')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.attach_money), title: Text('Financeiro')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.notifications), title: Text('Notificações')),
+              icon: Icon(Icons.monetization_on), title: Text('Financeiro')),
           BottomNavigationBarItem(
               icon: Icon(Icons.person), title: Text('Configurações')),
           BottomNavigationBarItem(icon: Icon(Icons.help), title: Text('Ajuda')),
@@ -56,16 +53,12 @@ class _ProfessionalMenuState extends State<ProfessionalMenu> {
                   MaterialPageRoute(builder: (context) => FinancialView()));
               break;
             case 2:
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => NotificationsView()));
-              break;
-            case 3:
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                       builder: (context) => ConfigurationsView()));
               break;
-            case 4:
+            case 3:
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => HelpView()));
           }

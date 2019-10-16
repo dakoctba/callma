@@ -4,7 +4,6 @@ import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/android/appointments/appointments.view.dart';
 import 'package:callma/ui/android/configurations/configurations.view.dart';
 import 'package:callma/ui/android/help/help.view.dart';
-import 'package:callma/ui/android/notifications/notifications.view.dart';
 import 'package:callma/ui/android/scheduling/professions/professions.view.dart';
 import 'package:flutter/material.dart';
 
@@ -30,8 +29,6 @@ class _PatientMenuState extends State<PatientMenu> {
           BottomNavigationBarItem(
               icon: Icon(Icons.list), title: Text('Consultas')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications), title: Text('Notificações')),
-          BottomNavigationBarItem(
               icon: Icon(Icons.person), title: Text('Configurações')),
           BottomNavigationBarItem(icon: Icon(Icons.help), title: Text('Ajuda')),
         ],
@@ -55,16 +52,12 @@ class _PatientMenuState extends State<PatientMenu> {
                   MaterialPageRoute(builder: (context) => AppointmentsView()));
               break;
             case 2:
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => NotificationsView()));
-              break;
-            case 3:
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                       builder: (context) => ConfigurationsView()));
               break;
-            case 4:
+            case 3:
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => HelpView()));
           }

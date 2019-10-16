@@ -68,6 +68,8 @@ class _PlaceViewState extends State<PlaceView> {
                             ProfessionalsView(this.specialtyId)));
               },
             ),
+            Container(
+                padding: EdgeInsets.all(10), child: Text("Seus endereços")),
             StreamBuilder<List<Address>>(
                 stream: addressBloc.addressesStream,
                 builder: (context, snapshot) {

@@ -13,7 +13,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: CustomAppBar("Consultas de hoje"),
       bottomNavigationBar: CustomBottomNavigationBar(),
-      body: Text("Minhas consultas do dia"),
+      body: Center(child: Text("Minhas consultas do dia")),
     );
   }
 }

@@ -13,7 +13,7 @@ class _FinancialViewState extends State<FinancialView> {
     return Scaffold(
       appBar: CustomAppBar("Financeiro"),
       bottomNavigationBar: CustomBottomNavigationBar(),
-      body: Text("Financeiro"),
+      body: Center(child: Text("Financeiro")),
     );
   }
 }

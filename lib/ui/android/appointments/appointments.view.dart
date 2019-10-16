@@ -43,7 +43,8 @@ class _AppointmentsViewState extends State<AppointmentsView> with DateHelper {
               builder: (context, AsyncSnapshot<List<Appointment>> snapshot) {
                 if (snapshot.hasData) {
                   if (snapshot.data.length == 0) {
-                    return Text("Você ainda não fez nenhuma consulta");
+                    return Center(
+                        child: Text("Você ainda não fez nenhuma consulta"));
                   }
 
                   return ListView.builder(
