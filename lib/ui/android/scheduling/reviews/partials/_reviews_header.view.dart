@@ -1,5 +1,4 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:callma/blocs/appointment.bloc.dart';
 import 'package:callma/blocs/summary.bloc.dart';
 import 'package:callma/helpers/professionals_helper.dart';
 import 'package:callma/models/feeling.dart';
@@ -14,27 +13,31 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class ProfessionalReviewssHeaderView extends StatefulWidget {
+  final Professional professional;
+
+  ProfessionalReviewssHeaderView(this.professional);
+
   @override
   _ProfessionalReviewssHeaderViewState createState() =>
-      _ProfessionalReviewssHeaderViewState();
+      _ProfessionalReviewssHeaderViewState(this.professional);
 }
 
 class _ProfessionalReviewssHeaderViewState
     extends State<ProfessionalReviewssHeaderView> {
-  AppointmentBloc appointmentBloc;
+  final Professional professional;
+
+  _ProfessionalReviewssHeaderViewState(this.professional);
+
   SummaryBloc summaryBloc;
 
   @override
   void initState() {
-    appointmentBloc = BlocProvider.getBloc<AppointmentBloc>();
     summaryBloc = BlocProvider.getBloc<SummaryBloc>();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var professional = appointmentBloc.professional;
-
     return Card(
       child: Container(
         padding: EdgeInsets.all(20),

@@ -55,15 +55,11 @@ class _ConfirmationViewState extends State<ConfirmationView> with DateHelper {
                   : StreamBuilder<int>(
                       stream: appointmentBloc.clinicStream,
                       builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return ClinicsCardView(
-                              appointmentBloc.professional.clinics,
-                              snapshot.data, (clinicId) {
-                            appointmentBloc.setClinicId(clinicId);
-                          });
-                        } else {
-                          return Container();
-                        }
+                        return ClinicsCardView(
+                            appointmentBloc.professional.clinics,
+                            snapshot.hasData ? snapshot.data : null, (option) {
+                          appointmentBloc.setClinicId(option);
+                        });
                       }),
               // PatientCard(),
               // PaymentCard(),

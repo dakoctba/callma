@@ -1,6 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:callma/blocs/appointment.bloc.dart';
 import 'package:callma/blocs/review.bloc.dart';
+import 'package:callma/models/professional.dart';
 import 'package:callma/models/review.dart';
 import 'package:callma/themes/callma.theme.dart';
 import 'package:callma/ui/android/scheduling/reviews/partials/_review_card.view.dart';
@@ -12,24 +12,29 @@ import 'package:callma/ui/shared/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class ReviewsView extends StatefulWidget {
+  final Professional professional;
+
+  ReviewsView(this.professional);
+
   @override
-  _ReviewsViewState createState() => _ReviewsViewState();
+  _ReviewsViewState createState() => _ReviewsViewState(this.professional);
 }
 
 class _ReviewsViewState extends State<ReviewsView> {
-  AppointmentBloc appointmentBloc;
+  final Professional professional;
   ReviewBloc reviewBloc;
+
+  _ReviewsViewState(this.professional);
 
   @override
   void initState() {
-    appointmentBloc = BlocProvider.getBloc<AppointmentBloc>();
     reviewBloc = BlocProvider.getBloc<ReviewBloc>();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    reviewBloc.getReviews(appointmentBloc.professional.id);
+    reviewBloc.getReviews(professional.id);
 
     return Scaffold(
         appBar: CustomAppBar("Avaliações"),
@@ -38,13 +43,19 @@ class _ReviewsViewState extends State<ReviewsView> {
             stream: reviewBloc.reviewsStream,
             builder: (context, AsyncSnapshot<List<Review>> snapshot) {
               if (!snapshot.hasData) {
-                return Text("Carregando reviews...");
+                return Center(child: Text("Carregando reviews..."));
+              }
+
+              if (snapshot.data.length == 0) {
+                return Center(
+                    child:
+                        Text("Este profissional ainda não recebeu avaliações"));
               }
 
               return Padding(
                   padding: EdgeInsets.all(5),
                   child: ListView(children: <Widget>[
-                    ProfessionalReviewssHeaderView(),
+                    ProfessionalReviewssHeaderView(professional),
                     Card(
                       child: Container(
                         padding: EdgeInsets.all(20),

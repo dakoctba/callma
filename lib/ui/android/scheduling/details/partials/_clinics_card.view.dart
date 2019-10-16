@@ -51,7 +51,7 @@ class ClinicsCardView extends StatelessWidget {
             ),
           ),
           selectedClinic == clinic.id
-              ? Icon(Icons.done, color: PRIMARY_GREEN)
+              ? Icon(Icons.check_circle, color: PRIMARY_GREEN)
               : Container()
         ],
       ),

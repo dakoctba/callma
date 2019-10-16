@@ -20,6 +20,7 @@ class _PhotoViewState extends State<PhotoView> {
     return Scaffold(
       body: Center(
           child: CircleAvatar(
+        radius: 120,
         backgroundImage: ProfessionalsHelper.getPhoto(_photo),
         backgroundColor: Colors.purple,
       )),
